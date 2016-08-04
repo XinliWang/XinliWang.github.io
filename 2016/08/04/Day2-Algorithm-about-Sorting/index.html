@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Day2 Algorithm about Sorting | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Day2 Algorithm about Sorting</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Day2 Algorithm about Sorting</h1><div class="post-meta">Aug 4, 2016<span> | </span><span class="category"><a href="/categories/Algorithm-Sorting/">Algorithm, Sorting</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p>##攻略模板：</p>
+<ul>
+<li>回忆算法特性</li>
+<li>实现算法功能</li>
+<li>实战训练使用该算法</li>
+<li>总结该算法特点，并总结算法题</li>
+</ul>
+<p>####自己回忆：</p>
+<ul>
+<li>直接插入排序Insertion sort: 在已有排好的序列中，依次插入新的元素；         </li>
+<li>希尔排序Shell sort: 每次分成若干组，每组进行直接插入排序，每次缩小组数即扩大组内元素，例如第一次每隔五个分为一组，第二次每隔三个分为一组，第三次每隔一个分为一组；        </li>
+<li>简单选择排序selection sort:选择序列中最大的数放在第一位，之后再比较除第一位外剩下所有元素，选出最大数放在第二位，以此类推完成排序；</li>
+<li>堆排序Heap sort: 构建最大堆，每次取出堆顶元素即当前最大元素，重新构建最大堆，取出堆顶排序，以此类推完成排序；</li>
+<li>冒泡排序Bubble sort: 从后往前两两元素互相比较，移动最大或最小元素至序列首部，之后比较剩下元素，以此类推完成排序；</li>
+<li>快速排序Qucik sort: 选出大小位于中间一个元素，以此元素为基准划为左右两组元素再分别进行排序；</li>
+<li>归并排序Merge sort: 划为多组，每组两两进行排序，之后两组两组进行合并、排序，之后合并为最终一组；</li>
+<li>Counting计数排序: 首先需要限定元素大小，取最大数为k,则设置一个新的数组长度为k+1，统计所有数的个数，填入相对应的位置中，依次相加元素数，再倒序遍历原数组，根据新数组中的位置，排列新的顺序，每排一个，之前记录个数的数组元素减1.   (参考：<a href="http://www.cnblogs.com/developerY/p/3166462.html" target="_blank" rel="external">http://www.cnblogs.com/developerY/p/3166462.html</a> )</li>
+<li>Radix基数排序: 将所有数的数位长度统一，长度不够的前面补零，之后从最低位到最高位分别比较每个数字并排序，直到最高位完成即成为一个有序列；</li>
+<li>Bucket桶排序: 制定每个桶的规则，然后相对应地分成M个桶，每个桶根据规则填入相对应的元素，每个桶内制定最优排序规则进行排序，最终依次输出每个桶的数据即为有序数列。</li>
+</ul>
+<p>####实现算法：<br><code>Insertion Sort</code>: Insert each element into sorted list. Move the elements to the right position until it is greater than current element and put this element after the current element.      </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void insertionSort(int arr[]) &#123;</div><div class="line">	int size = arr.length;</div><div class="line">	for(int i=1;i&lt;size;i++) &#123;</div><div class="line">		int j = i-1;</div><div class="line">		int k = arr[i];</div><div class="line">		while(j&gt;=0 &amp;&amp; k &lt; arr[j]) &#123;</div><div class="line">			arr[j+1] = arr[j];</div><div class="line">			j--;</div><div class="line">		&#125;</div><div class="line">		arr[j+1] = k;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Shell Sort</code>: At first divide the array into size/2 arrays, utilizing Insertion Sort. Then divide the array into size/4 arrays until 1 array and sort. </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> public void shellSort(int arr[]) &#123;</div><div class="line"> 	int size = arr.length;</div><div class="line"> 	for(int gap = size/2; gap&gt;0; gap/=2) &#123;</div><div class="line"> 		for(int i=gap; i&lt;size;i++) &#123;</div><div class="line"> 			int k = arr[i];</div><div class="line"> 			for(int j=i; j&gt;=gap &amp;&amp; k &lt; arr[j-gap]; j-=gap) &#123;</div><div class="line"> 				arr[j] = arr[j-gap];</div><div class="line"> 			&#125;</div><div class="line"> 			a[j] = k;</div><div class="line"> 		&#125;</div><div class="line"> 	&#125;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> ```    </div><div class="line"> </div><div class="line">`Selection Sort`: Each time, find out the maximum element from the last array and switch the head of this last array.</div></pre></td></tr></table></figure>
+<p> public void selectionSort(int arr[]) {<br>     int size = arr.length;<br>     for(int i=0;i&lt;size-1;i++) {<br>         int maxIndex = i;<br>         for(int j=i+1;j&lt;size;j++) {<br>             if(arr[maxIndex] &lt; arr[j]){<br>                 maxIndex = j;<br>             }<br>         }</p>
+<pre><code>    //switch 
+    int temp = arr[maxIndex];
+    arr[maxIndex] = arr[i];
+    arr[i] = temp;
+}
+</code></pre><p> }</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">`Heap Sort`:</div></pre></td></tr></table></figure>
+<p> public void heapSort(int arr[]) {</p>
+<p> }</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"> </div><div class="line">`Bubble Sort`: Adjacent elements take into compare and move the less one  into the head. It will be the least one. Then we loop this action until we get the sorted array.</div></pre></td></tr></table></figure>
+<p> public void bubbleSort(int arr[]) {<br>     int size = arr.length;<br>     for(int i=0;i<size-1;i++) {="" for(int="" j="size-1;j">i;j–) {<br>             if(arr[j]&lt;arr[j-1]){<br>                 int temp = arr[j];<br>                 arr[j] = arr[j-1];<br>                 arr[j-1] = temp;<br>             }<br>         }<br>     }</size-1;i++)></p>
+<p> }</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"> </div><div class="line">`Quick Sort`: Each time, we choose first element of array as pivot.Put all elements which is less than pivot to left and all elements which are greater than pivot to right.</div></pre></td></tr></table></figure>
+<p> public void quickSort(int arr[]) {<br>     int size = arr.length;<br>     int left = 0, right = size-1;<br>     helper(arr,left,right);<br> }</p>
+<p> void helper(int arr[],int left,int right) {<br>     while(left<right) {="" int="" i="left," j="right," pivot="arr[left];" while(i<j="" &&="" arr[j]="">= pivot) {<br>             j–;<br>         }<br>         if(i&lt;j) {<br>             arr[i] = arr[j];<br>         }<br>         while(i&lt;j &amp;&amp; arr[i] &lt;= pivot) {<br>             i++;<br>         }<br>         if(i&lt;j) {<br>             arr[j] = arr[i];<br>         }</right)></p>
+<pre><code>}
+arr[i] = pivot;
+helper(arr,left,i-1);
+helper(arr,i+1,right);
+</code></pre><p> }</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">`Merge Sort`</div></pre></td></tr></table></figure>
+<p> public void mergeSort(int arr[], int tempArr[], int startIndex, int endIndex) {<br>     if(startIndex &lt; endIndex) {<br>         int midIndex = startIndex + (endIndex-startIndex)/2;<br>         mergeSort(arr, tempArr, startIndex, midIndex);<br>         mergeSort(arr, tempArr, midIndex+1, endIndex);<br>         merge(arr, tempArr, startIndex, midIndex, endIndex);<br>     }<br> }<br> void merge(int arr[], int tempArr[], int startIndex, int midIndex, int endIndex){<br>     int i = startIndex, j = midIndex+1;<br>     int k = 0;<br>     while(i<midindex+1 &&="" j<endindex+1)="" {="" if="" (arr[i]=""> arr[j])<br>            tempArr[k++] = arr[j++];<br>        else<br>               tempArr[k++] = arr[i++];<br>    }<br>      while (i &lt; midIndex + 1)<br>      {<br>          tempArr[k++] = arr[i++];<br>      }<br>      while (j &lt; endIndex + 1)<br>          tempArr[k++] = arr[j++];<br>      for (i = 0, j = startIndex; j &lt; endIndex + 1; i ++, j ++)<br>          arr[j] = tempArr[i];<br>     }<br> }</midindex+1></p>
+<p> ```</p>
+<p>####学习后总结：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Array</th>
+<th>ArrayList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resizable</td>
+<td>No, it has fixed size.</td>
+<td>Yes. the size will grow automatically by 1.5 times</td>
+</tr>
+<tr>
+<td>Primitive</td>
+<td>Contain Primitive data type and Object</td>
+<td>Only contains Objects, not primitive type.if list.add(1), it will through auto-boxing ensures add object into list.</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>use array.length</td>
+<td>use list.size()</td>
+</tr>
+<tr>
+<td>Add Elements</td>
+<td>Assignment operator</td>
+<td>add() method, 添加某一位value,需要使用System.arrayCopy 移动该插入位之后所有元素往后移</td>
+</tr>
+<tr>
+<td>Multi-dimensional</td>
+<td>It can be multi dimensional</td>
+<td>It is always single dimensional</td>
+</tr>
+</tbody>
+</table>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/08/04/Day2-Algorithm-about-Sorting/" data-id="cirgwn71j0000nvjh3ojg1nbv" class="article-share-link">Aktie</a><div class="tags"><a href="/tags/Seeking-Job/">Seeking Job</a></div><div class="post-nav"><a href="/2016/08/03/Reverse-Linked-List-II/" class="next">Reverse Linked List II</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm-Sorting/">Algorithm, Sorting</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-List/">Data Structure, List</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Geek/">Geek</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Seeking-Job/" style="font-size: 15px;">Seeking Job</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/Day2-Algorithm-about-Sorting/">Day2 Algorithm about Sorting</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/03/Reverse-Linked-List-II/">Reverse Linked List II</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/03/Reorder-List/">Reorder List</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/03/Copy-List-with-Random-Pointer/">Copy List with Random Pointer</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/03/Intersection-of-Two-Linked-Lists/">Intersection of Two Linked Lists</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/28/iOS学习笔记-chapter1-3/">iOS学习笔记-chapter1~3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/Remove-Duplicates-from-Sorted-List/">Remove Duplicates from Sorted List</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/Day1-DataStructure-about-List/">Day1 DataStructure about List</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/hexo-常用操作/">hexo 常用操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/Remove-Nth-Node-From-End-of-List/">Remove Nth Node From End of List</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Hexo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

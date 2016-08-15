@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Day7 DataStructure about Map | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Day7 DataStructure about Map</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Day7 DataStructure about Map</h1><div class="post-meta">Aug 15, 2016<span> | </span><span class="category"><a href="/categories/Data-Structure-HashMap-TreeMap-Hashtable-ConcuttentHashMap/">Data Structure, HashMap, TreeMap, Hashtable, ConcuttentHashMap</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p>##攻略模板：</p>
+<ul>
+<li>回忆数据结构：分析数据结构特性，比较类似数据结构差异</li>
+<li>实现数据结构</li>
+<li>实战训练使用该数据结构</li>
+<li>总结该数据结构特点，并总结算法题</li>
+</ul>
+<p>###Java.util:</p>
+<p>####自己回忆：</p>
+<ul>
+<li>HashMap: key不能重复，value可以重复，只能存储wrapper class，not primitive type. Not thread-safe. It is faster than hashtable.    </li>
+<li>Hashtable:  Thread-safe. Others are similar to HashMap.</li>
+<li>ConcurrentHashMap: It’s thread-safe.</li>
+<li>TreeMap: It’s ordered map.</li>
+</ul>
+<p>####实现数据结构：</p>
+<ul>
+<li>How do get and put method of HashMap work:    </li>
+</ul>
+<p>####学习后总结：</p>
+<p>######HashMap vs. Hashtable</p>
+<ul>
+<li>HashMap: It’s not synchronized so it’s faster and takes less memory than Hashtable.  It allows one null key and any number of null values. </li>
+<li>Hashtable: It’s synchronized so it’s thread-safe. It doesn’t allow null keys or values. </li>
+</ul>
+<p>######ConcurrentHashMap vs. Hashtable</p>
+<ul>
+<li>ConcurrentHashMap provides its own synchronization, so you don’t have to  synchronize access to it explicitly. It provides <code>putIfAbsent</code> method and this ensure to atomically add a mapping if the specific key does’t exist.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ConcurrentHashMap&lt;String, Integer&gt; myMap = new ConcurrentHashMap&lt;String, Integer&gt;();</div><div class="line"></div><div class="line">//this is not thread-safe, because another thread may add a mapping for &apos;key&apos; between the call to containsKey() and the call to put();</div><div class="line">if(maMap.containsKey(&quot;key&quot;)) &#123;</div><div class="line">	myMap.put(&quot;key&quot;,1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//this is thread-safe</div><div class="line">myMap.putIfAbsent(&quot;key&quot;,1);</div></pre></td></tr></table></figure>
+<ul>
+<li>The difference between ConcurrentHashMap and Hashtable:        </li>
+</ul>
+<p>ConcurrentHashMap uses a <code>lock striping strategy</code>: It uses mutiple locks  on segment level instead of object level. It has(with defalut setting) 16 locks, each guarding 1/16th of the hashmap buckets. In this way, multiple threads can get/put key-value pairs from ConcurrentHashMap without blocking/waiting for each other.  (just like it locks each room instead of main door)<br>Hashtable and Collections.synchronizedMap(): It uses single lock for entire map.   It means if multiple threads try to access to it at the same time, it only allows one thread to access to it.  (it locks home’s main door)         </p>
+<ul>
+<li>How to make HashMap thread safe: You can make HashMap thread safe by wrapping it with Collections.synchronizedMap(). Or use <code>lock</code> explicitly. </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>HashMap</th>
+<th>Hashtable</th>
+<th>ConcurrentHashMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Null values/keys</td>
+<td>One null key, any number of null values</td>
+<td>not allowed</td>
+<td>not allowed</td>
+</tr>
+<tr>
+<td>Is thread-safe</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Lock mechanism</td>
+<td>not applicable</td>
+<td>locks entire map(locks the object)</td>
+<td>locks the portion of map(locks the bucket)</td>
+</tr>
+<tr>
+<td>Iterator</td>
+<td>fail-fast</td>
+<td>fail-fast</td>
+<td>fail-safe</td>
+</tr>
+</tbody>
+</table>
+<p>######LinkedHashMap vs. TreeMap</p>
+<ul>
+<li>TreeMap: It’s a tree based mapping. Its put/get operations take O(log n) time. It requires items to have some comparison mechanism, either with Comparable or Comparator.  The iteration order is determined by this mechanism(so the default ordering is natural ordering).</li>
+<li>LinkedHashMap: It’s based on HashMap and Linked List, but it adds awareness to the order at which items are added.  So the iteration order is the same as insertion order.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>HashMap</th>
+<th>LinkedHashMap</th>
+<th>TreeMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order</td>
+<td>no guarantee order</td>
+<td>insertion order</td>
+<td>sorted according comparison mechanism(the default is natural ordering)</td>
+</tr>
+<tr>
+<td>Get/put/remove/containsKey</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>Map</td>
+<td>Map</td>
+<td>Map,NavigableMap,SortedMap</td>
+</tr>
+<tr>
+<td>Null values/keys</td>
+<td>allowed</td>
+<td>allowed</td>
+<td>only values</td>
+</tr>
+<tr>
+<td>Fail-fast behavior</td>
+<td>Will throw ConcurrentModificationException</td>
+<td>Will throw ConcurrentModificationException</td>
+<td>Will throw ConcurrentModificationException</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>buckets</td>
+<td>doble-linked bukets</td>
+<td>Red-Black Tree</td>
+</tr>
+<tr>
+<td>Is sunchronized</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/08/15/Day7-DataStructure-about-Map/" data-id="cirwchtdh000thpjhwelxv05n" class="article-share-link">Share</a><div class="tags"><a href="/tags/Seeking-Job/">Seeking Job</a></div><div class="post-nav"><a href="/2016/08/13/Implement-Stack-using-Queues/" class="next">Implement Stack using Queues</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm-Sorting/">Algorithm, Sorting</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-Collection/">Data Structure, Collection</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-HashMap-TreeMap-Hashtable-ConcuttentHashMap/">Data Structure, HashMap, TreeMap, Hashtable, ConcuttentHashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-List/">Data Structure, List</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Geek/">Geek</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Stack-Heap/">Stack, Heap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/class-design-interface/">class design, interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/comparator-comparable/">comparator, comparable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Seeking-Job/" style="font-size: 15px;">Seeking Job</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/Day7-DataStructure-about-Map/">Day7 DataStructure about Map</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/Implement-Stack-using-Queues/">Implement Stack using Queues</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/Implement-Queue-using-Stacks/">Implement Queue using Stacks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/Moving-Average-from-Data-Stream/">Moving Average from Data Stream</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/Day6-DataStructure-Collection/">Day6 DataStructure Collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/11/Add-and-Search-Word-Data-structure-design/">Add and Search Word - Data structure design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/11/Implement-Trie-Prefix-Tree/">Implement Trie (Prefix Tree)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/Day5-Class-Design/">Day5 Class Design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Kth-Largest-Element-in-an-Array/">Kth Largest Element in an Array</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Day4-Difference-between-Comparator-and-Comparable/">Day4 Difference between Comparator and Comparable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Hexo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

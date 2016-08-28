@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-08-26T18:40:25.000Z</updated>
+  <updated>2016-08-28T20:21:04.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -20,29 +20,26 @@
     <link href="http://xinli90.com/2016/08/25/Lowest-Common-Ancestor-of-a-Binary-Tree/"/>
     <id>http://xinli90.com/2016/08/25/Lowest-Common-Ancestor-of-a-Binary-Tree/</id>
     <published>2016-08-25T21:44:20.000Z</published>
-    <updated>2016-08-26T18:40:25.000Z</updated>
+    <updated>2016-08-28T20:21:04.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="external">Leetcode-Lowest Common Ancestor of a Binary Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
 <p>According to the <a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">definition of LCA on Wikipedia</a>: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     _______3______</div><div class="line">    /              \</div><div class="line"> ___5__          ___1__</div><div class="line">/      \        /      \</div><div class="line"><span class="number">6</span>      _2       <span class="number">0</span>       <span class="number">8</span></div><div class="line">      /  \</div><div class="line">      <span class="number">7</span>   <span class="number">4</span></div></pre></td></tr></table></figure>
 <p>For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3. Another example is LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1: Recursive solution.      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
 <li>If search from root and find two target nodes in different sides. Then the LCA is root.</li>
 <li>If find two nodes in left subtree, then recursively search from the left of root.</li>
 <li>If find two nodes in right subtree, then recursively search from the right of root.</li>
 </ol>
-<p>Solution2: Recursive solution. </p>
-<ol>
+<h4 id="Solution2-Recursive-solution"><a href="#Solution2-Recursive-solution" class="headerlink" title="Solution2: Recursive solution."></a>Solution2: Recursive solution.</h4><ol>
 <li>If root is null, return null</li>
 <li>If root is one of two nodes, return root.</li>
 <li>Recurseively traverse left subtree and right subtree.</li>
 <li>If both left subtree and right subtree get the specific node, then return root.</li>
 <li>If one of subtree is null, return another subtree.</li>
 </ol>
-<p>Solution3: Iterative solution. </p>
-<ol>
+<h4 id="Solution3-Iterative-solution"><a href="#Solution3-Iterative-solution" class="headerlink" title="Solution3: Iterative solution."></a>Solution3: Iterative solution.</h4><ol>
 <li>Use List to record the path which find from root to the specific nodes.</li>
 <li>Compare elements from two lists and get the last common elements.</li>
 </ol>
@@ -66,13 +63,12 @@
     <link href="http://xinli90.com/2016/08/25/Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/"/>
     <id>http://xinli90.com/2016/08/25/Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/</id>
     <published>2016-08-25T21:43:58.000Z</published>
-    <updated>2016-08-26T18:12:51.000Z</updated>
+    <updated>2016-08-28T19:58:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="external">Leetcode-Construct Binary Tree from Preorder and Inorder Traversal </a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
 <p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution: Iterative solution.      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-Iterative-solution"><a href="#Solution-Iterative-solution" class="headerlink" title="Solution: Iterative solution."></a>Solution: Iterative solution.</h4><ol>
 <li>PreOrder: root is the first element in the array and use this element to divide inorder array. </li>
 <li>InOrder: the left array of the root is left subtree and the right array of the root is right subtree.We can get the size of left subtree and right subtree and use for the preorder array. Use this size to divide preorder array and build tree.</li>
 </ol>
@@ -132,19 +128,17 @@
     <link href="http://xinli90.com/2016/08/24/Same-Tree/"/>
     <id>http://xinli90.com/2016/08/24/Same-Tree/</id>
     <published>2016-08-24T17:50:50.000Z</published>
-    <updated>2016-08-26T18:46:35.000Z</updated>
+    <updated>2016-08-28T20:28:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/same-tree/" target="_blank" rel="external">Leetcode-Same Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given two binary trees, write a function to check if they are equal or not.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two binary trees, write a function to check if they are equal or not.</p>
 <p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1: Recursive solution. </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
 <li>if two nodes are null, return true;</li>
 <li>if the value of two nodes are equivalent, recursively compare their left and right subtree.</li>
 <li>else return false.</li>
 </ol>
-<p>Solution2: Iterative solution.     </p>
-<ol>
+<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><ol>
 <li>Traverse two trees and compare each nodes.</li>
 <li>Use Pre-Order traversal.</li>
 </ol>
@@ -169,21 +163,19 @@
     <link href="http://xinli90.com/2016/08/23/Flatten-Binary-Tree-to-Linked-List/"/>
     <id>http://xinli90.com/2016/08/23/Flatten-Binary-Tree-to-Linked-List/</id>
     <published>2016-08-23T19:53:28.000Z</published>
-    <updated>2016-08-26T18:21:48.000Z</updated>
+    <updated>2016-08-28T20:09:25.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="external">Leetcode-Binary Tree Level Order Traversal</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a binary tree, flatten it to a linked list in-place.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, flatten it to a linked list in-place.</p>
 <p>For example,<br>Given</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="number">1</span></div><div class="line">   / \</div><div class="line">  <span class="number">2</span>   <span class="number">5</span></div><div class="line"> / \   \</div><div class="line"><span class="number">3</span>   <span class="number">4</span>   <span class="number">6</span></div></pre></td></tr></table></figure>
 <p>The flattened tree should look like:</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"> \</div><div class="line">  <span class="number">2</span></div><div class="line">   \</div><div class="line">    <span class="number">3</span></div><div class="line">     \</div><div class="line">      <span class="number">4</span></div><div class="line">       \</div><div class="line">        <span class="number">5</span></div><div class="line">         \</div><div class="line">          <span class="number">6</span></div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1: Recursive solution. Like post-order solution.</p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution-Like-post-order-solution"><a href="#Solution1-Recursive-solution-Like-post-order-solution" class="headerlink" title="Solution1: Recursive solution. Like post-order solution."></a>Solution1: Recursive solution. Like post-order solution.</h4><ol>
 <li>if tree is null, return.</li>
 <li>if tree is not null, Recursively traverse left subtree and then right subtree, change the left subtree to the right and the original right subtree as the most right node.</li>
 </ol>
-<p>Solution2: Iterative solution.     </p>
-<ol>
+<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><ol>
 <li>Each time, make the right subtree of root to be the right subtree of most right node of left child node of root.</li>
 <li>Then make the left subtree as the right subtree of the root, move to the next right node, loop 1 and 2.</li>
 </ol>
@@ -356,18 +348,17 @@
     <link href="http://xinli90.com/2016/08/23/Maximum-Depth-of-Binary-Tree/"/>
     <id>http://xinli90.com/2016/08/23/Maximum-Depth-of-Binary-Tree/</id>
     <published>2016-08-23T16:44:52.000Z</published>
-    <updated>2016-08-26T18:41:02.000Z</updated>
+    <updated>2016-08-28T20:22:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="external">Leetcode-Maximum Depth of Binary Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a binary tree, find its maximum depth.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, find its maximum depth.</p>
 <p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1: Recursive solution.  </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
 <li>if the tree is null, the depth is 0;      </li>
 <li>if the tree is null, the depth = max(depth of left tree，depth of right tree) + 1       </li>
 </ol>
-<p>Solution2: Iterative solution.<br>Utilize BFS, count the levels. It’s the same as the the number of loops.      </p>
-<p>Solution3: Iterative solution.<br>Utilize DFS, record the depth of each path and maintain the maximum one until traversal all paths.</p>
+<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><p>Utilize BFS, count the levels. It’s the same as the the number of loops.      </p>
+<h4 id="Solution3-Iterative-solution"><a href="#Solution3-Iterative-solution" class="headerlink" title="Solution3: Iterative solution."></a>Solution3: Iterative solution.</h4><p>Utilize DFS, record the depth of each path and maintain the maximum one until traversal all paths.</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> maxDepth(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">return</span> Math.max(maxDepth(root.left),maxDepth(root.right))+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="comment">//Traverse tree use BFS</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> getNodeNum(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</div><div class="line">		queue.add(root);</div><div class="line">		<span class="keyword">while</span>(!queue.isEmpty()) &#123;</div><div class="line">			<span class="keyword">int</span> <span class="keyword">size</span> = queue.<span class="keyword">size</span>();</div><div class="line">			<span class="keyword">count</span> += <span class="keyword">size</span>;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">size</span>;i++) &#123;</div><div class="line">				TreeNode node = queue.poll();</div><div class="line">				<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>) queue.add(node.left);</div><div class="line">				<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>) queue.add(node.right);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
@@ -402,22 +393,22 @@
     <link href="http://xinli90.com/2016/08/22/Day9-Algorithm-about-Binary-Search-Tree/"/>
     <id>http://xinli90.com/2016/08/22/Day9-Algorithm-about-Binary-Search-Tree/</id>
     <published>2016-08-22T17:53:19.000Z</published>
-    <updated>2016-08-26T22:37:55.000Z</updated>
+    <updated>2016-08-28T20:08:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>本篇是关于二叉树Binary Tree算法的分析和总结。</p>
-<h2 id="攻略模板："><a href="#攻略模板：" class="headerlink" title="攻略模板："></a>攻略模板：</h2><ul>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
 <li>回忆算法特性</li>
 <li>实现算法功能</li>
 <li>实战训练使用该算法</li>
 <li>总结该算法特点，并总结算法题</li>
 </ul>
-<h4 id="自己回忆："><a href="#自己回忆：" class="headerlink" title="自己回忆："></a>自己回忆：</h4><ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
 <li>一般二叉树的查找可以使用DFS 和 BFS</li>
 <li>平衡二叉树可以使用二分法，时间复杂度为O(logn)</li>
 <li>二叉树的遍历有先序遍历，中序遍历 和 后序遍历</li>
 <li>Binary Tree and Binary Search Tree: Each node of BT and BST only allowed two children nodes. What’s more, in BST, left &lt; current &lt; right.</li>
 </ul>
-<h4 id="实现算法："><a href="#实现算法：" class="headerlink" title="实现算法："></a>实现算法：</h4><p>在这里我们总结出经典15道二叉树题目： </p>
+<h2 id="实现算法"><a href="#实现算法" class="headerlink" title="实现算法"></a>实现算法</h2><p>在这里我们总结出经典15道二叉树题目： </p>
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//Definition for a binary tree node.</div><div class="line">Class TreeNode&#123;</div><div class="line">	<span class="built_in">int</span> val;</div><div class="line">	TreeNode <span class="built_in">left</span>;</div><div class="line">	TreeNode <span class="built_in">right</span>;</div><div class="line">	TreeNode(<span class="built_in">int</span> x) &#123;</div><div class="line">		val = x;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">```          </div><div class="line"></div><div class="line"><span class="number">1</span>.求二叉树中的节点个数<span class="symbol">:</span> getNodeNumRec（递归），getNodeNum（迭代） </div><div class="line"></div><div class="line">递归解法：<span class="built_in">Time</span> O(<span class="built_in">n</span>)      </div><div class="line">(<span class="number">1</span>) 如果二叉树为空，节点个数为<span class="number">0</span>       </div><div class="line">(<span class="number">2</span>) 如果二叉树不为空，二叉树节点个数 = 左子树节点个数 + 右子树节点个数 + <span class="number">1</span>  </div><div class="line"></div><div class="line">迭代解法：<span class="built_in">Time</span> O(<span class="built_in">n</span>)     </div><div class="line">使用DFS 或者 BFS 遍历所有节点，统计节点个数</div></pre></td></tr></table></figure>
 <p>public int getNodeNumRec(TreeNode root) {<br>    if(root == null) return 0;<br>    return getNodeNumRec(root.left)+getNodeNumRec(root.right)+1;<br>}</p>
 <p>//Traverse tree use BFS<br>public int getNodeNum(TreeNode root) {<br>    if(root == null) return 0;<br>    Queue<treenode> queue = new ArrayDeque&lt;&gt;();<br>    int count = 0;<br>    queue.add(root);<br>    while(!queue.isEmpty()) {<br>        int size = queue.size();<br>        count += size;<br>        for(int i=0;i&lt;size;i++) {<br>            TreeNode node = queue.poll();<br>            if(node.left!=null) queue.add(node.left);<br>            if(node.right!=null) queue.add(node.right);<br>        }<br>    }<br>    return count;<br>}</treenode></p>
@@ -632,7 +623,7 @@ return dis;
 }
 return true;
 </code></pre><p>}</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="livecodeserver"><span class="number">15.</span>找出二叉树中最长连续子串(即全部往左的连续节点，或是全部往右的连续节点）findLongest</span></div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line"><span class="comment">#### 学习后总结：</span></div><div class="line"><span class="comment">##### When to use Pre-Order, In-Order, Post-Order</span></div><div class="line"></div><div class="line">- Pre-Order: Recursively, this is `self, left, <span class="literal">right</span>`. From root node <span class="built_in">to</span> <span class="literal">right</span> most node. Firstly, <span class="keyword">if</span> you know you need <span class="built_in">to</span> explore <span class="keyword">the</span> roots <span class="keyword">before</span> inspecting <span class="keyword">any</span> leaves, you should pick pre-order because you will encounter all <span class="keyword">the</span> roots <span class="keyword">before</span> all <span class="keyword">of</span> <span class="keyword">the</span> leaves.  Secondly, <span class="keyword">if</span> you want <span class="built_in">to</span> simply print out <span class="keyword">the</span> hierachical <span class="built_in">format</span> <span class="keyword">of</span> <span class="keyword">the</span> tree <span class="keyword">in</span> <span class="keyword">a</span> linear <span class="built_in">format</span>, use preorder traversal.</div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="livecodeserver"><span class="number">15.</span>找出二叉树中最长连续子串(即全部往左的连续节点，或是全部往右的连续节点）findLongest</span></div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line"><span class="comment">## 学习后总结：</span></div><div class="line"><span class="comment">### When to use Pre-Order, In-Order, Post-Order</span></div><div class="line"></div><div class="line">- Pre-Order: Recursively, this is `self, left, <span class="literal">right</span>`. From root node <span class="built_in">to</span> <span class="literal">right</span> most node. Firstly, <span class="keyword">if</span> you know you need <span class="built_in">to</span> explore <span class="keyword">the</span> roots <span class="keyword">before</span> inspecting <span class="keyword">any</span> leaves, you should pick pre-order because you will encounter all <span class="keyword">the</span> roots <span class="keyword">before</span> all <span class="keyword">of</span> <span class="keyword">the</span> leaves.  Secondly, <span class="keyword">if</span> you want <span class="built_in">to</span> simply print out <span class="keyword">the</span> hierachical <span class="built_in">format</span> <span class="keyword">of</span> <span class="keyword">the</span> tree <span class="keyword">in</span> <span class="keyword">a</span> linear <span class="built_in">format</span>, use preorder traversal.</div></pre></td></tr></table></figure>
 <ul>
 <li>Root<ul>
 <li>A<ul>
@@ -654,7 +645,7 @@ return true;
 </code></pre><p>  /      \<br> A     *<br>      /  \<br>     B    C</p>
 <p>Output: A + B * C</p>
 <p>If you want to evaluate the expression, you traverse the tree in postorder, applying each operator to the values from each of its sub-trees.      </p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="oxygene">##### When <span class="keyword">to</span> use BFS <span class="keyword">and</span> DFS, the relationship between DFS <span class="keyword">and</span> PreOrder</span></div><div class="line"></div><div class="line">DFS 包括: </div><div class="line">  </div><div class="line"><span class="number">1</span>. Pre-<span class="keyword">Order</span>, <span class="keyword">In</span>-<span class="keyword">Order</span>, Post-<span class="keyword">Order</span></div><div class="line"><span class="number">2</span>. Divide &amp; Conquer</div><div class="line"></div><div class="line">Notice：     </div><div class="line">Sometimes it <span class="keyword">is</span> easy <span class="keyword">to</span> figure <span class="keyword">out</span> question <span class="keyword">using</span> Recursion.  So interviewer wants you <span class="keyword">to</span> use Iterative solution.  因为这里，递归的方法和变量都是存储在Stack中的，现在就是想考验你去实现栈的内部工作原理，使用iteration 都需要去借助一个数据结构来完成recursion的方法。</div><div class="line"></div><div class="line">DFS Template:</div><div class="line"></div><div class="line"><span class="number">1</span>.Recursively Traverse</div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="oxygene">### When <span class="keyword">to</span> use BFS <span class="keyword">and</span> DFS, the relationship between DFS <span class="keyword">and</span> PreOrder</span></div><div class="line"></div><div class="line">DFS 包括: </div><div class="line">  </div><div class="line"><span class="number">1</span>. Pre-<span class="keyword">Order</span>, <span class="keyword">In</span>-<span class="keyword">Order</span>, Post-<span class="keyword">Order</span></div><div class="line"><span class="number">2</span>. Divide &amp; Conquer</div><div class="line"></div><div class="line">Notice：     </div><div class="line">Sometimes it <span class="keyword">is</span> easy <span class="keyword">to</span> figure <span class="keyword">out</span> question <span class="keyword">using</span> Recursion.  So interviewer wants you <span class="keyword">to</span> use Iterative solution.  因为这里，递归的方法和变量都是存储在Stack中的，现在就是想考验你去实现栈的内部工作原理，使用iteration 都需要去借助一个数据结构来完成recursion的方法。</div><div class="line"></div><div class="line">DFS Template:</div><div class="line"></div><div class="line"><span class="number">1</span>.Recursively Traverse</div></pre></td></tr></table></figure>
 <p>public void traversal(TreeNode root) {<br>    if(roo==null) return;</p>
 <pre><code>traversal(root.left);
 
@@ -671,18 +662,18 @@ ResultType result = Merge from left to right
 return result;
 </code></pre><p>}</p>
 <p>```</p>
-<h5 id="How-to-think-over-Divide-amp-Conquer"><a href="#How-to-think-over-Divide-amp-Conquer" class="headerlink" title="How to think over Divide&amp;Conquer"></a>How to think over Divide&amp;Conquer</h5>]]></content>
+<h3 id="How-to-think-over-Divide-amp-Conquer"><a href="#How-to-think-over-Divide-amp-Conquer" class="headerlink" title="How to think over Divide&amp;Conquer"></a>How to think over Divide&amp;Conquer</h3>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;本篇是关于二叉树Binary Tree算法的分析和总结。&lt;/p&gt;
-&lt;h2 id=&quot;攻略模板：&quot;&gt;&lt;a href=&quot;#攻略模板：&quot; class=&quot;headerlink&quot; title=&quot;攻略模板：&quot;&gt;&lt;/a&gt;攻略模板：&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;回忆算法特性&lt;/li&gt;
-&lt;li&gt;
+&lt;li&gt;实现算法
     
     </summary>
     
-      <category term="Algorithm, Binary Tree" scheme="http://xinli90.com/categories/Algorithm-Binary-Tree/"/>
+      <category term="Algorithm" scheme="http://xinli90.com/categories/Algorithm/"/>
     
     
       <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
@@ -694,38 +685,33 @@ return result;
     <link href="http://xinli90.com/2016/08/19/Two-Sum-III-Data-structure-design/"/>
     <id>http://xinli90.com/2016/08/19/Two-Sum-III-Data-structure-design/</id>
     <published>2016-08-19T20:56:56.000Z</published>
-    <updated>2016-08-26T18:49:16.000Z</updated>
+    <updated>2016-08-28T20:26:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/" target="_blank" rel="external">Leetcode-Two Sum III - Data structure design</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
 <p>add - Add the number to an internal data structure.<br>find - Find if there exists any pair of numbers which sum is equal to the value.</p>
 <p>For example,</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">add(<span class="number">1</span>); add(<span class="number">3</span>); add(<span class="number">5</span>);</div><div class="line">find<span class="function"><span class="params">(<span class="number">4</span>)</span> -&gt;</span> <span class="literal">true</span></div><div class="line">find<span class="function"><span class="params">(<span class="number">7</span>)</span> -&gt;</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Time complexity is O(n), space complexity is O(n)</li>
 <li>Store number and its frequency into HashMap</li>
 <li>If target-number==number and frequency is less than 2, then we should continue to search through map.containsKey(target-key).</li>
 <li>But time limit exceeded.</li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>Time complexity is O(n^2), space complexity is O(n)</li>
 <li>Brute solution but time limit exceeded.</li>
 </ol>
-<p>Solution3: </p>
-<ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
 <li>Time complexity is O(nlogn), space complexity is O(n)</li>
 <li>Sort the list and then keep two pointers move from head and tail respectively to combine and compare.</li>
 <li>But time limit exceeded.</li>
 </ol>
-<p>Solution4:</p>
-<ol>
+<h4 id="Solution4"><a href="#Solution4" class="headerlink" title="Solution4"></a>Solution4</h4><ol>
 <li>Time complexity is O(n), space complexity is O(n)</li>
 <li>Using ArrayList add and remove, Still time limit exceeded.</li>
 </ol>
-<p>Solution5:</p>
-<ol>
+<h4 id="Solution5"><a href="#Solution5" class="headerlink" title="Solution5"></a>Solution5</h4><ol>
 <li>Time complexity is O(n), space complexity is O(n)</li>
 <li>Using ArrayList and HashMap instead of iterating hashmap. Beats 99%. Done!</li>
 </ol>
@@ -749,25 +735,22 @@ return result;
     <link href="http://xinli90.com/2016/08/18/Two-Sum-II-Input-array-is-sorted/"/>
     <id>http://xinli90.com/2016/08/18/Two-Sum-II-Input-array-is-sorted/</id>
     <published>2016-08-18T20:03:43.000Z</published>
-    <updated>2016-08-26T18:48:37.000Z</updated>
+    <updated>2016-08-28T20:27:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="external">Leetcode-Two Sum II - Input array is sorted</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.        </p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.        </p>
 <p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.        </p>
 <p>You may assume that each input would have exactly one solution.      </p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: <span class="attr">numbers=&#123;2,</span> <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>&#125;, <span class="attr">target=9</span>      </div><div class="line">Output: <span class="attr">index1=1,</span> <span class="attr">index2=2</span></div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1 and 2:      </p>
-<p>Based on <code>Two Sum</code> solution, and add pruning solution.</p>
-<p>Solution3: </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-and-2"><a href="#Solution1-and-2" class="headerlink" title="Solution1 and 2"></a>Solution1 and 2</h4><p>Based on <code>Two Sum</code> solution, and add pruning solution.</p>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
 <li>Keep two pointers. One moves from head and another moves from tail.</li>
 <li>If the sum of two values is greater than target, move second pointer to the left.</li>
 <li>If the sum of two values is less than target, move first pointer to the right.</li>
 <li>Until we find the right one.</li>
 <li>Time complexity is O(n), space complexity is O(1).</li>
 </ol>
-<p>Solution4: </p>
-<ol>
+<h4 id="Solution4"><a href="#Solution4" class="headerlink" title="Solution4"></a>Solution4</h4><ol>
 <li>For each left pointer,  Use Binary Seach to find the right pointer.</li>
 <li>Time complexity is O(nlogn), space complexity is O(1).</li>
 </ol>
@@ -791,21 +774,19 @@ return result;
     <link href="http://xinli90.com/2016/08/17/Two-Sum/"/>
     <id>http://xinli90.com/2016/08/17/Two-Sum/</id>
     <published>2016-08-17T20:35:54.000Z</published>
-    <updated>2016-08-26T18:50:09.000Z</updated>
+    <updated>2016-08-28T20:24:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">Leetcode-Two Sum</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have exactly one solution.</p>
 <p>Example:</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</div><div class="line"></div><div class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</div><div class="line">return [<span class="number">0</span>, <span class="number">1</span>].</div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Time complexity is O(n^2), space complexity is O(1)</li>
 <li>Loop this array and find the right pair.</li>
 <li>Note: we cannot change the original order.</li>
 </ol>
-<p>Solution2: </p>
-<p>Time complexity is O(n), space complexity is O(n)</p>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Time complexity is O(n), space complexity is O(n)</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="built_in">size</span> = nums.length;</div><div class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">		<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">size</span><span class="number">-1</span>; i++) &#123;</div><div class="line">			<span class="built_in">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;<span class="built_in">size</span>; j++) &#123;</div><div class="line">				<span class="built_in">if</span>(target == nums[i] + nums[j])&#123;</div><div class="line">					result[<span class="number">0</span>] = i;</div><div class="line">					result[<span class="number">1</span>] = j;</div><div class="line">					<span class="built_in">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">return</span> result;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">		HashMap&lt;Integer,Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</div><div class="line">			<span class="built_in">if</span>(<span class="built_in">map</span>.containsKey(target-nums[i])) &#123;</div><div class="line">				<span class="built_in">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="built_in">map</span>.<span class="built_in">get</span>(target-nums[i]),i&#125;;</div><div class="line">			&#125;<span class="built_in">else</span> &#123;</div><div class="line">				<span class="built_in">map</span>.<span class="built_in">put</span>(nums[i],i);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
@@ -827,19 +808,17 @@ return result;
     <link href="http://xinli90.com/2016/08/17/Count-Primes/"/>
     <id>http://xinli90.com/2016/08/17/Count-Primes/</id>
     <published>2016-08-17T19:25:07.000Z</published>
-    <updated>2016-08-26T18:16:42.000Z</updated>
+    <updated>2016-08-28T19:58:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">Leetcode-Count Primes</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Count the number of prime numbers less than a non-negative number, n.       </p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Count the number of prime numbers less than a non-negative number, n.       </p>
 <p>Hint:</p>
 <p>Let’s start with a isPrime function. To determine if a number is prime, we need to check if it is not divisible by any number less than n. The runtime complexity of isPrime function would be O(n) and hence counting the total prime numbers up to n would be O(n2). Could we do better?</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Based on the hint, we can provide the solution with product.</li>
 <li>Time complexity is still O(n^2), but it is much simple.</li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>For the solution1, there are some duplicate operation. In order to avoid duplicate operation, we need prune it.</li>
 <li>The prime number only happen in odd number. So we don’t have to check all numbers.</li>
 <li>It is fastest.</li>
@@ -864,27 +843,24 @@ return result;
     <link href="http://xinli90.com/2016/08/17/Group-Anagrams/"/>
     <id>http://xinli90.com/2016/08/17/Group-Anagrams/</id>
     <published>2016-08-17T18:20:11.000Z</published>
-    <updated>2016-08-26T18:22:40.000Z</updated>
+    <updated>2016-08-28T20:10:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/anagrams/" target="_blank" rel="external">Leetcode-Group Anagrams</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given an array of strings, group anagrams together.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of strings, group anagrams together.</p>
 <p>For example, given: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],<br>Return:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [<span class="string">"ate"</span>, <span class="string">"eat"</span>,<span class="string">"tea"</span>],</div><div class="line">  [<span class="string">"nat"</span>,<span class="string">"tan"</span>],</div><div class="line">  [<span class="string">"bat"</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
 <p>Note: All inputs will be in lower-case.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Sort each string and reorder it with natural ordering.</li>
 <li>Store the sorted string and the list of original string into HashMap. The ordered string as the key and List which includes original strings as the value.</li>
 <li>return List&lt;&gt;(map.values());</li>
 <li>Time complexity is O(n<em>k</em>logk), space complexity is O(n).</li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>We use List<list<string>&gt; and HashMap<string,integer> instead of HashMap<string, list<string="">&gt;.</string,></string,integer></list<string></li>
 <li>Store the index of list into hashmap.  It will be faster.</li>
 </ol>
-<p>Solution3:</p>
-<ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
 <li>The data structure is List<list<string>&gt; and HashMap<integer,integer></integer,integer></list<string></li>
 <li>The key of HashMap is the product of prime number which represent each charactor. The product is unique.     </li>
 <li>It is fastest.</li>
@@ -909,21 +885,19 @@ return result;
     <link href="http://xinli90.com/2016/08/17/Happy-Number/"/>
     <id>http://xinli90.com/2016/08/17/Happy-Number/</id>
     <published>2016-08-17T17:09:55.000Z</published>
-    <updated>2016-08-26T18:23:15.000Z</updated>
+    <updated>2016-08-28T20:10:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="external">Leetcode-Happy Number</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Write an algorithm to determine if a number is “happy”.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write an algorithm to determine if a number is “happy”.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
 <p>Example: 19 is a happy number</p>
 <p>1^2 + 9^2 = 82<br>8^2 + 2^2 = 68<br>6^2 + 8^2 = 100<br>1^2 + 0^2 + 0^2 = 1</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Use HashSet to store all sum in each loop</li>
 <li>If the sume is 1, then it is happy number. Ohterwise store in HashSet and if the specific element is already in HashSet, this is not happy number.</li>
 <li>Space complexity is O(n)</li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>Space complexity is O(1), much faster.</li>
 <li>Adapt the Floyd Cycle detection algorithm.</li>
 </ol>
@@ -947,23 +921,20 @@ return result;
     <link href="http://xinli90.com/2016/08/16/Contains-Duplicate/"/>
     <id>http://xinli90.com/2016/08/16/Contains-Duplicate/</id>
     <published>2016-08-16T21:37:37.000Z</published>
-    <updated>2016-08-26T18:14:05.000Z</updated>
+    <updated>2016-08-28T19:58:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="external">Leetcode-Contains Duplicate</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Time complexity is O(n), space complexity is O(n)</li>
 <li>Use HashSet  </li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>Time complexity is O(nlogn), space complexity is O(1)</li>
 <li>Use Arrays.sort(), find duplicate elements </li>
 <li>But time limit exceeded.</li>
 </ol>
-<p>Solution3:</p>
-<ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
 <li>Time complexity is O(n^2), space complexity is O(1)</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">            <span class="keyword">if</span>(!set.add(num)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">		Arrays.sort(nums);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length-<span class="number">1</span>; i++)&#123;</div><div class="line">			<span class="keyword">if</span>(nums[i]==nums[i+<span class="number">1</span>])<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution3</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</div><div class="line">                <span class="keyword">if</span>(nums[i] == nums[j]) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
@@ -986,16 +957,15 @@ return result;
     <link href="http://xinli90.com/2016/08/16/Longest-Substring-Without-Repeating-Characters/"/>
     <id>http://xinli90.com/2016/08/16/Longest-Substring-Without-Repeating-Characters/</id>
     <published>2016-08-16T19:20:39.000Z</published>
-    <updated>2016-08-26T18:39:34.000Z</updated>
+    <updated>2016-08-28T20:20:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Leetcode-Longest Substring Without Repeating Characters</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
 <p>Examples:</p>
 <p>Given <code>&quot;abcabcbb&quot;</code>, the answer is <code>&quot;abc&quot;</code>, which the length is 3.</p>
 <p>Given <code>&quot;bbbbb&quot;</code>, the answer is <code>&quot;b&quot;</code>, with the length of 1.</p>
 <p>Given <code>&quot;pwwkew&quot;</code>, the answer is <code>&quot;wke&quot;</code>, with the length of 3. Note that the answer must be a substring, <code>&quot;pwke&quot;</code> is a subsequence and not a substring.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h4><p>Solution1:      </p>
-<ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
 <li>Iterate through the string, store its character and index into HashMap.     </li>
 <li>If there is a existed key, then record the size of hashmap which  is the length of substringand compare to get the maximum one.      </li>
 <li>remove all elements which are before this existed key(inclusive this element)      </li>
@@ -1003,15 +973,13 @@ return result;
 <li>At last return the maximum one from max and the size of hashmap.     </li>
 <li>The time complexity is O(n^2)      </li>
 </ol>
-<p>Solution2: </p>
-<ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
 <li>Iterate through the string, store its character and index into HashMap.     </li>
 <li>Keep two pointers. Utilize right pointer to scan through string and left pointer move to the right of the same character last found if possible. Note that boty pointers only move forward.</li>
 <li>The length between two pointers is the result.</li>
 <li>The time complexity is O(n)</li>
 </ol>
-<p>Solution3:</p>
-<ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
 <li>Use Array instead of HashMap</li>
 <li>Initiate Array with -1 in order that left pointer move from the first location.</li>
 <li>Store location in Array based on the index of character.</li>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-08-28T20:21:04.000Z</updated>
+  <updated>2016-08-30T14:02:49.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sort Colors</title>
+    <link href="http://xinli90.com/2016/08/30/Sort-Colors/"/>
+    <id>http://xinli90.com/2016/08/30/Sort-Colors/</id>
+    <published>2016-08-30T13:20:41.000Z</published>
+    <updated>2016-08-30T14:02:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="external">Leetcode-Sort Colors</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p>Note:<br>You are not suppose to use the library’s sort function for this problem.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Time complexity is O(n), space complexity is O(1)</li>
+<li>Loop this array and count the frequency of each number.</li>
+<li>Assign to original array one by one </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Follow the first step of solution1, loop the count array instead of loop the nums array.</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> sortColors(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">		<span class="keyword">if</span>(nums==<span class="keyword">null</span> || nums.length==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">int</span> [] <span class="keyword">count</span> = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">			<span class="keyword">count</span>[num]++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">index</span> = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">count</span>[<span class="keyword">index</span>]&lt;=<span class="number">0</span> &amp;&amp; <span class="keyword">index</span>&lt;<span class="number">3</span>)&#123;</div><div class="line">				<span class="keyword">index</span>++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span>(<span class="keyword">index</span>==<span class="number">3</span>) <span class="keyword">return</span>;</div><div class="line">			nums[i] = <span class="keyword">index</span>;</div><div class="line">			<span class="keyword">count</span>[<span class="keyword">index</span>]--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> sortColors(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">		<span class="keyword">if</span>(nums==<span class="keyword">null</span> || nums.length==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">int</span> [] <span class="keyword">count</span> = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">			<span class="keyword">count</span>[num]++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">index</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">count</span>[i]&gt;<span class="number">0</span>)&#123;</div><div class="line">				nums[<span class="keyword">index</span>++] = i;</div><div class="line">				<span class="keyword">count</span>[i]--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/sort-colors/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Sort Colors&lt;/a&gt;.&lt;
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Lowest Common Ancestor of a Binary Tree</title>
@@ -942,53 +974,6 @@ return result;
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/contains-duplicate/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Contains D
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Longest Substring Without Repeating Characters</title>
-    <link href="http://xinli90.com/2016/08/16/Longest-Substring-Without-Repeating-Characters/"/>
-    <id>http://xinli90.com/2016/08/16/Longest-Substring-Without-Repeating-Characters/</id>
-    <published>2016-08-16T19:20:39.000Z</published>
-    <updated>2016-08-28T20:20:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Leetcode-Longest Substring Without Repeating Characters</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Examples:</p>
-<p>Given <code>&quot;abcabcbb&quot;</code>, the answer is <code>&quot;abc&quot;</code>, which the length is 3.</p>
-<p>Given <code>&quot;bbbbb&quot;</code>, the answer is <code>&quot;b&quot;</code>, with the length of 1.</p>
-<p>Given <code>&quot;pwwkew&quot;</code>, the answer is <code>&quot;wke&quot;</code>, with the length of 3. Note that the answer must be a substring, <code>&quot;pwke&quot;</code> is a subsequence and not a substring.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Iterate through the string, store its character and index into HashMap.     </li>
-<li>If there is a existed key, then record the size of hashmap which  is the length of substringand compare to get the maximum one.      </li>
-<li>remove all elements which are before this existed key(inclusive this element)      </li>
-<li>store this new element and continue to the next one.      </li>
-<li>At last return the maximum one from max and the size of hashmap.     </li>
-<li>The time complexity is O(n^2)      </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Iterate through the string, store its character and index into HashMap.     </li>
-<li>Keep two pointers. Utilize right pointer to scan through string and left pointer move to the right of the same character last found if possible. Note that boty pointers only move forward.</li>
-<li>The length between two pointers is the result.</li>
-<li>The time complexity is O(n)</li>
-</ol>
-<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
-<li>Use Array instead of HashMap</li>
-<li>Initiate Array with -1 in order that left pointer move from the first location.</li>
-<li>Store location in Array based on the index of character.</li>
-</ol>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> lengthOfLongestSubstring(<span class="keyword">String</span> s) &#123;</div><div class="line">		HashMap&lt;Character,Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">		<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++) &#123;</div><div class="line">			<span class="keyword">char</span> c = s.charAt(i);</div><div class="line">			<span class="built_in">if</span>(<span class="built_in">map</span>.containsKey(c)) &#123;</div><div class="line">				<span class="built_in">max</span> = Math.<span class="built_in">max</span>(<span class="built_in">max</span>,<span class="built_in">map</span>.<span class="built_in">size</span>());</div><div class="line">				<span class="keyword">int</span> <span class="built_in">end</span> = <span class="built_in">map</span>.<span class="built_in">get</span>(c);</div><div class="line">				<span class="built_in">for</span>(<span class="keyword">int</span> j=start; j&lt;=<span class="built_in">end</span>; j++) &#123;</div><div class="line">					<span class="built_in">map</span>.<span class="built_in">remove</span>(s.charAt(j));</div><div class="line">				&#125;</div><div class="line">				start = <span class="built_in">end</span>+<span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="built_in">map</span>.<span class="built_in">put</span>(c,i);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">return</span> Math.<span class="built_in">max</span>(<span class="built_in">map</span>.<span class="built_in">size</span>(),<span class="built_in">max</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> lengthOfLongestSubstring(<span class="keyword">String</span> s) &#123;</div><div class="line">		HashMap&lt;Character,Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="keyword">int</span> maxLength = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> left = <span class="number">0</span>;</div><div class="line">		<span class="built_in">for</span>(<span class="keyword">int</span> right=<span class="number">0</span>; right&lt;s.length(); right++) &#123;</div><div class="line">			<span class="keyword">char</span> c = s.charAt(right);</div><div class="line">			<span class="built_in">if</span>(<span class="built_in">map</span>.containsKey(c)) &#123;</div><div class="line">				left = Math.<span class="built_in">max</span>(left, <span class="built_in">map</span>.<span class="built_in">get</span>(c)+<span class="number">1</span>);</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//if c has existed, update the value.Otherwise, add the new pair.</span></div><div class="line">			<span class="built_in">map</span>.<span class="built_in">put</span>(c,right);</div><div class="line">			maxLength = Math.<span class="built_in">max</span>(maxLength,right-left+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">return</span> maxLength;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution3 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> lengthOfLongestSubstring(<span class="keyword">String</span> s) &#123;</div><div class="line">		<span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</div><div class="line">		Arrays.<span class="built_in">fill</span>(arr,<span class="number">-1</span>);</div><div class="line">		<span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> left = <span class="number">0</span>;</div><div class="line">		<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++) &#123;</div><div class="line">			<span class="keyword">char</span> c = s.charAt(i);</div><div class="line">			left = Math.<span class="built_in">max</span>(left,arr[c]+<span class="number">1</span>);</div><div class="line">			arr[c] = i;</div><div class="line">			<span class="built_in">max</span> = Math.<span class="built_in">max</span>(<span class="built_in">max</span>, i-left+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">return</span> <span class="built_in">max</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/longest-substring-without-repeating-characters/&quot; target=&quot;_blank&quot; rel=&quot;e
     
     </summary>
     

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/08/30/Clone-Graph/</loc>
+    
+    <lastmod>2016-08-30T21:51:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/08/30/Insert-Delete-GetRandom-O-1/</loc>
     
-    <lastmod>2016-08-30T17:49:08.000Z</lastmod>
+    <lastmod>2016-08-30T17:52:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/08/30/Sort-Colors/</loc>
+    
+    <lastmod>2016-08-30T17:52:03.000Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://xinli90.com/2016/08/30/Alien-Dictionary/</loc>
     
     <lastmod>2016-08-30T14:06:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/08/30/Sort-Colors/</loc>
-    
-    <lastmod>2016-08-30T14:02:49.000Z</lastmod>
     
   </url>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-08-30T21:51:24.000Z</updated>
+  <updated>2016-09-03T03:44:02.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Day11 Multithreading</title>
+    <link href="http://xinli90.com/2016/09/02/Day11-Multithreading/"/>
+    <id>http://xinli90.com/2016/09/02/Day11-Multithreading/</id>
+    <published>2016-09-03T03:34:01.000Z</published>
+    <updated>2016-09-03T03:44:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇关于Multithreading多线程的原理与应用.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>回忆多线程特性</li>
+<li>实现多线程结构</li>
+<li>实战训练使用该多线程</li>
+<li>总结该多线程特点，并总结算法题</li>
+</ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><h2 id="实现数据结构"><a href="#实现数据结构" class="headerlink" title="实现数据结构"></a>实现数据结构</h2><h3 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h3><p>Solution1:</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Class</span> A <span class="comment">&#123;</span></div><div class="line">	private final A a;</div><div class="line">	public A()&#123;</div><div class="line">		a = new A();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> A getInstance() <span class="comment">&#123;</span></div><div class="line">		return a;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇关于Multithreading多线程的原理与应用.&lt;/p&gt;
+&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;回忆多线程特性&lt;/li&gt;
+&lt;li&gt;实现多
+    
+    </summary>
+    
+      <category term="Multithreading" scheme="http://xinli90.com/categories/Multithreading/"/>
+    
+    
+      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
+    
+  </entry>
   
   <entry>
     <title>Clone Graph</title>
@@ -67,7 +101,7 @@
     <link href="http://xinli90.com/2016/08/30/Insert-Delete-GetRandom-O-1/"/>
     <id>http://xinli90.com/2016/08/30/Insert-Delete-GetRandom-O-1/</id>
     <published>2016-08-30T16:00:55.000Z</published>
-    <updated>2016-08-30T17:52:30.000Z</updated>
+    <updated>2016-08-30T22:47:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/" target="_blank" rel="external">Leetcode-Insert Delete GetRandom O(1)</a>.</p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Design a data structure that supports all following operations in average O(1) time.</p>
@@ -108,7 +142,7 @@
     <link href="http://xinli90.com/2016/08/30/Alien-Dictionary/"/>
     <id>http://xinli90.com/2016/08/30/Alien-Dictionary/</id>
     <published>2016-08-30T14:04:07.000Z</published>
-    <updated>2016-08-30T14:06:19.000Z</updated>
+    <updated>2016-08-30T22:59:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/alien-dictionary/" target="_blank" rel="external">Leetcode-Alien Dictionary</a>.</p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.</p>
@@ -122,12 +156,12 @@
 <li>There may be multiple valid order of letters, return any one of them is fine.</li>
 </ol>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Time complexity is O(n), space complexity is O(1)</li>
-<li>Loop this array and count the frequency of each number.</li>
-<li>Assign to original array one by one </li>
+<li>BFS</li>
 </ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Follow the first step of solution1, loop the count array instead of loop the nums array.</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> sortColors(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">		<span class="keyword">if</span>(nums==<span class="keyword">null</span> || nums.length==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">int</span> [] <span class="keyword">count</span> = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">			<span class="keyword">count</span>[num]++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">index</span> = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">count</span>[<span class="keyword">index</span>]&lt;=<span class="number">0</span> &amp;&amp; <span class="keyword">index</span>&lt;<span class="number">3</span>)&#123;</div><div class="line">				<span class="keyword">index</span>++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span>(<span class="keyword">index</span>==<span class="number">3</span>) <span class="keyword">return</span>;</div><div class="line">			nums[i] = <span class="keyword">index</span>;</div><div class="line">			<span class="keyword">count</span>[<span class="keyword">index</span>]--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> sortColors(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">		<span class="keyword">if</span>(nums==<span class="keyword">null</span> || nums.length==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">int</span> [] <span class="keyword">count</span> = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">			<span class="keyword">count</span>[num]++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">index</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">count</span>[i]&gt;<span class="number">0</span>)&#123;</div><div class="line">				nums[<span class="keyword">index</span>++] = i;</div><div class="line">				<span class="keyword">count</span>[i]--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>DFS</li>
+</ol>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">String</span> alienOrder(<span class="keyword">String</span>[] words) &#123;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">String</span> alienOrder(<span class="keyword">String</span>[] words) &#123;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -952,41 +986,6 @@ return result;
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/two-sum/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Two Sum&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Count Primes</title>
-    <link href="http://xinli90.com/2016/08/17/Count-Primes/"/>
-    <id>http://xinli90.com/2016/08/17/Count-Primes/</id>
-    <published>2016-08-17T19:25:07.000Z</published>
-    <updated>2016-08-28T19:58:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">Leetcode-Count Primes</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Count the number of prime numbers less than a non-negative number, n.       </p>
-<p>Hint:</p>
-<p>Let’s start with a isPrime function. To determine if a number is prime, we need to check if it is not divisible by any number less than n. The runtime complexity of isPrime function would be O(n) and hence counting the total prime numbers up to n would be O(n2). Could we do better?</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Based on the hint, we can provide the solution with product.</li>
-<li>Time complexity is still O(n^2), but it is much simple.</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>For the solution1, there are some duplicate operation. In order to avoid duplicate operation, we need prune it.</li>
-<li>The prime number only happen in odd number. So we don’t have to check all numbers.</li>
-<li>It is fastest.</li>
-</ol>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> countPrimes(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">boolean</span>[] isPrime = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;n ;i++) &#123;</div><div class="line">			<span class="keyword">if</span>(isPrime[i] == <span class="keyword">false</span>)&#123;</div><div class="line">				<span class="keyword">count</span>++;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>; j*i&lt;n; j++) &#123;</div><div class="line">					isPrime[j*i] = <span class="keyword">true</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;	</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> countPrimes(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">if</span>(n&lt;<span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">boolean</span>[] isPrime = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span> = n/<span class="number">2</span>;</div><div class="line">		<span class="comment">//i*i&lt;n so that integer doesn't exceed the limitation</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>; i*i &lt; n ; i += <span class="number">2</span>) &#123;</div><div class="line">			<span class="keyword">if</span>(isPrime[i]) <span class="keyword">continue</span>;</div><div class="line">			<span class="comment">//make sure j is odd(odd+even)</span></div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i*i; j&lt;n; j += <span class="number">2</span>*i) &#123;</div><div class="line">				<span class="keyword">if</span>(!isPrime[j])&#123;</div><div class="line">					<span class="keyword">count</span>--;</div><div class="line">					isPrime[j] = <span class="keyword">true</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/count-primes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Count Primes&lt;/a&gt;
     
     </summary>
     

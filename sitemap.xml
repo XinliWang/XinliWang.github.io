@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/09/02/Day11-Multithreading/</loc>
+    
+    <lastmod>2016-09-03T03:44:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/08/30/Alien-Dictionary/</loc>
+    
+    <lastmod>2016-08-30T22:59:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/08/30/Insert-Delete-GetRandom-O-1/</loc>
+    
+    <lastmod>2016-08-30T22:47:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/07/05/hexo-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
     
     <lastmod>2016-08-30T22:32:34.000Z</lastmod>
@@ -16,23 +37,9 @@
   </url>
   
   <url>
-    <loc>http://xinli90.com/2016/08/30/Insert-Delete-GetRandom-O-1/</loc>
-    
-    <lastmod>2016-08-30T17:52:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xinli90.com/2016/08/30/Sort-Colors/</loc>
     
     <lastmod>2016-08-30T17:52:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/08/30/Alien-Dictionary/</loc>
-    
-    <lastmod>2016-08-30T14:06:19.000Z</lastmod>
     
   </url>
   

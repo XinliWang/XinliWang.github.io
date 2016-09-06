@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xinli90.com/2016/09/02/Day11-Multithreading/</loc>
+    <loc>http://xinli90.com/2016/09/06/Word-Search/</loc>
     
-    <lastmod>2016-09-05T03:12:15.000Z</lastmod>
+    <lastmod>2016-09-06T18:43:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/09/06/Regular-Expression-Matching/</loc>
+    
+    <lastmod>2016-09-06T14:48:13.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://xinli90.com/2016/08/30/Alien-Dictionary/</loc>
     
-    <lastmod>2016-08-30T22:59:38.000Z</lastmod>
+    <lastmod>2016-09-06T14:16:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/09/02/Day11-Multithreading/</loc>
+    
+    <lastmod>2016-09-05T03:12:15.000Z</lastmod>
     
   </url>
   

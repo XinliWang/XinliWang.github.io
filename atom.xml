@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-07T22:51:35.000Z</updated>
+  <updated>2016-09-08T20:25:25.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Implement strStr()</title>
+    <link href="http://xinli90.com/2016/09/08/Implement-strStr/"/>
+    <id>http://xinli90.com/2016/09/08/Implement-strStr/</id>
+    <published>2016-09-08T19:30:00.000Z</published>
+    <updated>2016-09-08T20:25:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="external">Leetcode- Implement strStr()</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Implement strStr().</p>
+<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Iterate the array and compare needle with substring of haystack.</li>
+<li>Time complexity is O(k(n-k))</li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>KMP</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</div><div class="line">    	<span class="keyword">int</span> hayStackSize =  haystack.length();</div><div class="line">    	<span class="keyword">int</span> needleSize = needle.length();</div><div class="line">    	<span class="keyword">if</span>(hayStackSize&lt;needleSize) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    	<span class="keyword">else</span> <span class="keyword">if</span>(needleSize==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=hayStackSize-needleSize; i++) &#123;</div><div class="line">    		<span class="keyword">if</span>(haystack.subtring(i,i+needleSize).equals(needle)) <span class="keyword">return</span> i;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/implement-strstr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode- Implement s
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Integer to Roman</title>
@@ -664,37 +696,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcod
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Maximum Depth of Binary Tree</title>
-    <link href="http://xinli90.com/2016/08/23/Maximum-Depth-of-Binary-Tree/"/>
-    <id>http://xinli90.com/2016/08/23/Maximum-Depth-of-Binary-Tree/</id>
-    <published>2016-08-23T16:44:52.000Z</published>
-    <updated>2016-08-28T20:22:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="external">Leetcode-Maximum Depth of Binary Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
-<li>if the tree is null, the depth is 0;      </li>
-<li>if the tree is null, the depth = max(depth of left tree，depth of right tree) + 1       </li>
-</ol>
-<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><p>Utilize BFS, count the levels. It’s the same as the the number of loops.      </p>
-<h4 id="Solution3-Iterative-solution"><a href="#Solution3-Iterative-solution" class="headerlink" title="Solution3: Iterative solution."></a>Solution3: Iterative solution.</h4><p>Utilize DFS, record the depth of each path and maintain the maximum one until traversal all paths.</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> maxDepth(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">return</span> Math.max(maxDepth(root.left),maxDepth(root.right))+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="comment">//Traverse tree use BFS</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> getNodeNum(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</div><div class="line">		queue.add(root);</div><div class="line">		<span class="keyword">while</span>(!queue.isEmpty()) &#123;</div><div class="line">			<span class="keyword">int</span> <span class="keyword">size</span> = queue.<span class="keyword">size</span>();</div><div class="line">			<span class="keyword">count</span> += <span class="keyword">size</span>;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">size</span>;i++) &#123;</div><div class="line">				TreeNode node = queue.poll();</div><div class="line">				<span class="keyword">if</span>(node.left!=<span class="keyword">null</span>) queue.add(node.left);</div><div class="line">				<span class="keyword">if</span>(node.right!=<span class="keyword">null</span>) queue.add(node.right);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/maximum-depth-of-binary-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-
     
     </summary>
     

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-08T20:25:25.000Z</updated>
+  <updated>2016-09-10T03:02:02.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,100 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA Web 01</title>
+    <link href="http://xinli90.com/2016/09/09/JAVA-Web-01/"/>
+    <id>http://xinli90.com/2016/09/09/JAVA-Web-01/</id>
+    <published>2016-09-09T20:42:11.000Z</published>
+    <updated>2016-09-10T03:02:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="HttpServlet"><a href="#HttpServlet" class="headerlink" title="HttpServlet"></a>HttpServlet</h3><p>一、HttpServlet首先必须读取Http请求的内容。Servlet容器负责创建HttpServlet对象，并把Http请求直接封装到HttpServlet对象中，大大简化了HttpServlet解析请求数据的工作量。HttpServlet容器响应Web客户请求流程如下：     </p>
+<p>1）Web客户向Servlet容器发出Http请求；</p>
+<p>2）Servlet容器解析Web客户的Http请求；</p>
+<p>3）Servlet容器创建一个HttpRequest对象，在这个对象中封装Http请求信息；</p>
+<p>4）Servlet容器创建一个HttpResponse对象；</p>
+<p>5）Servlet容器调用HttpServlet的service方法，把HttpRequest和HttpResponse对象作为service方法的参数传给HttpServlet对象；</p>
+<p>6）HttpServlet调用HttpRequest的有关方法，获取HTTP请求信息；</p>
+<p>7）HttpServlet调用HttpResponse的有关方法，生成响应数据；</p>
+<p>8）Servlet容器把HttpServlet的响应结果传给Web客户。</p>
+<p>二、创建HttpServlet的步骤——“四部曲”</p>
+<p>1）扩展HttpServlet抽象类；</p>
+<p>2）覆盖HttpServlet的部分方法，如覆盖doGet()或doPost()方法；</p>
+<p>3）获取HTTP请求信息。通过HttpServletRequest对象来检索HTML表单所提交的数据或URL上的查询字符串；</p>
+<p>4）生成HTTP响应结果。通过HttpServletResponse对象生成响应结果，它有一个getWriter()方法，该方法返回一个PrintWriter对象。</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Servlet主要功能是接受从浏览器发送来的HTTP请求（request），并返回HTTP响应（response）,这个在service方法中完成，service中包含了从request对象获得客户端数据和向response对象创建输出。如果Servlet 继承了 HttpServlet,实现了doPost或doGet方法，那么service只能对POST或GET做出响应。</p>
+<p>Example:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> mypack;</div><div class="line"><span class="keyword">import</span> javax.servlet.*;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.*;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet//第一步：扩展HttpServlet抽象类</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//第二步：覆盖doGet()方法</span></div><div class="line"> 	public void doGet(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response)<span class="keyword">throws</span> <span class="type">IOException</span>,<span class="type">ServletException</span>&#123;</div><div class="line"> 		<span class="comment">//第三步：获取HTTP请求中的参数信息</span></div><div class="line"> 		<span class="type">String</span> clientName = request.getParameter(<span class="string">"clientName"</span>);</div><div class="line"> 		<span class="keyword">if</span>(clientName!=<span class="literal">null</span>) &#123;</div><div class="line"> 			clientName = clientName+<span class="string">"a"</span>;</div><div class="line"> 		&#125;</div><div class="line"> 		<span class="comment">//第四步：生成HTTP响应结果</span></div><div class="line"> 		<span class="type">String</span> title=<span class="string">"HelloServlet"</span>;</div><div class="line">  		<span class="type">String</span> heading1=<span class="string">"HelloServlet的doGet方法的输出："</span>;</div><div class="line">  </div><div class="line"> 		response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</div><div class="line"> 		<span class="type">PrintWriter</span> out = response.getWriter();</div><div class="line"> 		<span class="comment">//写HTML Page</span></div><div class="line"> 		out.print(<span class="string">"&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;"</span>+title+<span class="string">"&lt;/TITLE&gt;"</span>);</div><div class="line">  		out.print(<span class="string">"&lt;/HEAD&gt;&lt;BODY&gt;"</span>);</div><div class="line">  		out.print(heading1);</div><div class="line">  		out.println(<span class="string">"&lt;h1&gt;&lt;p&gt;"</span>+clientName+<span class="string">":您好&lt;/h1&gt;"</span>);</div><div class="line">  		out.print(<span class="string">"&lt;/BODY&gt;&lt;/HTML&gt;"</span>);</div><div class="line">  		</div><div class="line">  		out.close();</div><div class="line"> 	&#125;</div><div class="line">	public void doPost(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response)<span class="keyword">throws</span> <span class="type">IOException</span>,<span class="type">ServletException</span>&#123;</div><div class="line">		doGet(request,response);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line">在web.xml中添加</div><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;<span class="type">HelloServlet</span>&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-<span class="class"><span class="keyword">class</span><span class="title">&gt;mypack</span>.<span class="title">HelloServlet&lt;/servlet-class&gt;</span></span></div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;<span class="type">HelloServlet</span>&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h4><ol>
+<li><p>关于<code>response.setContentTyep()</code>： response的的设置对应你看到的html，setContentType对应这句<br><meta http-equiv="Content-type" content="text/html; charset=utf-8"><br>意思是告诉浏览器我的这个内容是文本html，然后字符编码是utf-8，如果你不告诉浏览器编码，那么浏览器，一般会根据系统默认编码来解析你的页面中的字符。 </p>
+</li>
+<li><p>Response：封装响应消息，设置响应消息</p>
+<ul>
+<li><p>设置响应行：HTTP/1.1 200 ok        </p>
+<ul>
+<li><p>setStatus(int code)：设置响应状态码      </p>
+<ul>
+<li><p>演示重定向：302<br>  //简化版的重定向<br>  response.sendRedirect(“<a href="http://192.168.1.66:8080/zxc/one" target="_blank" rel="external">http://192.168.1.66:8080/zxc/one</a>“);</p>
+<ul>
+<li>实现原理<br>//1.设置响应状态码为 302<br>response.setStatus(302);<br>//2.设置响应头 location<br>response.setHeader(“location”, “<a href="http://192.168.1.66:8080/zxc/one" target="_blank" rel="external">http://192.168.1.66:8080/zxc/one</a>“);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>设置响应头：</p>
+<ul>
+<li>setHeader(String name,String value):     </li>
+<li>setDateHeader(String name, long date) </li>
+<li>setIntHeader(String name, int value) </li>
+</ul>
+</li>
+<li><p>设置响应体：</p>
+<ul>
+<li><p>getOutputStream():发送字节数据</p>
+<ul>
+<li>验证码：<ul>
+<li>防止恶意注册</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>getWriter():发送字符数据         </p>
+<ul>
+<li>发送中文数据时，需要在获取流之前设置编码方式，并且要告诉客户端浏览器，服务器使用的编码方式<br>  //简化版设置编码的方式<br>  response.setContentType(“text/html;charset=utf-8”);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><code>response.setHeader()</code>:     </li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">response<span class="selector-class">.setContentType</span>(<span class="string">"text/html;charset=UTF-8"</span>);</div><div class="line"><span class="comment">//设置响应消息头： 2 秒后刷新到Demo5</span></div><div class="line">response<span class="selector-class">.setHeader</span>(<span class="string">"refresh"</span>,<span class="string">"2:URL=/day10_response/servlet/ResponseDemo5"</span>)</div><div class="line"><span class="comment">//设置编码</span></div><div class="line"><span class="selector-tag">response</span><span class="selector-class">.getWriter</span>()<span class="selector-class">.write</span>(<span class="string">"Congratulation! Login sucessfully! Will jump to main page after 2 seconds"</span>);</div></pre></td></tr></table></figure>
+<h3 id="四大域"><a href="#四大域" class="headerlink" title="四大域"></a>四大域</h3><ol>
+<li>PageContext: is only used in JSP for variables that don’t get passed if the request is forwarded.</li>
+<li>ServletRequest: data can only exists during one request for one user.</li>
+<li>HttpSession: only one user can use. An application may manage many sessions.</li>
+<li>ServletContext: All users in entire web application can use.</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;HttpServlet&quot;&gt;&lt;a href=&quot;#HttpServlet&quot; class=&quot;headerlink&quot; title=&quot;HttpServlet&quot;&gt;&lt;/a&gt;HttpServlet&lt;/h3&gt;&lt;p&gt;一、HttpServlet首先必须读取Http请求的内容。Servl
+    
+    </summary>
+    
+      <category term="J2EE" scheme="http://xinli90.com/categories/J2EE/"/>
+    
+    
+      <category term="J2EE" scheme="http://xinli90.com/tags/J2EE/"/>
+    
+  </entry>
   
   <entry>
     <title>Implement strStr()</title>
@@ -659,43 +753,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/binary-tree-inorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Binary Tree Preorder Traversal</title>
-    <link href="http://xinli90.com/2016/08/23/Binary-Tree-Preorder-Traversal/"/>
-    <id>http://xinli90.com/2016/08/23/Binary-Tree-Preorder-Traversal/</id>
-    <published>2016-08-23T17:26:02.000Z</published>
-    <updated>2016-08-28T04:00:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="external">Leetcode-Binary Tree Preorder Traversal</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, return the preorder traversal of its nodes’ values.</p>
-<p>For example:<br>Given binary tree <code>{1,#,2,3}</code>,</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"> \</div><div class="line">  <span class="number">2</span></div><div class="line"> /</div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
-<p>return <code>[1,2,3]</code>.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
-<li>if the tree is null, return.      </li>
-<li>if the tree is not null, visit root and add the value of root into list. Traverse left subtree and then right subtree.</li>
-</ol>
-<h4 id="Solution2-Recursive-solution"><a href="#Solution2-Recursive-solution" class="headerlink" title="Solution2: Recursive solution."></a>Solution2: Recursive solution.</h4><p>The similar way with solution1, but without helper() method.     </p>
-<h4 id="Solution3-Iterative-solution"><a href="#Solution3-Iterative-solution" class="headerlink" title="Solution3: Iterative solution."></a>Solution3: Iterative solution.</h4><ol>
-<li>Utilize Stack, Each time we use List to store the output node from stack.    </li>
-<li>Traverse the output node from right to left and push into stack.    </li>
-<li>Loop 1 and 2 operation.    </li>
-</ol>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">public</span> class Solution1 &#123;</div><div class="line">	<span class="comment">//Solution1: add helper() method</span></div><div class="line">	<span class="keyword">public</span> <span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; preorderTraversalRec(TreeNode root) &#123;</div><div class="line">		<span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; <span class="built_in">list</span> = <span class="literal">new</span> ArrayList&lt;&gt;();</div><div class="line">		helper(<span class="built_in">list</span>,root);</div><div class="line">		<span class="keyword">return</span> <span class="built_in">list</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="literal">void</span> helper(<span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; <span class="built_in">list</span>, TreeNode node) &#123;</div><div class="line">		<span class="keyword">if</span>(node==<span class="built_in">null</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="built_in">list</span>.add(node.val);</div><div class="line">		helper(<span class="built_in">list</span>,node.left);</div><div class="line">		helper(<span class="built_in">list</span>,node.right);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> class Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; preorderTraversalRec(TreeNode root) &#123;</div><div class="line">		<span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; <span class="built_in">list</span> = <span class="literal">new</span> ArrayList&lt;&gt;();</div><div class="line">		<span class="keyword">if</span>(root == <span class="built_in">null</span>) <span class="keyword">return</span> <span class="built_in">list</span>;</div><div class="line">		<span class="built_in">list</span>.add(root.val);</div><div class="line">		<span class="built_in">list</span>.addAll(preorderTraversalRec(root.left));</div><div class="line">		<span class="built_in">list</span>.addAll(preorderTraversalRec(root.right));</div><div class="line">		<span class="keyword">return</span> <span class="built_in">list</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> class Solution3 &#123;</div><div class="line">		<span class="keyword">public</span> <span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; preorderTraversal(TreeNode root) &#123;</div><div class="line">		<span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; <span class="built_in">list</span> = <span class="literal">new</span> ArrayList&lt;&gt;();</div><div class="line">		<span class="keyword">if</span>(root == <span class="built_in">null</span>) <span class="keyword">return</span> <span class="built_in">list</span>;</div><div class="line">		<span class="built_in">Stack</span>&lt;TreeNode&gt; <span class="built_in">stack</span> = <span class="literal">new</span> <span class="built_in">Stack</span>&lt;&gt;();</div><div class="line">		<span class="built_in">stack</span>.push(root);</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">stack</span>.isEmpty()) &#123;</div><div class="line">			TreeNode node = <span class="built_in">stack</span>.pop();</div><div class="line">			<span class="built_in">list</span>.add(node.val);</div><div class="line">			<span class="keyword">if</span>(node.right!=<span class="built_in">null</span>)<span class="built_in">stack</span>.push(node.right);</div><div class="line">			<span class="keyword">if</span>(node.left!=<span class="built_in">null</span>)<span class="built_in">stack</span>.push(node.left);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">list</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcod
     
     </summary>
     

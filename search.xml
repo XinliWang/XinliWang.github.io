@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[Number of 1 Bits]]></title>
+      <url>http://xinli90.com/2016/09/11/Number-of-1-Bits/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">Leetcode-Number of 1 Bits</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
+<p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Time complexity is O(size of num)</li>
+<li>Prevent from TLE, we use bit manipulation instead of normal operation.</li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>“n &amp;= n - 1” is used to delete the right “1” of n. </li>
+<li>Count its “1”</li>
+</ol>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line"><span class="comment">// you need to treat n as an unsigned value</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> hammingWeight(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> number = n;</div><div class="line">		<span class="keyword">while</span>(number!=<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">count</span> += (number&amp;<span class="number">1</span>);</div><div class="line">			<span class="comment">//unsigned operation</span></div><div class="line">			number &gt;&gt;&gt;= <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line"><span class="comment">// you need to treat n as an unsigned value</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> hammingWeight(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(; n!=<span class="number">0</span>; n = (n &amp; (n<span class="number">-1</span>)))&#123;</div><div class="line">			<span class="keyword">count</span>++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Counting Bits]]></title>
       <url>http://xinli90.com/2016/09/11/Counting-Bits/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">Leetcode-Count Bits</a>.</p>

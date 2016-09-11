@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-10T18:49:34.000Z</updated>
+  <updated>2016-09-10T22:23:08.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xinli90.com/2016/09/09/JAVA-Web-01/"/>
     <id>http://xinli90.com/2016/09/09/JAVA-Web-01/</id>
     <published>2016-09-09T20:42:11.000Z</published>
-    <updated>2016-09-10T18:49:34.000Z</updated>
+    <updated>2016-09-10T22:23:08.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="HttpServlet"><a href="#HttpServlet" class="headerlink" title="HttpServlet"></a>HttpServlet</h3><p>一、HttpServlet首先必须读取Http请求的内容。Servlet容器负责创建HttpServlet对象，并把Http请求直接封装到HttpServlet对象中，大大简化了HttpServlet解析请求数据的工作量。HttpServlet容器响应Web客户请求流程如下：     </p>
 <p>1）Web客户向Servlet容器发出Http请求；</p>
@@ -108,6 +108,23 @@
 <h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><code>Trigger</code>: A trigger is a special kind of stored procedure that automatically executes when an event occurs in the database server.</p>
 <h4 id="DataSource-Pool"><a href="#DataSource-Pool" class="headerlink" title="DataSource Pool"></a>DataSource Pool</h4><p>新建一个连接池，每次从连接池去conn, 用完后放回池中，而不是直接conn.close()。<br>因此我们需要改写close()方法，使用包装设计模式(Decorator), implement Connection,改写close()方法，不用改变的方法直接调用原来的方法。</p>
 <h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h3><p>实现自动登录功能：<br>把用户名：Base64编码，把密码：MD5加密。存入Cookie中，登录时取出解析并与数据库中的用户名和密码比较。</p>
+<p>Filter先执行，chain.doFilter(request,reponse)过滤之后再执行servlet.</p>
+<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><ol>
+<li>表单的method必须是post</li>
+<li>表单的enctype属性值必须是multipart/form-data</li>
+<li>表单中提供input type=”file”类型的上传输入域</li>
+</ol>
+<h4 id="显示上传文件条"><a href="#显示上传文件条" class="headerlink" title="显示上传文件条"></a>显示上传文件条</h4><p>使用Ajax+Listener, 不断监听文件上传多少，使用ajax不断回取数据以及更新图样。      </p>
+<h4 id="8个监听器"><a href="#8个监听器" class="headerlink" title="8个监听器"></a>8个监听器</h4><ol>
+<li>ServletContextListener: 完成系统初始化工作</li>
+<li>HttpSessionListener: 可以统计HttpSession对象的个数，分析某个时间段同时在线的人数</li>
+<li>ServletRequestListener: 可以统计每个页面的访问次数</li>
+<li>HttpSessionAttributeListener: 显示在线用户列表,session.setAttribute(“user”,user);</li>
+<li>ServletContextAttributeListener</li>
+<li>ServletRequestAttributeListener</li>
+<li>HttpSessionBindingListener: 监测何时随着HttpSession绑定和解绑</li>
+<li>HttpSessionActivationListener: 监测何时随着HttpSession激活和钝化</li>
+</ol>
 ]]></content>
     
     <summary type="html">

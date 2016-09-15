@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-13T21:57:23.000Z</updated>
+  <updated>2016-09-15T23:44:48.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>First Bad Version</title>
+    <link href="http://xinli90.com/2016/09/15/First-Bad-Version/"/>
+    <id>http://xinli90.com/2016/09/15/First-Bad-Version/</id>
+    <published>2016-09-15T23:39:44.000Z</published>
+    <updated>2016-09-15T23:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="external">Leetcode-First Bad Version</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.       </p>
+<p>Suppose you have n versions [1, 2, …, n] and you want to find out the first bad one, which causes all the following ones to be bad.      </p>
+<p>You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.      </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Binary Search.</li>
+<li>If mid is bad and the number which is previous mid is not bad, return it.</li>
+</ol>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* The isBadVersion API <span class="keyword">is</span> defined <span class="keyword">in</span> the parent <span class="keyword">class</span> VersionControl.</div><div class="line">      boolean isBadVersion(<span class="built_in">int</span> version); */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution extends VersionControl &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">int</span> firstBadVersion(<span class="built_in">int</span> n) &#123;</div><div class="line">        <span class="built_in">int</span> low = <span class="number">1</span>, high = n;</div><div class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</div><div class="line">            <span class="built_in">int</span> <span class="built_in">mid</span> = low+(high-low)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(isBadVersion(<span class="built_in">mid</span>)&amp;&amp;!isBadVersion(<span class="built_in">mid</span><span class="number">-1</span>)) return <span class="built_in">mid</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!isBadVersion(<span class="built_in">mid</span>)) low = <span class="built_in">mid</span>+<span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> high = <span class="built_in">mid</span><span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        return low; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/first-bad-version/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-First Bad V
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Top K Frequent Elements</title>
@@ -840,42 +870,6 @@
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/same-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Same Tree&lt;/a&gt;.&lt;/p&gt;
 
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flatten Binary Tree to Linked List</title>
-    <link href="http://xinli90.com/2016/08/23/Flatten-Binary-Tree-to-Linked-List/"/>
-    <id>http://xinli90.com/2016/08/23/Flatten-Binary-Tree-to-Linked-List/</id>
-    <published>2016-08-23T19:53:28.000Z</published>
-    <updated>2016-08-28T20:09:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="external">Leetcode-Binary Tree Level Order Traversal</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, flatten it to a linked list in-place.</p>
-<p>For example,<br>Given</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="number">1</span></div><div class="line">   / \</div><div class="line">  <span class="number">2</span>   <span class="number">5</span></div><div class="line"> / \   \</div><div class="line"><span class="number">3</span>   <span class="number">4</span>   <span class="number">6</span></div></pre></td></tr></table></figure>
-<p>The flattened tree should look like:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"> \</div><div class="line">  <span class="number">2</span></div><div class="line">   \</div><div class="line">    <span class="number">3</span></div><div class="line">     \</div><div class="line">      <span class="number">4</span></div><div class="line">       \</div><div class="line">        <span class="number">5</span></div><div class="line">         \</div><div class="line">          <span class="number">6</span></div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution-Like-post-order-solution"><a href="#Solution1-Recursive-solution-Like-post-order-solution" class="headerlink" title="Solution1: Recursive solution. Like post-order solution."></a>Solution1: Recursive solution. Like post-order solution.</h4><ol>
-<li>if tree is null, return.</li>
-<li>if tree is not null, Recursively traverse left subtree and then right subtree, change the left subtree to the right and the original right subtree as the most right node.</li>
-</ol>
-<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><ol>
-<li>Each time, make the right subtree of root to be the right subtree of most right node of left child node of root.</li>
-<li>Then make the left subtree as the right subtree of the root, move to the next right node, loop 1 and 2.</li>
-</ol>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * <span class="keyword">public</span> <span class="keyword">class</span> TreeNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     TreeNode <span class="built_in">left</span>;</div><div class="line"> *     TreeNode <span class="built_in">right</span>;</div><div class="line"> *     TreeNode(<span class="built_in">int</span> x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> void flatten(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="literal">null</span>) return;</div><div class="line">		</div><div class="line">		flatten(root.<span class="built_in">left</span>);</div><div class="line">		flatten(root.<span class="built_in">right</span>);</div><div class="line">		</div><div class="line">		TreeNode <span class="built_in">right</span> = root.<span class="built_in">right</span>;</div><div class="line">		root.<span class="built_in">right</span> = root.<span class="built_in">left</span>;</div><div class="line">		root.<span class="built_in">left</span> = <span class="literal">null</span>;</div><div class="line">		TreeNode cur = root;</div><div class="line">		<span class="keyword">while</span>(cur.<span class="built_in">right</span>!=<span class="literal">null</span>) cur = cur.<span class="built_in">right</span>;</div><div class="line">		cur.<span class="built_in">right</span> = <span class="built_in">right</span>;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> void flatten(TreeNode root) &#123;</div><div class="line">		<span class="keyword">if</span>(root == <span class="literal">null</span>) return;</div><div class="line">		<span class="keyword">while</span>(root!=<span class="literal">null</span>) &#123;</div><div class="line">			<span class="keyword">if</span>(root.<span class="built_in">left</span>==<span class="literal">null</span>)&#123;</div><div class="line">				root = root.<span class="built_in">right</span>;</div><div class="line">				continue;</div><div class="line">			&#125;</div><div class="line">			TreeNode <span class="built_in">left</span> = root.<span class="built_in">left</span>;</div><div class="line">			<span class="keyword">while</span>(<span class="built_in">left</span>.<span class="built_in">right</span>!=<span class="literal">null</span>) &#123;</div><div class="line">				<span class="built_in">left</span> = <span class="built_in">left</span>.<span class="built_in">right</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="built_in">left</span>.<span class="built_in">right</span> = root.<span class="built_in">right</span>;</div><div class="line">			root.<span class="built_in">right</span> = root.<span class="built_in">left</span>;</div><div class="line">			root.<span class="built_in">left</span> = <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/binary-tree-level-order-traversal/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leet
     
     </summary>
     

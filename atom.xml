@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-15T23:44:48.000Z</updated>
+  <updated>2016-09-17T03:12:16.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Add Binary</title>
+    <link href="http://xinli90.com/2016/09/16/Add-Binary/"/>
+    <id>http://xinli90.com/2016/09/16/Add-Binary/</id>
+    <published>2016-09-17T02:51:17.000Z</published>
+    <updated>2016-09-17T03:12:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/add-binary/" target="_blank" rel="external">Leetcode-Add Binary</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two binary strings, return their sum (also a binary string).     </p>
+<p>For example,<br>a = “11”<br>b = “1”<br>Return “100”.     </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Set a flag to track if we have the carry.</li>
+<li>Each time we use a and b with the same index together and plus flag to calculate which number we should to add into String.  </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Similar with Solution1, but combine all while loops together.</li>
+<li>We can use StringBuilder.inset(0,num) method instead of String operation.</li>
+</ol>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String addBinary(String a, String b) &#123;</div><div class="line">        <span class="keyword">int</span> a_index = a.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> b_index = b.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">        String result=<span class="string">""</span>;</div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span> &amp;&amp; b_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a.charAt(a_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> bInt = b.charAt(b_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + bInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            a_index--;</div><div class="line">            b_index--;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a.charAt(a_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            a_index--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(b_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> bInt = b.charAt(b_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = bInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            b_index--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> flag==<span class="number">1</span>? <span class="string">"1"</span>+result : result;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String addBinary(String a, String b) &#123;</div><div class="line">        <span class="keyword">int</span> a_index = a.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> b_index = b.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        StringBuilder sb=<span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span> || b_index &gt;= <span class="number">0</span> || carry==<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a_index &lt; <span class="number">0</span>? <span class="number">0</span> : a.charAt(a_index--)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> bInt = b_index &lt; <span class="number">0</span>? <span class="number">0</span> : b.charAt(b_index--)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + bInt + flag;</div><div class="line">            sb.insert(<span class="number">0</span>, <span class="keyword">sum</span>%<span class="number">2</span>);</div><div class="line">            carry = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/add-binary/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Add Binary&lt;/a&gt;.&lt;/p
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>First Bad Version</title>
@@ -835,41 +869,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/balanced-binary-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Balanced
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Same Tree</title>
-    <link href="http://xinli90.com/2016/08/24/Same-Tree/"/>
-    <id>http://xinli90.com/2016/08/24/Same-Tree/</id>
-    <published>2016-08-24T17:50:50.000Z</published>
-    <updated>2016-08-28T20:28:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/same-tree/" target="_blank" rel="external">Leetcode-Same Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two binary trees, write a function to check if they are equal or not.</p>
-<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
-<li>if two nodes are null, return true;</li>
-<li>if the value of two nodes are equivalent, recursively compare their left and right subtree.</li>
-<li>else return false.</li>
-</ol>
-<h4 id="Solution2-Iterative-solution"><a href="#Solution2-Iterative-solution" class="headerlink" title="Solution2: Iterative solution."></a>Solution2: Iterative solution.</h4><ol>
-<li>Traverse two trees and compare each nodes.</li>
-<li>Use Pre-Order traversal.</li>
-</ol>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> boolean isSameTree(TreeNode p, TreeNode q) &#123;</div><div class="line">		<span class="keyword">if</span>(p==<span class="literal">null</span> &amp;&amp; q==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		<span class="keyword">if</span>(p==<span class="literal">null</span> || q==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span>(p.<span class="keyword">val</span>!=q.<span class="keyword">val</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span>(p.<span class="keyword">val</span>==q.<span class="keyword">val</span>) <span class="keyword">return</span> isSameTree(p.left,q.left)&amp;&amp;isSameTree(p.right,q.right);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> boolean isSameTree(TreeNode p, TreeNode q) &#123;		<span class="keyword">if</span>(p==<span class="literal">null</span> &amp;&amp; q==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		<span class="keyword">if</span>(p==<span class="literal">null</span> || q==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		Stack&lt;TreeNode&gt; s1 = new Stack&lt;&gt;();</div><div class="line">		Stack&lt;TreeNode&gt; s2 = new Stack&lt;&gt;();</div><div class="line">		s1.push(p);</div><div class="line">		s2.push(q);</div><div class="line">		<span class="keyword">while</span>(!s1.isEmpty() &amp;&amp; !s2.isEmpty()) &#123;</div><div class="line">			TreeNode node1 = s1.pop();</div><div class="line">			TreeNode node2 = s2.pop();</div><div class="line">			<span class="keyword">if</span>(node1==<span class="literal">null</span> &amp;&amp; node2==<span class="literal">null</span>) <span class="keyword">continue</span>;</div><div class="line">			<span class="keyword">if</span>(node1!=<span class="literal">null</span> &amp;&amp; node2!=<span class="literal">null</span> &amp;&amp; node1.<span class="keyword">val</span>==node2.<span class="keyword">val</span>) &#123;</div><div class="line">				s1.push(node1.left);</div><div class="line">				s1.push(node1.right);</div><div class="line">				s2.push(node2.left);</div><div class="line">				s2.push(node2.right);</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">			&#125;	</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;	</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/same-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Same Tree&lt;/a&gt;.&lt;/p&gt;
-
     
     </summary>
     

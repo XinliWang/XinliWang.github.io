@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-18T22:23:20.000Z</updated>
+  <updated>2016-09-18T23:08:52.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Minimum Path Sum</title>
+    <link href="http://xinli90.com/2016/09/18/Minimum-Path-Sum/"/>
+    <id>http://xinli90.com/2016/09/18/Minimum-Path-Sum/</id>
+    <published>2016-09-18T22:46:49.000Z</published>
+    <updated>2016-09-18T23:08:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Leetcode-Minimum Path Sum</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
+<p>Note: You can only move either down or right at any point in time.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
+<li>State: sum[i][j] represents 到达第i行第j列为止所达到的path sum 最小</li>
+<li>Function: sum[i][j] = MIN(sum[i-1][j],sum[i][j-1]) + grid[i][j], i&gt;1,j&gt;1,i&lt;m,j&lt;n</li>
+<li>Initialization: f[0][0] = grid[0][0]; sum[i][0] = sum[i-1][0] + triangle[i][0]; sum[0][j] = sum[0][j-1] + grid[0][j]</li>
+<li>Answer: sum[m-1][n-1]</li>
+</ul>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> minPathSum(<span class="keyword">int</span>[][] grid) &#123;</div><div class="line">        <span class="keyword">if</span>(grid==<span class="keyword">null</span> || grid.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> m = grid.length;</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">int</span>[][] <span class="keyword">sum</span> = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="keyword">sum</span>[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;m;i++)&#123;</div><div class="line">            <span class="keyword">sum</span>[i][<span class="number">0</span>] = <span class="keyword">sum</span>[i<span class="number">-1</span>][<span class="number">0</span>] + grid[i][<span class="number">0</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;n;j++)&#123;</div><div class="line">            <span class="keyword">sum</span>[<span class="number">0</span>][j] = <span class="keyword">sum</span>[<span class="number">0</span>][j<span class="number">-1</span>] + grid[<span class="number">0</span>][j];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;m; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;n; j++) &#123;</div><div class="line">                <span class="keyword">sum</span>[i][j] = Math.min(<span class="keyword">sum</span>[i<span class="number">-1</span>][j],<span class="keyword">sum</span>[i][j<span class="number">-1</span>])+grid[i][j];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">sum</span>[m<span class="number">-1</span>][n<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/minimum-path-sum/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Minimum Path
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Triangle</title>
@@ -830,49 +861,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/sort-colors/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Sort Colors&lt;/a&gt;.&lt;
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lowest Common Ancestor of a Binary Tree</title>
-    <link href="http://xinli90.com/2016/08/25/Lowest-Common-Ancestor-of-a-Binary-Tree/"/>
-    <id>http://xinli90.com/2016/08/25/Lowest-Common-Ancestor-of-a-Binary-Tree/</id>
-    <published>2016-08-25T21:44:20.000Z</published>
-    <updated>2016-08-28T20:21:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="external">Leetcode-Lowest Common Ancestor of a Binary Tree</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
-<p>According to the <a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">definition of LCA on Wikipedia</a>: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     _______3______</div><div class="line">    /              \</div><div class="line"> ___5__          ___1__</div><div class="line">/      \        /      \</div><div class="line"><span class="number">6</span>      _2       <span class="number">0</span>       <span class="number">8</span></div><div class="line">      /  \</div><div class="line">      <span class="number">7</span>   <span class="number">4</span></div></pre></td></tr></table></figure>
-<p>For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3. Another example is LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><ol>
-<li>If search from root and find two target nodes in different sides. Then the LCA is root.</li>
-<li>If find two nodes in left subtree, then recursively search from the left of root.</li>
-<li>If find two nodes in right subtree, then recursively search from the right of root.</li>
-</ol>
-<h4 id="Solution2-Recursive-solution"><a href="#Solution2-Recursive-solution" class="headerlink" title="Solution2: Recursive solution."></a>Solution2: Recursive solution.</h4><ol>
-<li>If root is null, return null</li>
-<li>If root is one of two nodes, return root.</li>
-<li>Recurseively traverse left subtree and right subtree.</li>
-<li>If both left subtree and right subtree get the specific node, then return root.</li>
-<li>If one of subtree is null, return another subtree.</li>
-</ol>
-<h4 id="Solution3-Iterative-solution"><a href="#Solution3-Iterative-solution" class="headerlink" title="Solution3: Iterative solution."></a>Solution3: Iterative solution.</h4><ol>
-<li>Use List to record the path which find from root to the specific nodes.</li>
-<li>Compare elements from two lists and get the last common elements.</li>
-</ol>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">		<span class="keyword">if</span>(findNode(root.left,p)) &#123;</div><div class="line">			<span class="keyword">if</span>(findNode(root.left,q)) &#123;</div><div class="line">				<span class="keyword">return</span> getLastCommonParentRec(root.left,p,q);</div><div class="line">			&#125;<span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> root;</div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span>(findNode(root.right,q)) &#123;</div><div class="line">				<span class="keyword">return</span> getLastCommonParentRec(root.right,p,q);</div><div class="line">			&#125;<span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">return</span> root;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	boolean findNode(TreeNode root, TreeNode node) &#123;</div><div class="line">		<span class="keyword">if</span>(root==<span class="literal">null</span> || node==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(root==node) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		</div><div class="line">		boolean found = findNode(root.left,node);</div><div class="line">		<span class="keyword">if</span>(!found) &#123;</div><div class="line">			found = findNode(root.right,node);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> found;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">		<span class="keyword">if</span>(root==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">		<span class="keyword">if</span>(root==p || root==q) <span class="keyword">return</span> root;</div><div class="line">		TreeNode commonLeft = getLastCommonParentRec(root.left,p,q);</div><div class="line">		TreeNode commonRight = getLastCommonParentRec(root.right,p,q);</div><div class="line">		<span class="keyword">if</span>(commonLeft!=<span class="literal">null</span> &amp;&amp; commonRight!=<span class="literal">null</span>) <span class="keyword">return</span> root;</div><div class="line">		<span class="keyword">if</span>(commonLeft!=<span class="literal">null</span>) <span class="keyword">return</span> commonLeft;</div><div class="line">		<span class="keyword">return</span> commonRight;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution3</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</div><div class="line">		ArrayList&lt;TreeNode&gt; list1 = new ArrayList&lt;&gt;();</div><div class="line">		ArrayList&lt;TreeNode&gt; list2 = new ArrayList&lt;&gt;();</div><div class="line">		boolean found1 = findPath(root,p,list1);</div><div class="line">		boolean found2 = findPath(root,q,list2);</div><div class="line">		<span class="keyword">if</span>(!found1 || !found2) <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">	</div><div class="line">		TreeNode result = <span class="literal">null</span>;</div><div class="line">		<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;Math.min(list1.size(),list2.size());i++) &#123;</div><div class="line">			<span class="keyword">if</span>(list1.<span class="keyword">get</span>(i)==list2.<span class="keyword">get</span>(i))&#123;</div><div class="line">				result = list1.<span class="keyword">get</span>(i);</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	boolean findPath(TreeNode root, TreeNode node, ArrayList&lt;TreeNode&gt; list) &#123;</div><div class="line">		<span class="keyword">if</span>(root==<span class="literal">null</span> || node==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		list.add(root);</div><div class="line">		<span class="keyword">if</span>(root == node) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		boolean found = findPath(root.left,node,list);</div><div class="line">		<span class="keyword">if</span>(!found) &#123;</div><div class="line">			found = findPath(root.right,node,list);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(!found) list.remove(root);</div><div class="line">		<span class="keyword">return</span> found;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/&quot; target=&quot;_blank&quot; rel=&quot;external
     
     </summary>
     

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-19T00:36:15.000Z</updated>
+  <updated>2016-09-19T00:46:41.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Climbing Stairs</title>
+    <link href="http://xinli90.com/2016/09/18/Climbing-Stairs/"/>
+    <id>http://xinli90.com/2016/09/18/Climbing-Stairs/</id>
+    <published>2016-09-19T00:37:12.000Z</published>
+    <updated>2016-09-19T00:46:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">Leetcode-Climbing Stairs</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
+<li>State: f[i] represents ways of climbing from start to i step.</li>
+<li>Function: f[i] = f[i-1] + f[i-2]; 到达第i步之前，需要i-1或者i-2步</li>
+<li>Initialize: f[0] = 1, f[1] = 1</li>
+<li>Answer: f[n]</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span>(<span class="params"><span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> f[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">        </div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        f[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        f[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n; i++)&#123;</div><div class="line">            f[i] = f[i<span class="number">-1</span>] + f[i<span class="number">-2</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> f[n];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/climbing-stairs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Climbing Stai
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Unique Paths</title>
@@ -817,45 +848,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/insert-delete-getrandom-o1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-In
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Alien Dictionary(UnSolved)</title>
-    <link href="http://xinli90.com/2016/08/30/Alien-Dictionary/"/>
-    <id>http://xinli90.com/2016/08/30/Alien-Dictionary/</id>
-    <published>2016-08-30T14:04:07.000Z</published>
-    <updated>2016-09-06T14:16:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/alien-dictionary/" target="_blank" rel="external">Leetcode-Alien Dictionary</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.</p>
-<p>For example,<br>Given the following words in dictionary,</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  <span class="string">"wrt"</span>,</div><div class="line">  <span class="string">"wrf"</span>,</div><div class="line">  <span class="string">"er"</span>,</div><div class="line">  <span class="string">"ett"</span>,</div><div class="line">  <span class="string">"rftt"</span></div><div class="line">]</div></pre></td></tr></table></figure>
-<p>The correct order is: “wertf”.</p>
-<p>Note:</p>
-<ol>
-<li>You may assume all letters are in lowercase.</li>
-<li>If the order is invalid, return an empty string.</li>
-<li>There may be multiple valid order of letters, return any one of them is fine.</li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>BFS</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>DFS</li>
-</ol>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">String</span> alienOrder(<span class="keyword">String</span>[] words) &#123;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">String</span> alienOrder(<span class="keyword">String</span>[] words) &#123;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/alien-dictionary/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Alien Dictio
     
     </summary>
     

@@ -4,6 +4,22 @@
   
     
     <entry>
+      <title><![CDATA[Unique Paths]]></title>
+      <url>http://xinli90.com/2016/09/18/Unique-Paths/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="external">Leetcode-Unique Paths</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>How many possible unique paths are there?</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
+<li>State: f[i][j] represents represents the number of unique paths from start to coordinate(x,y)</li>
+<li>Function: f[i][j] = f[i-1][j] + f[i][j-1]  (思考：怎样到达(i,j)这一步，到达这一步之前我们有多少选择)</li>
+<li>Initialize: f[0][0] = 1; f[i][0] = 1; f[0][j] = 1</li>
+<li>Answer: f[m-1][n-1]</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span>(<span class="params"><span class="keyword">int</span> m, <span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span>[][] f = <span class="keyword">new</span> <span class="keyword">int</span> [m][n];</div><div class="line">        </div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++) &#123;</div><div class="line">            f[i][<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; j++) &#123;</div><div class="line">            f[<span class="number">0</span>][j] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;m; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;n; j++) &#123;</div><div class="line">                f[i][j] = f[i<span class="number">-1</span>][j] + f[i][j<span class="number">-1</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> f[m<span class="number">-1</span>][n<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Minimum Path Sum]]></title>
       <url>http://xinli90.com/2016/09/18/Minimum-Path-Sum/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">Leetcode-Minimum Path Sum</a>.</p>

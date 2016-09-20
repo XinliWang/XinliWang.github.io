@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-20T17:39:17.000Z</updated>
+  <updated>2016-09-20T21:23:18.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Longest Increasing Subsequence</title>
+    <link href="http://xinli90.com/2016/09/20/Longest-Increasing-Subsequence/"/>
+    <id>http://xinli90.com/2016/09/20/Longest-Increasing-Subsequence/</id>
+    <published>2016-09-20T20:09:25.000Z</published>
+    <updated>2016-09-20T21:23:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="external">Leetcode-Longest Increasing Subsequence</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p>For example,     </p>
+<p>Given [10, 9, 2, 5, 3, 7, 101, 18],<br>The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.       </p>
+<p>Your algorithm should run in O(n2) complexity.   </p>
+<p>Follow up: Could you improve it to O(n log n) time complexity?</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-For-DP"><a href="#Solution1-For-DP" class="headerlink" title="Solution1 For DP"></a>Solution1 For DP</h4><ul>
+<li>State: f[i] represents the longest increasing subsequence</li>
+<li>Function: f[i] = MAX(f[j]+1) &amp;&amp; j&lt;i &amp;&amp; nums[j]&lt;nums[i]</li>
+<li>Initialize: f[i] = 1,</li>
+<li>Answer: f[nums.length-1]</li>
+</ul>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Mantain an array, use Binary search to insert or update this array.</li>
+<li>We will get the longest array.</li>
+</ol>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">    public <span class="type">int</span> lengthOfLIS(<span class="type">int</span>[] nums) &#123;</div><div class="line">        <span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = nums.<span class="built_in">length</span>;</div><div class="line">        <span class="type">int</span>[] f = new <span class="type">int</span>[<span class="built_in">length</span>];</div><div class="line">        <span class="type">int</span> <span class="built_in">max</span> = <span class="number">1</span>;</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">            f[i] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;i; j++) &#123;</div><div class="line">                <span class="keyword">if</span>(nums[j]&lt;nums[i])&#123;</div><div class="line">                    f[i] = Math.<span class="built_in">max</span>(f[i],f[j]+<span class="number">1</span>);</div><div class="line">                    <span class="built_in">max</span> = Math.<span class="built_in">max</span>(<span class="built_in">max</span>,f[i]);</div><div class="line">                &#125;   </div><div class="line">            &#125;     </div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">max</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">    public <span class="type">int</span> lengthOfLIS(<span class="type">int</span>[] nums) &#123;</div><div class="line">        <span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = <span class="number">0</span>;</div><div class="line">        <span class="type">int</span> tails[] = new <span class="type">int</span>[nums.<span class="built_in">length</span>+<span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> num : nums) &#123;</div><div class="line">        	<span class="type">int</span> left = <span class="number">0</span>; </div><div class="line">        	<span class="type">int</span> right = <span class="built_in">length</span>;</div><div class="line">        	while(left&lt;right) &#123;</div><div class="line">        		<span class="type">int</span> mid = left+(right-left)/<span class="number">2</span>;</div><div class="line">        		<span class="keyword">if</span>(tails[mid]&lt;num)&#123;</div><div class="line">        			left = mid+<span class="number">1</span>;</div><div class="line">        		&#125;<span class="keyword">else</span> &#123;</div><div class="line">        			right = mid;</div><div class="line">        		&#125;</div><div class="line">        	&#125;</div><div class="line">        	tails[left] = num;</div><div class="line">        	<span class="keyword">if</span>(left==<span class="built_in">length</span>) ++<span class="built_in">length</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">length</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/longest-increasing-subsequence/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcod
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Valid Palindrome</title>
@@ -749,103 +787,6 @@
     
     
       <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Day12 JAVA Key Words</title>
-    <link href="http://xinli90.com/2016/09/06/Day12-JAVA-Key-Words/"/>
-    <id>http://xinli90.com/2016/09/06/Day12-JAVA-Key-Words/</id>
-    <published>2016-09-06T23:02:20.000Z</published>
-    <updated>2016-09-11T23:06:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本篇是关于Java各种关键字的区别。</p>
-<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
-<li>回忆关键字特性</li>
-<li>总结关键字特性，并总结用法</li>
-</ul>
-<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
-<li>private , protected, public: private 只有当前class内可见，protected当前class,subclass和一个package下可见，public所有可见。</li>
-<li>Interface and Abstract class: Interface的方法不用具体实现，默认是public的方法，如果有成员变量也默认为 public， Abstact class中方法需要具体实现，用abstract 关键字来区别是否为abstract method,可以有非abstact得方法和成员变量。</li>
-<li>extnds and implement: extends一个abstact class，implement多个interface</li>
-<li>static用法：static可以在创建new instance of class 前直接调用。</li>
-<li>final：定义后的变量初次赋值后，不可再变。</li>
-<li>Polymorphism: 当一个类继承和实现其他抽象类或接口后，该类就具备了其他类所具备的方法</li>
-<li>Encapsulation: 为了使代码解耦，使得相同功能的代码放在一起，加强代码的利用率。</li>
-</ul>
-<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="class-and-object"><a href="#class-and-object" class="headerlink" title="class and object"></a>class and object</h3><p>Class is a general concept and the object is a very specific embodiment of that class, with a limited lifespan.</p>
-<ol>
-<li>Class: A class is a program construct which encapsulate data and operation on data.</li>
-<li>Object: is an actual instance of a class.</li>
-</ol>
-<h3 id="Interface-and-Abstract-class"><a href="#Interface-and-Abstract-class" class="headerlink" title="Interface and Abstract class"></a>Interface and Abstract class</h3><ol>
-<li><p><code>Interface</code>: All methods in interface are implictly abstract.  We should implement all the declared methods.  A class could implement multiple interface.  Members of interface are <code>public</code> and variables are <code>static,final and public</code> by default. (Since interface doesn’t have a direct object, the only way to access them is by using a class/interface and hence that is why if interface variable exists, it should be static otherwise it won’t be accessible at all to outside world. Now since it is static, it can be hold only one value and any classes that implements it can change it and it will be all mess. So it is final)</p>
-</li>
-<li><p><code>Abstract class</code>: It’s allowed to have non-abstract methods. So the memeber of abstract class can either be private,protected and public and may contain non-final variables.  A class can only extends one abstact class. They may not implement all declared methods, in this case, the subclass must be also declared as an abstract class. An abstract method could be protected or public.</p>
-</li>
-</ol>
-<h3 id="Inner-class"><a href="#Inner-class" class="headerlink" title="Inner class"></a>Inner class</h3><p>A class can be a <code>member of another class</code>, which is an inner class.  </p>
-<p><code>Non-static nested classes</code> (inner classes) have access to other members of the enclosing class, even if they are declared private.  It is a way of logically grouping classes that are only used in one place: If a class is useful to only one other class, then it is logical to embed it in that class and keep the two together. Nesting such “helper classes” makes their package more streamlined.  </p>
-<p>It increases <code>encapsulation</code>: Consider two top-level classes, A and B, where B needs access to members of A that would otherwise be declared private. By hiding class B within class A, A’s members can be declared private and B can access them. In addition, B itself can be hidden from the outside world.  It can lead to more readable and maintainable code: Nesting small classes within top-level classes places the code closer to where it is used.</p>
-<h3 id="Inheritance-Polymorphism-Encapsulation"><a href="#Inheritance-Polymorphism-Encapsulation" class="headerlink" title="Inheritance,Polymorphism,Encapsulation"></a>Inheritance,Polymorphism,Encapsulation</h3><ol>
-<li><p><code>Inheritance</code>: The ability of a new class to be created, from an existing class by extends it.</p>
-</li>
-<li><p><code>Polymorphism</code>: Polymorphism is a generic term that means ‘many shapes’.  More precisely means the ability to request that the same operations be performed by a wide range of different types of things.</p>
-</li>
-<li><p><code>Encapsulation</code>: is often used as a technique for encouraging decoupling.  This is useful because it prevents the external code from being concerned with teh internal workings of an object.</p>
-</li>
-</ol>
-<h3 id="Override-and-Overload"><a href="#Override-and-Overload" class="headerlink" title="Override and Overload"></a>Override and Overload</h3><ol>
-<li><p><code>Override</code> is defined as the case when a child class redefines the same method as a parent class. Override methods must have the same name, argumentlist and return type.</p>
-</li>
-<li><p><code>Overload</code> occurs when two or more methods in the same class have the exact same name, but different parameters.</p>
-</li>
-</ol>
-<h3 id="private-protected-public"><a href="#private-protected-public" class="headerlink" title="private, protected, public"></a>private, protected, public</h3><ol>
-<li><p><code>private</code>: We can only use the private variable in instance class.</p>
-</li>
-<li><p><code>protected</code>: Protected variable can be accessed in the same package and subclass.</p>
-</li>
-<li><p><code>public</code>: public opens for any scope.</p>
-</li>
-</ol>
-<h3 id="static-and-static-block"><a href="#static-and-static-block" class="headerlink" title="static and static block"></a>static and static block</h3><ol>
-<li><p><code>Static</code> function have no object to work with since they belong to the class as a whole. You can call a static function without an object.<br>So a static function cannot access non-static member variables of class. We cannot use ‘this’ pointer. <code>This</code> pointer is only used when a class is instantiated as an object.</p>
-</li>
-<li><p><code>Static block</code>: It’s a <code>static initializer</code>. It’s used when a block of code needs to be executed during loading of the class by JVM. It can be thought of as a “class constructor”. It’s mostly used for changing the default values of static variables. Execute static block first, then execute constructor.</p>
-</li>
-<li><p><code>static class</code>: A <code>class</code> can be made static only if it is a nested Class. The nested static class can be accessed without having an object of outer class. </p>
-</li>
-</ol>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">/* Java program to demonstrate how to implement<span class="keyword"> static</span><span class="built_in"> and </span>non-static</div><div class="line">   classes in a java program. */</div><div class="line">class OuterClass&#123;</div><div class="line">  <span class="keyword"> private</span><span class="keyword"> static</span> String msg = <span class="string">"GeeksForGeeks"</span>;</div><div class="line">    </div><div class="line">   // Static nested class</div><div class="line">  <span class="keyword"> public</span><span class="keyword"> static</span> class NestedStaticClass&#123;</div><div class="line">      </div><div class="line">       // Only<span class="keyword"> static</span> members of Outer class is directly accessible in nested </div><div class="line">       //<span class="keyword"> static</span> class </div><div class="line">      <span class="keyword"> public</span> void printMessage() &#123;</div><div class="line"> </div><div class="line">         // Try making 'message' a non-static variable, there will be </div><div class="line">         // compiler error  </div><div class="line">         System.out.println(<span class="string">"Message from nested static class: "</span> + msg); </div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // non-static nested class - also called Inner class</div><div class="line">   <span class="keyword"> public</span> class InnerClass&#123;</div><div class="line">        </div><div class="line">       // Both<span class="keyword"> static</span><span class="built_in"> and </span>non-static members of Outer class are accessible in </div><div class="line">       // this Inner class</div><div class="line">      <span class="keyword"> public</span> void display()&#123;</div><div class="line">          System.out.println(<span class="string">"Message from non-static nested class: "</span>+ msg);</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125; </div><div class="line">class Main</div><div class="line">&#123;</div><div class="line">    // How to create<span class="built_in"> instance </span>of<span class="keyword"> static</span><span class="built_in"> and </span>non<span class="keyword"> static</span> nested class?</div><div class="line">   <span class="keyword"> public</span><span class="keyword"> static</span> void main(String args[])&#123;</div><div class="line">        </div><div class="line">       // create<span class="built_in"> instance </span>of nested Static class</div><div class="line">       OuterClass.NestedStaticClass printer =<span class="built_in"> new </span>OuterClass.NestedStaticClass();</div><div class="line">        </div><div class="line">       // call non<span class="keyword"> static</span> method of nested<span class="keyword"> static</span> class</div><div class="line">       printer.printMessage();   </div><div class="line">  </div><div class="line">       // In order to create<span class="built_in"> instance </span>of Inner class we need an Outer class </div><div class="line">       // instance. Let us create Outer class<span class="built_in"> instance </span>for creating </div><div class="line">       // non-static nested class</div><div class="line">       OuterClass outer =<span class="built_in"> new </span>OuterClass();        </div><div class="line">       OuterClass.InnerClass inner  = outer.new InnerClass();</div><div class="line">        </div><div class="line">       // calling non-static method of Inner class</div><div class="line">       inner.display();</div><div class="line">        </div><div class="line">       // we can also combine above steps in one step to create<span class="built_in"> instance </span>of </div><div class="line">       // Inner class</div><div class="line">       OuterClass.InnerClass innerObject =<span class="built_in"> new </span>OuterClass().new InnerClass();</div><div class="line">        </div><div class="line">       // similarly we can now call Inner class method</div><div class="line">       innerObject.display();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li><p><code>static method</code>: Static mehods and variables can be accessed using class name. In the static method, we can not use non-static variables.</p>
-</li>
-<li><p><code>static variable</code>: are known as Class Variables. Such variables get default values based on the data type. Memory allocation only happens once when the class is loaded in memory. Static variables are common for all instances.</p>
-</li>
-</ol>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Example&#123;</div><div class="line">   static int Var1=<span class="number">77</span>; <span class="comment">//Static integer variable</span></div><div class="line">   <span class="keyword">String</span> Var2;<span class="comment">//non-static string variable</span></div><div class="line"></div><div class="line">   public static void main(<span class="keyword">String</span> args[])</div><div class="line">   &#123;</div><div class="line">      Example8 ob1 = <span class="keyword">new</span> Example8();</div><div class="line">      Example8 ob2 = <span class="keyword">new</span> Example8();</div><div class="line">      ob1.Var1=<span class="number">88</span>;</div><div class="line">      ob1.Var2=<span class="string">"I'm Object1"</span>;</div><div class="line">      ob2.Var2=<span class="string">"I'm Object2"</span>;</div><div class="line">      <span class="keyword">System</span>.out.println(<span class="string">"ob1 integer:"</span>+ob1.Var1);</div><div class="line">      <span class="keyword">System</span>.out.println(<span class="string">"ob1 String:"</span>+ob1.Var2);</div><div class="line">      <span class="keyword">System</span>.out.println(<span class="string">"ob2 integer:"</span>+ob2.Var1);</div><div class="line">      <span class="keyword">System</span>.out.println(<span class="string">"ob2 STring:"</span>+ob2.Var2);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">Output</span>:</div><div class="line"></div><div class="line">ob1 integer:<span class="number">88</span></div><div class="line">ob1 <span class="keyword">String</span>:I'm Object1</div><div class="line">ob2 integer:<span class="number">88</span></div><div class="line">ob2 <span class="keyword">String</span>:I'm Object2</div></pre></td></tr></table></figure>
-<h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><p>The instance variable with final keyword can’t be changed.  When applied to either class(can not be used as base class to derive any class from it) or method(cann’t be overriden), turns off late binding, and thus prevents polymorphism.</p>
-<h3 id="enum-and-Enumeration"><a href="#enum-and-Enumeration" class="headerlink" title="enum and Enumeration"></a>enum and Enumeration</h3><ol>
-<li><code>enum</code> is a special data type that enables for a variable to be a set of predefined constants.  The variable must be equal to one of the values that have been predefined for it.</li>
-<li><code>Enumeration</code> is an interface.  An object that implements the Enumeration interface generates a series of elements, one at a tiem. Successive calls to the ‘nextElement’ method return successive elements of the series.<br>For example, to print all elements of a Vector<e> v:</e></li>
-</ol>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for (<span class="name">Enumeration&lt;E&gt;</span> e = v.elements()<span class="comment">; e.hasMoreElements();)</span></div><div class="line">       System.out.println(<span class="name">e</span>.nextElement())<span class="comment">;</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇是关于Java各种关键字的区别。&lt;/p&gt;
-&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;回忆关键字特性&lt;/li&gt;
-&lt;li&gt;总结关键字特性，并总结用法
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://xinli90.com/categories/JAVA/"/>
-    
-    
-      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
     
   </entry>
   

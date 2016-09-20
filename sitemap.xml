@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/09/20/Valid-Palindrome/</loc>
+    
+    <lastmod>2016-09-20T17:39:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/09/19/Palindrome-Partitioning-II/</loc>
+    
+    <lastmod>2016-09-20T00:27:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/09/18/Unique-Paths/</loc>
+    
+    <lastmod>2016-09-20T00:10:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/09/19/Palindrome-Partitioning/</loc>
     
     <lastmod>2016-09-19T15:09:30.000Z</lastmod>
@@ -26,13 +47,6 @@
     <loc>http://xinli90.com/2016/09/18/Climbing-Stairs/</loc>
     
     <lastmod>2016-09-19T00:46:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/09/18/Unique-Paths/</loc>
-    
-    <lastmod>2016-09-19T00:36:15.000Z</lastmod>
     
   </url>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-21T14:28:00.000Z</updated>
+  <updated>2016-09-21T21:01:36.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,138 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Palindrome Number</title>
+    <link href="http://xinli90.com/2016/09/21/Palindrome-Number/"/>
+    <id>http://xinli90.com/2016/09/21/Palindrome-Number/</id>
+    <published>2016-09-21T17:24:01.000Z</published>
+    <updated>2016-09-21T21:01:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/palindrome-number/" target="_blank" rel="external">Leetcode-Palindrome Number</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Get how many digits for this number</li>
+<li>Each time compare the lowest and highest digit.</li>
+<li>Time Limit Exceed </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>We can use reverse method. But mantain the reversed version of int is always 1 time short in the factor of 10s</li>
+</ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><p>we can compare half of the digits </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    public boolean isPalindrome(<span class="built_in">int</span> x) &#123;</div><div class="line">    	<span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = x;</div><div class="line">        <span class="built_in">int</span> numDigit = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">num</span>!=<span class="number">0</span>)&#123;</div><div class="line">            <span class="built_in">num</span> /= <span class="number">10</span>;</div><div class="line">            numDigit *= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        numDigit /= <span class="number">10</span>;</div><div class="line">        <span class="built_in">num</span> = x;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">num</span>!=<span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">int</span> low = <span class="built_in">num</span>%<span class="number">10</span>;</div><div class="line">            <span class="built_in">int</span> high = <span class="built_in">num</span>/numDigit;</div><div class="line">            <span class="keyword">if</span>(low!=high) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="built_in">num</span> = (<span class="built_in">num</span>-high*numDigit)/<span class="number">10</span>;</div><div class="line">            numDigit /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	public boolean isPalindrome(<span class="built_in">int</span> x) &#123;</div><div class="line">		<span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="built_in">int</span> <span class="built_in">num</span> = x;</div><div class="line">		<span class="built_in">int</span> y = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">num</span> &gt;= <span class="number">10</span>) &#123;</div><div class="line">			y = y*<span class="number">10</span> + <span class="built_in">num</span>%<span class="number">10</span>;</div><div class="line">			<span class="built_in">num</span> /= <span class="number">10</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">num</span> == x%<span class="number">10</span> &amp;&amp; y==x/<span class="number">10</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	public boolean isPalindrome(<span class="built_in">int</span> x) &#123;</div><div class="line">	 	<span class="keyword">if</span>(x&lt;<span class="number">0</span>||(x!=<span class="number">0</span>&amp;&amp;x%<span class="number">10</span>==<span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="built_in">int</span> <span class="built_in">num</span> = x;</div><div class="line">		<span class="built_in">int</span> y = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(y&lt;<span class="built_in">num</span>) &#123;</div><div class="line">			y = <span class="number">10</span>*y + <span class="built_in">num</span>%<span class="number">10</span>;</div><div class="line">			<span class="built_in">num</span> /= <span class="number">10</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> y==<span class="built_in">num</span> || y/<span class="number">10</span> == <span class="built_in">num</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/palindrome-number/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Palindrome 
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Reverse String</title>
+    <link href="http://xinli90.com/2016/09/21/Reverse-String/"/>
+    <id>http://xinli90.com/2016/09/21/Reverse-String/</id>
+    <published>2016-09-21T16:56:31.000Z</published>
+    <updated>2016-09-21T17:07:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/reverse-string/" target="_blank" rel="external">Leetcode-Reverse String</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:<br>Given s = “hello”, return “olleh”.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><p>Use StringBuilder reverse() method    </p>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Iterate String from end to start, at each character to a new string.</p>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><p>Use swap method. Fastest solution.</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> reverseString(<span class="built_in">String</span> s) &#123;  </div><div class="line">        return <span class="keyword">new</span> StringBuilder(s).reverse().toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">String</span> reverseString(<span class="built_in">String</span> s) &#123;  </div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=s.length()<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i++) &#123;</div><div class="line">        	sb.append(s.charAt(i));</div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution3 &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> reverseString(<span class="built_in">String</span> s) &#123;</div><div class="line">        char[] arr = s.toCharArray();</div><div class="line">        <span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>, <span class="built_in">right</span>=s.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">left</span>&lt;<span class="built_in">right</span>) &#123;</div><div class="line">            char temp = arr[<span class="built_in">left</span>];</div><div class="line">            arr[<span class="built_in">left</span>] = arr[<span class="built_in">right</span>];</div><div class="line">            arr[<span class="built_in">right</span>] = temp;</div><div class="line">            <span class="built_in">left</span>++;</div><div class="line">            <span class="built_in">right</span>--;</div><div class="line">        &#125;</div><div class="line">        return <span class="keyword">new</span> <span class="built_in">String</span>(arr);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/reverse-string/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Reverse String
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nim Game</title>
+    <link href="http://xinli90.com/2016/09/21/Nim-Game/"/>
+    <id>http://xinli90.com/2016/09/21/Nim-Game/</id>
+    <published>2016-09-21T16:16:01.000Z</published>
+    <updated>2016-09-21T16:52:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/nim-game/" target="_blank" rel="external">Leetcode-Nim Game</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.</p>
+<p>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.</p>
+<p>For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><p>BrainTest</p>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Recursive way. Time Limited Exceed.</li>
+<li>The basic idea is if the opponent can win, then the player will lose. No matter how many stones the player move, the opponent will win. So       if(canWinNim(n-1)&amp;&amp;canWinNim(n-2)&amp;&amp;canWinNim(n-3)) return false;</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> n%<span class="number">4</span>!=<span class="number">0</span>;    </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">3</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">if</span>(canWinNim(n-<span class="number">1</span>)&amp;&amp;canWinNim(n-<span class="number">2</span>)&amp;&amp;canWinNim(n-<span class="number">3</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/nim-game/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Nim Game&lt;/a&gt;.&lt;/p&gt;
+&lt;h
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Median of Two Sorted Arrays</title>
+    <link href="http://xinli90.com/2016/09/21/Median-of-Two-Sorted-Arrays/"/>
+    <id>http://xinli90.com/2016/09/21/Median-of-Two-Sorted-Arrays/</id>
+    <published>2016-09-21T15:08:42.000Z</published>
+    <updated>2016-09-21T15:18:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="external">Leetcode-Median of Two Sorted Arrays</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p>Example 1:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nums1 = [<span class="number">1</span>, <span class="number">3</span>]</div><div class="line">nums2 = [<span class="number">2</span>]</div><div class="line"></div><div class="line">The median is <span class="number">2.0</span></div></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nums1 = [<span class="number">1</span>, <span class="number">2</span>]</div><div class="line">nums2 = [<span class="number">3</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line">The median is (<span class="number">2</span> + <span class="number">3</span>)/<span class="number">2</span> = <span class="number">2.5</span></div></pre></td></tr></table></figure>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Create a new Array with length of nums1 and nums2 and sort them all</li>
+<li>find the median from this array</li>
+<li>Time complexity is O(m+n), Space complexity is O(m+n)    </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">double</span> findMedianSortedArrays(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">        <span class="keyword">int</span> length1 = nums1.length;</div><div class="line">        <span class="keyword">int</span> length2 = nums2.length;</div><div class="line">        <span class="keyword">int</span> medianIndex = (length1+length2)/<span class="number">2</span>; </div><div class="line">        <span class="keyword">double</span> median=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] <span class="keyword">array</span> = <span class="keyword">new</span> <span class="keyword">int</span>[length1+length2];</div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,index=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(index&lt;length1+length2)&#123;</div><div class="line">            <span class="keyword">if</span>(i&gt;=length1)&#123;</div><div class="line">                <span class="keyword">array</span>[index++] = nums2[j++];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&gt;=length2)&#123;</div><div class="line">                <span class="keyword">array</span>[index++] = nums1[i++];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i&lt;length1&amp;&amp;j&lt;length2)&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[i]&gt;nums2[j])&#123;</div><div class="line">                    <span class="keyword">array</span>[index++] = nums2[j++];</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="keyword">array</span>[index++] = nums1[i++];</div><div class="line">                &#125;</div><div class="line">            &#125;   </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((length1+length2)%<span class="number">2</span>==<span class="number">1</span>)&#123;</div><div class="line">            median = <span class="keyword">array</span>[medianIndex];</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            median = (<span class="keyword">double</span>)(<span class="keyword">array</span>[medianIndex<span class="number">-1</span>]+<span class="keyword">array</span>[medianIndex])/<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> median;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/median-of-two-sorted-arrays/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-M
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Edit Distance</title>
@@ -543,241 +675,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/top-k-frequent-elements/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Top K
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Number of 1 Bits</title>
-    <link href="http://xinli90.com/2016/09/11/Number-of-1-Bits/"/>
-    <id>http://xinli90.com/2016/09/11/Number-of-1-Bits/</id>
-    <published>2016-09-11T16:19:08.000Z</published>
-    <updated>2016-09-11T17:25:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="external">Leetcode-Number of 1 Bits</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
-<p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Time complexity is O(size of num)</li>
-<li>Prevent from TLE, we use bit manipulation instead of normal operation.</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>“n &amp;= n - 1” is used to delete the right “1” of n. </li>
-<li>Count its “1”</li>
-</ol>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line"><span class="comment">// you need to treat n as an unsigned value</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> hammingWeight(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> number = n;</div><div class="line">		<span class="keyword">while</span>(number!=<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">count</span> += (number&amp;<span class="number">1</span>);</div><div class="line">			<span class="comment">//unsigned operation</span></div><div class="line">			number &gt;&gt;&gt;= <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line"><span class="comment">// you need to treat n as an unsigned value</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> hammingWeight(<span class="keyword">int</span> n) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(; n!=<span class="number">0</span>; n = (n &amp; (n<span class="number">-1</span>)))&#123;</div><div class="line">			<span class="keyword">count</span>++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">count</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/number-of-1-bits/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Number of 1 
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Counting Bits</title>
-    <link href="http://xinli90.com/2016/09/11/Counting-Bits/"/>
-    <id>http://xinli90.com/2016/09/11/Counting-Bits/</id>
-    <published>2016-09-11T14:35:49.000Z</published>
-    <updated>2016-09-11T15:08:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">Leetcode-Count Bits</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.</p>
-<p>Example:<br>For num = 5 you should return [0,1,1,2,1,2].</p>
-<p>Follow up:</p>
-<p>It is very easy to come up with a solution with run time O(n*sizeof(integer)). But can you do it in linear time O(n) /possibly in a single pass?<br>Space complexity should be O(n).<br>Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.</p>
-<p>Hint:</p>
-<p>You should make use of what you have produced already.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Time complexity is O(n*(size of num)), but time limit exceeded.</li>
-<li>count each number from 0 to num</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Similar to solution1.</li>
-<li>Prevent from TLE, we use bit manipulation instead of normal operation.</li>
-</ol>
-<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
-<li>Recursion.  Make Use of what I have produced already. </li>
-<li>Time complexity is O(n)</li>
-</ol>
-<h4 id="Solution4"><a href="#Solution4" class="headerlink" title="Solution4"></a>Solution4</h4><p>The number in one range are equal to 1 plus all of the numbers in the ranges before it. For example, the numbers 8-15 have the same pattern as 0-7 but with a 1 at the front.</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</div><div class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=num; i++) &#123;</div><div class="line">			<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> number = i;</div><div class="line">			<span class="keyword">while</span>(number&gt;<span class="number">0</span>)&#123;</div><div class="line">				<span class="keyword">count</span> += number%<span class="number">2</span>;</div><div class="line">				number /= <span class="number">2</span>;</div><div class="line">			&#125;</div><div class="line">			result[i] = <span class="keyword">count</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</div><div class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=num; i++) &#123;</div><div class="line">			<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> number = i;</div><div class="line">			<span class="keyword">while</span>(number&gt;<span class="number">0</span>)&#123;</div><div class="line">				<span class="keyword">if</span>((number &amp; <span class="number">1</span>) == <span class="number">1</span>) <span class="keyword">count</span>++;</div><div class="line">				<span class="keyword">count</span> &gt;&gt;= <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			result[i] = <span class="keyword">count</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution3</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</div><div class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=num; i++) &#123;</div><div class="line">			result[i] = result[i/<span class="number">2</span>] + i%<span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution4</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</div><div class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</div><div class="line">		<span class="comment">//default: result[0] = 0</span></div><div class="line">		<span class="keyword">int</span> pow = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>; i&lt;=num; i++,j++) &#123;</div><div class="line">			<span class="keyword">if</span>(i == pow) &#123;</div><div class="line">				pow &lt;&lt;=<span class="number">1</span>;</div><div class="line">				j=<span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">			result[i] = result[j]+<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/counting-bits/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Count Bits&lt;/a&gt;.
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA Web 01</title>
-    <link href="http://xinli90.com/2016/09/09/JAVA-Web-01/"/>
-    <id>http://xinli90.com/2016/09/09/JAVA-Web-01/</id>
-    <published>2016-09-09T20:42:11.000Z</published>
-    <updated>2016-09-10T22:23:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="HttpServlet"><a href="#HttpServlet" class="headerlink" title="HttpServlet"></a>HttpServlet</h3><p>一、HttpServlet首先必须读取Http请求的内容。Servlet容器负责创建HttpServlet对象，并把Http请求直接封装到HttpServlet对象中，大大简化了HttpServlet解析请求数据的工作量。HttpServlet容器响应Web客户请求流程如下：     </p>
-<p>1）Web客户向Servlet容器发出Http请求；</p>
-<p>2）Servlet容器解析Web客户的Http请求；</p>
-<p>3）Servlet容器创建一个HttpRequest对象，在这个对象中封装Http请求信息；</p>
-<p>4）Servlet容器创建一个HttpResponse对象；</p>
-<p>5）Servlet容器调用HttpServlet的service方法，把HttpRequest和HttpResponse对象作为service方法的参数传给HttpServlet对象；</p>
-<p>6）HttpServlet调用HttpRequest的有关方法，获取HTTP请求信息；</p>
-<p>7）HttpServlet调用HttpResponse的有关方法，生成响应数据；</p>
-<p>8）Servlet容器把HttpServlet的响应结果传给Web客户。</p>
-<p>二、创建HttpServlet的步骤——“四部曲”</p>
-<p>1）扩展HttpServlet抽象类；</p>
-<p>2）覆盖HttpServlet的部分方法，如覆盖doGet()或doPost()方法；</p>
-<p>3）获取HTTP请求信息。通过HttpServletRequest对象来检索HTML表单所提交的数据或URL上的查询字符串；</p>
-<p>4）生成HTTP响应结果。通过HttpServletResponse对象生成响应结果，它有一个getWriter()方法，该方法返回一个PrintWriter对象。</p>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Servlet主要功能是接受从浏览器发送来的HTTP请求（request），并返回HTTP响应（response）,这个在service方法中完成，service中包含了从request对象获得客户端数据和向response对象创建输出。如果Servlet 继承了 HttpServlet,实现了doPost或doGet方法，那么service只能对POST或GET做出响应。</p>
-<p>Example:</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> mypack;</div><div class="line"><span class="keyword">import</span> javax.servlet.*;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.*;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet//第一步：扩展HttpServlet抽象类</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//第二步：覆盖doGet()方法</span></div><div class="line"> 	public void doGet(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response)<span class="keyword">throws</span> <span class="type">IOException</span>,<span class="type">ServletException</span>&#123;</div><div class="line"> 		<span class="comment">//第三步：获取HTTP请求中的参数信息</span></div><div class="line"> 		<span class="type">String</span> clientName = request.getParameter(<span class="string">"clientName"</span>);</div><div class="line"> 		<span class="keyword">if</span>(clientName!=<span class="literal">null</span>) &#123;</div><div class="line"> 			clientName = clientName+<span class="string">"a"</span>;</div><div class="line"> 		&#125;</div><div class="line"> 		<span class="comment">//第四步：生成HTTP响应结果</span></div><div class="line"> 		<span class="type">String</span> title=<span class="string">"HelloServlet"</span>;</div><div class="line">  		<span class="type">String</span> heading1=<span class="string">"HelloServlet的doGet方法的输出："</span>;</div><div class="line">  </div><div class="line"> 		response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</div><div class="line"> 		<span class="type">PrintWriter</span> out = response.getWriter();</div><div class="line"> 		<span class="comment">//写HTML Page</span></div><div class="line"> 		out.print(<span class="string">"&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;"</span>+title+<span class="string">"&lt;/TITLE&gt;"</span>);</div><div class="line">  		out.print(<span class="string">"&lt;/HEAD&gt;&lt;BODY&gt;"</span>);</div><div class="line">  		out.print(heading1);</div><div class="line">  		out.println(<span class="string">"&lt;h1&gt;&lt;p&gt;"</span>+clientName+<span class="string">":您好&lt;/h1&gt;"</span>);</div><div class="line">  		out.print(<span class="string">"&lt;/BODY&gt;&lt;/HTML&gt;"</span>);</div><div class="line">  		</div><div class="line">  		out.close();</div><div class="line"> 	&#125;</div><div class="line">	public void doPost(<span class="type">HttpServletRequest</span> request, <span class="type">HttpServletResponse</span> response)<span class="keyword">throws</span> <span class="type">IOException</span>,<span class="type">ServletException</span>&#123;</div><div class="line">		doGet(request,response);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line">在web.xml中添加</div><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;<span class="type">HelloServlet</span>&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-<span class="class"><span class="keyword">class</span><span class="title">&gt;mypack</span>.<span class="title">HelloServlet&lt;/servlet-class&gt;</span></span></div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;<span class="type">HelloServlet</span>&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h4><ol>
-<li><p>关于<code>response.setContentTyep()</code>： response的的设置对应你看到的html，setContentType对应这句<br><meta http-equiv="Content-type" content="text/html; charset=utf-8"><br>意思是告诉浏览器我的这个内容是文本html，然后字符编码是utf-8，如果你不告诉浏览器编码，那么浏览器，一般会根据系统默认编码来解析你的页面中的字符。 </p>
-</li>
-<li><p>Response：封装响应消息，设置响应消息</p>
-<ul>
-<li><p>设置响应行：HTTP/1.1 200 ok        </p>
-<ul>
-<li><p>setStatus(int code)：设置响应状态码      </p>
-<ul>
-<li><p>演示重定向：302<br>  //简化版的重定向<br>  response.sendRedirect(“<a href="http://192.168.1.66:8080/zxc/one" target="_blank" rel="external">http://192.168.1.66:8080/zxc/one</a>“);</p>
-<ul>
-<li>实现原理<br>//1.设置响应状态码为 302<br>response.setStatus(302);<br>//2.设置响应头 location<br>response.setHeader(“location”, “<a href="http://192.168.1.66:8080/zxc/one" target="_blank" rel="external">http://192.168.1.66:8080/zxc/one</a>“);</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>设置响应头：</p>
-<ul>
-<li>setHeader(String name,String value):     </li>
-<li>setDateHeader(String name, long date) </li>
-<li>setIntHeader(String name, int value) </li>
-</ul>
-</li>
-<li><p>设置响应体：</p>
-<ul>
-<li><p>getOutputStream():发送字节数据</p>
-<ul>
-<li>验证码：<ul>
-<li>防止恶意注册</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>getWriter():发送字符数据         </p>
-<ul>
-<li>发送中文数据时，需要在获取流之前设置编码方式，并且要告诉客户端浏览器，服务器使用的编码方式<br>  //简化版设置编码的方式<br>  response.setContentType(“text/html;charset=utf-8”);</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><code>response.setHeader()</code>:     </li>
-</ol>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">response<span class="selector-class">.setContentType</span>(<span class="string">"text/html;charset=UTF-8"</span>);</div><div class="line"><span class="comment">//设置响应消息头： 2 秒后刷新到Demo5</span></div><div class="line">response<span class="selector-class">.setHeader</span>(<span class="string">"refresh"</span>,<span class="string">"2:URL=/day10_response/servlet/ResponseDemo5"</span>)</div><div class="line"><span class="comment">//设置编码</span></div><div class="line"><span class="selector-tag">response</span><span class="selector-class">.getWriter</span>()<span class="selector-class">.write</span>(<span class="string">"Congratulation! Login sucessfully! Will jump to main page after 2 seconds"</span>);</div></pre></td></tr></table></figure>
-<h3 id="四大域"><a href="#四大域" class="headerlink" title="四大域"></a>四大域</h3><ol>
-<li>PageContext: is only used in JSP for variables that don’t get passed if the request is forwarded.</li>
-<li>ServletRequest: data can only exists during one request for one user.</li>
-<li>HttpSession: only one user can use. An application may manage many sessions.</li>
-<li>ServletContext: All users in entire web application can use.</li>
-</ol>
-<h3 id="EL-and-JSTL"><a href="#EL-and-JSTL" class="headerlink" title="EL and JSTL"></a>EL and JSTL</h3><p>In order to make the code more readable, we use EL instead of JAVA in HTML. It’s more like HTML tags. It’s only used for getting data in page, request, session and applicaiton scopes.</p>
-<h3 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h3><p>JDBC 连接步骤：</p>
-<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.注册驱动</span></div><div class="line"><span class="keyword">Class</span>.forName(<span class="string">"com.mysql.jdbc.Driver"</span>)<span class="comment">;</span></div><div class="line"><span class="comment">//2.获取与数据库的连接</span></div><div class="line">Connection conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://localhost:3306/day17"</span>,<span class="string">"root"</span>,<span class="string">"sorry"</span>)<span class="comment">;</span></div><div class="line"><span class="comment">//3.得到代表SQL语句的对象，向数据库发送语句</span></div><div class="line">Statement stmt = conn.createStatement()<span class="comment">;</span></div><div class="line"><span class="comment">//4.执行语句</span></div><div class="line">ResultSet rs = stmt.executeQuery(<span class="string">"select id from users"</span>)<span class="comment">;</span></div><div class="line"><span class="comment">//5.如果执行是查询语句，就会有结果集，处理</span></div><div class="line"><span class="keyword">while</span>(rs.next()) &#123;</div><div class="line">	rs.getObject(<span class="string">"id"</span>)<span class="comment">;</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//6.释放占用的资源</span></div><div class="line">rs.<span class="keyword">close</span>()<span class="comment">;</span></div><div class="line">stmt.<span class="keyword">close</span>()<span class="comment">;</span></div><div class="line">conn.<span class="keyword">close</span><span class="comment">;</span></div></pre></td></tr></table></figure>
-<h4 id="抽取JDBC工具类模板"><a href="#抽取JDBC工具类模板" class="headerlink" title="抽取JDBC工具类模板"></a>抽取JDBC工具类模板</h4><p>1.创建数据库配置文件: dbcfg.properties</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">driverClass</span>=com.mysql.jdbc.Driver</div><div class="line"><span class="attr">url</span>=jdbc:mysql://localhost:<span class="number">3306</span>/cloud</div><div class="line"><span class="attr">user</span>=root</div><div class="line"><span class="attr">password</span>=sorry</div></pre></td></tr></table></figure>
-<p>2.抽取模板</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.itcast.util;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.InputStream;</div><div class="line"><span class="keyword">import</span> java.sql.Connection;</div><div class="line"><span class="keyword">import</span> java.sql.DriverManager;</div><div class="line"><span class="keyword">import</span> java.sql.ResultSet;</div><div class="line"><span class="keyword">import</span> java.sql.SQLException;</div><div class="line"><span class="keyword">import</span> java.sql.Statement;</div><div class="line"><span class="keyword">import</span> java.util.Properties;</div><div class="line"><span class="comment">//JDBC工具类:与数据库无关</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcUtil</span> &#123;</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String driverClass;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String url;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String user;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String password;</div><div class="line">	<span class="keyword">static</span>&#123;</div><div class="line">		<span class="comment">//读取配置文件</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			InputStream <span class="keyword">in</span> = JdbcUtil.<span class="keyword">class</span>.getClassLoader().getResourceAsStream(<span class="string">"dbcfg.properties"</span>);</div><div class="line">			Properties props = <span class="keyword">new</span> Properties();</div><div class="line">			props.load(<span class="keyword">in</span>);</div><div class="line">			driverClass = props.getProperty(<span class="string">"driverClass"</span>);</div><div class="line">			url = props.getProperty(<span class="string">"url"</span>);</div><div class="line">			user = props.getProperty(<span class="string">"user"</span>);</div><div class="line">			password = props.getProperty(<span class="string">"password"</span>);</div><div class="line">			Class.forName(driverClass);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(e);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Connection getConnection() <span class="keyword">throws</span> Exception&#123;</div><div class="line">		Connection conn = DriverManager.getConnection(url,user,password);</div><div class="line">		<span class="keyword">return</span> conn;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> release(ResultSet rs,Statement stmt,Connection conn)&#123;</div><div class="line">		<span class="keyword">if</span>(rs!=<span class="literal">null</span>)&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				rs.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">			rs = <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(stmt!=<span class="literal">null</span>)&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				stmt.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">			stmt = <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(conn!=<span class="literal">null</span>)&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				conn.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">			conn = <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.When you want to use this util class:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Connection conn = <span class="keyword">null</span>;</div><div class="line">PreparedStatement stmt = <span class="keyword">null</span>;</div><div class="line">ResultSet rs = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">	conn = JdbcUtil.getConnection();</div><div class="line">	<span class="comment">//prevent SQL Injection</span></div><div class="line">	stmt = conn.prepareStatement(<span class="string">"select..."</span>);</div><div class="line">	rs = stmt.executeQuery();</div><div class="line">	<span class="comment">//...code</span></div><div class="line">	</div><div class="line">&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> e) &#123;</div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line">	JdbcUtil.release(rs,stmt,conn);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="大数据存储"><a href="#大数据存储" class="headerlink" title="大数据存储"></a>大数据存储</h4><p>We can use batch processing, each time we excute a list of inserts in batch.  Instead of hitting database once for each insert statement, we will use JDBC batch operation and optimize the performance. </p>
-<h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4><p><code>Stored procedures</code>: A benefit of stored procedures is that you can centralize data access logic into a single place that is then easy for DBA’s to optimize. Stored procedures also have a security benefit in that you can grant execute rights to a stored procedure but the user will not need to have read/write permissions on the underlying tables. This is a good first step against SQL Injection.</p>
-<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><code>Trigger</code>: A trigger is a special kind of stored procedure that automatically executes when an event occurs in the database server.</p>
-<h4 id="DataSource-Pool"><a href="#DataSource-Pool" class="headerlink" title="DataSource Pool"></a>DataSource Pool</h4><p>新建一个连接池，每次从连接池去conn, 用完后放回池中，而不是直接conn.close()。<br>因此我们需要改写close()方法，使用包装设计模式(Decorator), implement Connection,改写close()方法，不用改变的方法直接调用原来的方法。</p>
-<h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h3><p>实现自动登录功能：<br>把用户名：Base64编码，把密码：MD5加密。存入Cookie中，登录时取出解析并与数据库中的用户名和密码比较。</p>
-<p>Filter先执行，chain.doFilter(request,reponse)过滤之后再执行servlet.</p>
-<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><ol>
-<li>表单的method必须是post</li>
-<li>表单的enctype属性值必须是multipart/form-data</li>
-<li>表单中提供input type=”file”类型的上传输入域</li>
-</ol>
-<h4 id="显示上传文件条"><a href="#显示上传文件条" class="headerlink" title="显示上传文件条"></a>显示上传文件条</h4><p>使用Ajax+Listener, 不断监听文件上传多少，使用ajax不断回取数据以及更新图样。      </p>
-<h4 id="8个监听器"><a href="#8个监听器" class="headerlink" title="8个监听器"></a>8个监听器</h4><ol>
-<li>ServletContextListener: 完成系统初始化工作</li>
-<li>HttpSessionListener: 可以统计HttpSession对象的个数，分析某个时间段同时在线的人数</li>
-<li>ServletRequestListener: 可以统计每个页面的访问次数</li>
-<li>HttpSessionAttributeListener: 显示在线用户列表,session.setAttribute(“user”,user);</li>
-<li>ServletContextAttributeListener</li>
-<li>ServletRequestAttributeListener</li>
-<li>HttpSessionBindingListener: 监测何时随着HttpSession绑定和解绑</li>
-<li>HttpSessionActivationListener: 监测何时随着HttpSession激活和钝化</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;HttpServlet&quot;&gt;&lt;a href=&quot;#HttpServlet&quot; class=&quot;headerlink&quot; title=&quot;HttpServlet&quot;&gt;&lt;/a&gt;HttpServlet&lt;/h3&gt;&lt;p&gt;一、HttpServlet首先必须读取Http请求的内容。Servl
-    
-    </summary>
-    
-      <category term="J2EE" scheme="http://xinli90.com/categories/J2EE/"/>
-    
-    
-      <category term="J2EE" scheme="http://xinli90.com/tags/J2EE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Implement strStr()</title>
-    <link href="http://xinli90.com/2016/09/08/Implement-strStr/"/>
-    <id>http://xinli90.com/2016/09/08/Implement-strStr/</id>
-    <published>2016-09-08T19:30:00.000Z</published>
-    <updated>2016-09-13T20:09:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="external">Leetcode- Implement strStr()</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Implement strStr().</p>
-<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>This question test how to use indexOf() in String.</p>
-<h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Using subString() method. Iterate the array and compare needle with substring of haystack.</li>
-<li>Time complexity is O(k(n-k))</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Iterate the array and compare each character with needle.</li>
-<li>The worest time complexity is O(k(n-k))</li>
-</ol>
-<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><p>KMP, time complexity is O(n)</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> <span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">     <span class="keyword">public</span> <span class="keyword">int</span> strStr(<span class="keyword">String</span> haystack, <span class="keyword">String</span> needle) &#123;</div><div class="line">    	<span class="keyword">int</span> hayStackSize =  haystack.length();</div><div class="line">    	<span class="keyword">int</span> needleSize = needle.length();</div><div class="line">    	<span class="built_in">if</span>(hayStackSize&lt;needleSize) <span class="built_in">return</span> <span class="number">-1</span>;</div><div class="line">    	<span class="built_in">else</span> <span class="built_in">if</span>(needleSize==<span class="number">0</span>) <span class="built_in">return</span> <span class="number">0</span>;</div><div class="line">    	<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=hayStackSize-needleSize; i++) &#123;</div><div class="line">    		<span class="built_in">if</span>(haystack.subtring(i,i+needleSize).equals(needle)) <span class="built_in">return</span> i;</div><div class="line">    	&#125;</div><div class="line">    	<span class="built_in">return</span> <span class="number">-1</span>;;</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> strStr(<span class="keyword">String</span> haystack, <span class="keyword">String</span> needle) &#123;</div><div class="line">        <span class="keyword">int</span> hay_size = haystack.length();</div><div class="line">        <span class="keyword">int</span> nee_size = needle.length();</div><div class="line">        <span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;= hay_size-nee_size ; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j=<span class="number">0</span>;</div><div class="line">            <span class="built_in">while</span>(j&lt;nee_size &amp;&amp; haystack.charAt(i+j)==needle.charAt(j)) &#123;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">if</span>(j==nee_size) <span class="built_in">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/implement-strstr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode- Implement s
     
     </summary>
     

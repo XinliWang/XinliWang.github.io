@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-21T21:31:00.000Z</updated>
+  <updated>2016-09-21T23:00:59.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Majority Element</title>
+    <link href="http://xinli90.com/2016/09/21/Majority-Element/"/>
+    <id>http://xinli90.com/2016/09/21/Majority-Element/</id>
+    <published>2016-09-21T22:44:12.000Z</published>
+    <updated>2016-09-21T23:00:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/majority-element/" target="_blank" rel="external">Leetcode-Majority Element</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.</p>
+<p>You may assume that the array is non-empty and the majority element always exist in the array.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Sort the array, the majority element must appear in the middle.   </li>
+<li>Time Complexity is O(nlgn)</li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Use HashMap to count all elements.</li>
+<li>get the value which is greater than ⌊ n/2 ⌋ times.</li>
+</ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
+<li>Track the count, only if the element that appears more than ⌊ n/2 ⌋ times can make count is greater than 0.</li>
+<li>Time Complexity is O(n),Space Complexity is O(1)</li>
+</ol>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> majorityElement(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        <span class="keyword">return</span> nums[nums.length/<span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution3</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> majorityElement(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span>=<span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> majority = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</div><div class="line">			<span class="keyword">if</span>(<span class="keyword">count</span>==<span class="number">0</span>)&#123;</div><div class="line">				majority = num;</div><div class="line">				<span class="keyword">count</span>++</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(majority==nums[i]) &#123;</div><div class="line">				<span class="keyword">count</span>++;</div><div class="line">			&#125;<span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">count</span>--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> majority;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/majority-element/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Majority Ele
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ZigZag Conversion</title>
+    <link href="http://xinli90.com/2016/09/21/ZigZag-Conversion/"/>
+    <id>http://xinli90.com/2016/09/21/ZigZag-Conversion/</id>
+    <published>2016-09-21T21:52:51.000Z</published>
+    <updated>2016-09-21T22:38:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="external">Leetcode-ZigZag Conversion</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   <span class="keyword">N</span></div><div class="line">A P L S <span class="keyword">I</span> <span class="keyword">I</span> G</div><div class="line">Y   <span class="keyword">I</span>   R</div></pre></td></tr></table></figure>
+<p>And then read line by line: “PAHNAPLSIIGYIR”      </p>
+<p>Write the code that will take a string and make this conversion given a number of rows:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> text, <span class="keyword">int</span> nRows)</span></span>;</div></pre></td></tr></table></figure>
+<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Create nRows StringBuffers, and keep collecting characters from original string to corresponding StringBuffer.  </p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String convert(String s, <span class="keyword">int</span> numRows) &#123;</div><div class="line">    	StringBuilder[] sb = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">    	<span class="keyword">int</span> <span class="keyword">index</span>=<span class="number">0</span>;</div><div class="line">    	<span class="keyword">char</span>[] arr = s.toCharArray();</div><div class="line">    	<span class="keyword">while</span>(<span class="keyword">index</span> &lt; s.length()) &#123;</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numRows &amp;&amp; <span class="keyword">index</span>&lt;s.length(); i++) &#123;</div><div class="line">    			sb[i].append(arr[<span class="keyword">index</span>++]);</div><div class="line">    		&#125;</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> j=numRows<span class="number">-2</span>; j&gt;=<span class="number">1</span> &amp;&amp; <span class="keyword">index</span>&lt;s.length(); j--) &#123;</div><div class="line">    			sb[j].append(arr[<span class="keyword">index</span>++]);</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;numRows; i++) &#123;</div><div class="line">    		sb[<span class="number">0</span>].append(sb[i]);</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/zigzag-conversion/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-ZigZag Conv
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Excel Sheet Column Title</title>
@@ -592,74 +659,6 @@
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/triangle/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Triangle&lt;/a&gt;.&lt;/p&gt;
 &lt;h
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Number of Islands</title>
-    <link href="http://xinli90.com/2016/09/16/Number-of-Islands/"/>
-    <id>http://xinli90.com/2016/09/16/Number-of-Islands/</id>
-    <published>2016-09-17T03:13:32.000Z</published>
-    <updated>2016-09-17T03:46:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="external">Leetcode-Number of Islands</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-<p>Example 1:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">11110</span></div><div class="line"><span class="number">11010</span></div><div class="line"><span class="number">11000</span></div><div class="line"><span class="number">00000</span></div></pre></td></tr></table></figure>
-<p>Answer: 1</p>
-<p>Example 2:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">11000</span></div><div class="line"><span class="number">11000</span></div><div class="line"><span class="number">00100</span></div><div class="line"><span class="number">00011</span></div></pre></td></tr></table></figure>
-<p>Answer: 3</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Recursively to check each cell when we find the ‘1’</li>
-<li>Just make the island disappear once a cell was found.</li>
-</ol>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">	public <span class="keyword">int</span> numIslands(char[][] <span class="keyword">grid</span>) &#123;</div><div class="line">		<span class="keyword">int</span> count=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">grid</span>.length; i++) &#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="keyword">grid</span>[<span class="number">0</span>].length; j++) &#123;</div><div class="line">				count++;</div><div class="line">				disappear(<span class="keyword">grid</span>,i,j);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> count;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private void disappear(char[][] <span class="keyword">grid</span>, <span class="keyword">int</span> i, <span class="keyword">int</span> j) &#123;</div><div class="line">		<span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=<span class="keyword">grid</span>.legnth || j&lt;<span class="number">0</span> || j&gt;=<span class="keyword">grid</span>[<span class="number">0</span>].length || <span class="keyword">grid</span>[i][j]==<span class="string">'0'</span>) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">grid</span>[i][j]==<span class="string">'1'</span>) <span class="keyword">grid</span>[i][j]=<span class="string">'0'</span>;</div><div class="line">		disappear(<span class="keyword">grid</span>,i<span class="number">-1</span>,j);</div><div class="line">		disappear(<span class="keyword">grid</span>,i+<span class="number">1</span>,j);</div><div class="line">		disappear(<span class="keyword">grid</span>,i,j<span class="number">-1</span>);</div><div class="line">		disappear(<span class="keyword">grid</span>,i,j+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/number-of-islands/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Number of I
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Add Binary</title>
-    <link href="http://xinli90.com/2016/09/16/Add-Binary/"/>
-    <id>http://xinli90.com/2016/09/16/Add-Binary/</id>
-    <published>2016-09-17T02:51:17.000Z</published>
-    <updated>2016-09-17T03:12:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/add-binary/" target="_blank" rel="external">Leetcode-Add Binary</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two binary strings, return their sum (also a binary string).     </p>
-<p>For example,<br>a = “11”<br>b = “1”<br>Return “100”.     </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Set a flag to track if we have the carry.</li>
-<li>Each time we use a and b with the same index together and plus flag to calculate which number we should to add into String.  </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Similar with Solution1, but combine all while loops together.</li>
-<li>We can use StringBuilder.inset(0,num) method instead of String operation.</li>
-</ol>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String addBinary(String a, String b) &#123;</div><div class="line">        <span class="keyword">int</span> a_index = a.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> b_index = b.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">        String result=<span class="string">""</span>;</div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span> &amp;&amp; b_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a.charAt(a_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> bInt = b.charAt(b_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + bInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            a_index--;</div><div class="line">            b_index--;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a.charAt(a_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            a_index--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(b_index &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> bInt = b.charAt(b_index)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = bInt + flag;</div><div class="line">            result = (<span class="keyword">sum</span>%<span class="number">2</span>) + result;</div><div class="line">            flag = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">            b_index--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> flag==<span class="number">1</span>? <span class="string">"1"</span>+result : result;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String addBinary(String a, String b) &#123;</div><div class="line">        <span class="keyword">int</span> a_index = a.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> b_index = b.length()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        StringBuilder sb=<span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">while</span>(a_index &gt;= <span class="number">0</span> || b_index &gt;= <span class="number">0</span> || carry==<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> aInt = a_index &lt; <span class="number">0</span>? <span class="number">0</span> : a.charAt(a_index--)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> bInt = b_index &lt; <span class="number">0</span>? <span class="number">0</span> : b.charAt(b_index--)-<span class="string">'0'</span>;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = aInt + bInt + flag;</div><div class="line">            sb.insert(<span class="number">0</span>, <span class="keyword">sum</span>%<span class="number">2</span>);</div><div class="line">            carry = <span class="keyword">sum</span>/<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/add-binary/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Add Binary&lt;/a&gt;.&lt;/p
     
     </summary>
     

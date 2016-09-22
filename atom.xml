@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-21T23:00:59.000Z</updated>
+  <updated>2016-09-22T00:32:18.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reverse Integer</title>
+    <link href="http://xinli90.com/2016/09/21/Reverse-Integer/"/>
+    <id>http://xinli90.com/2016/09/21/Reverse-Integer/</id>
+    <published>2016-09-21T23:03:14.000Z</published>
+    <updated>2016-09-22T00:32:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="external">Leetcode-Reverse Integer</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Reverse digits of an integer.</p>
+<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321     </p>
+<p>click to show spoilers.      </p>
+<p>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!       </p>
+<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
+<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
+<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<p>Update (2014-11-10):<br>Test cases had been added to test the overflow behavior.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Reverse as usual but maintain the last digit in order not to overflow.(don’t add it)  </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>when the overflow happens, newResult will have garbage value</li>
+<li>We cannot get back to the original value, then we can use the equal method</li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    public <span class="built_in">int</span> reverse(<span class="built_in">int</span> x) &#123;</div><div class="line">    	<span class="comment">//to avoid negative number overflow when invert to positive number</span></div><div class="line">    	<span class="keyword">if</span>(x==Integer.MIN_VALUE) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = x&gt;<span class="number">0</span>? x : -x;</div><div class="line">        <span class="built_in">int</span> y = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">num</span>&gt;=<span class="number">10</span>)&#123;</div><div class="line">        	y = y*<span class="number">10</span> + <span class="built_in">num</span>%<span class="number">10</span>;</div><div class="line">        	<span class="built_in">num</span> /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span>(x&gt;<span class="number">0</span>) &#123;</div><div class="line">        	<span class="built_in">int</span> compare = Integer.MAX_VALUE/<span class="number">10</span>;</div><div class="line">        	<span class="keyword">if</span>(y&lt;compare)&#123;</div><div class="line">        		result = y*<span class="number">10</span>+<span class="built_in">num</span>;</div><div class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(y==compare) &#123;</div><div class="line">        		result = Integer.MAX_VALUE%<span class="number">10</span>&gt;<span class="built_in">num</span>? y*<span class="number">10</span>+<span class="built_in">num</span> : <span class="number">0</span>;</div><div class="line">        	&#125;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">        	<span class="built_in">int</span> compare = Integer.MIN_VALUE/<span class="number">10</span>;</div><div class="line">        	<span class="keyword">if</span>(y&lt;-compare)&#123;</div><div class="line">        		result = -(y*<span class="number">10</span>+<span class="built_in">num</span>);</div><div class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(y==-compare) &#123;</div><div class="line">        		result = Integer.MIN_VALUE%<span class="number">10</span>&lt;-<span class="built_in">num</span>? -(y*<span class="number">10</span>+<span class="built_in">num</span>) : <span class="number">0</span>;</div><div class="line">        	&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	public <span class="built_in">int</span> reverse(<span class="built_in">int</span> x) &#123;</div><div class="line">		<span class="built_in">int</span> result = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(x!=<span class="number">0</span>) &#123;</div><div class="line">			<span class="built_in">int</span> tail = x%<span class="number">10</span>;</div><div class="line">			<span class="built_in">int</span> newResult = result*<span class="number">10</span> + tail;</div><div class="line">			<span class="keyword">if</span>((newResult-tail)/<span class="number">10</span> != result) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">			result = newResult;</div><div class="line">			x /= <span class="number">10</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/reverse-integer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Reverse Integ
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Majority Element</title>
@@ -624,41 +662,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/minimum-path-sum/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Minimum Path
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Triangle</title>
-    <link href="http://xinli90.com/2016/09/18/Triangle/"/>
-    <id>http://xinli90.com/2016/09/18/Triangle/</id>
-    <published>2016-09-18T20:22:16.000Z</published>
-    <updated>2016-09-18T22:23:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/triangle/" target="_blank" rel="external">Leetcode-Triangle</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
-<p>For example, given the following triangle</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">     [<span class="number">2</span>],</div><div class="line">    [<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">   [<span class="number">6</span>,<span class="number">5</span>,<span class="number">7</span>],</div><div class="line">  [<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">3</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</p>
-<p>Note:<br>Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
-<li>State: f[i][j] represents 到达第i行第j列为止所达到的path sum 最小</li>
-<li>Function: f[i][j] = MIN(f[i-1][j],f[i-1][j-1])+triangle[i][j], j&lt;=i</li>
-<li>Initialization: f[0][0] = triangle[0][0];f[i][0]=f[i-1][0]+triangle[i][0];f[i][i]=f[i-1][i-1]+triangle[i][i]</li>
-<li>Answer: f[list.length-1][j]</li>
-</ul>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">int</span> minimumTotal(List&lt;List&lt;Integer&gt;&gt; <span class="built_in">triangle</span>) &#123;</div><div class="line">        <span class="built_in">int</span> n = <span class="built_in">triangle</span>.<span class="built_in">size</span>();</div><div class="line">        <span class="built_in">int</span>[][] f = <span class="keyword">new</span> <span class="built_in">int</span>[n][n];</div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MAX_VALUE;</div><div class="line">        </div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="built_in">triangle</span>.<span class="built_in">get</span>(<span class="number">0</span>).<span class="built_in">get</span>(<span class="number">0</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>; i&lt;n;i++)&#123;</div><div class="line">            f[i][<span class="number">0</span>] = f[i<span class="number">-1</span>][<span class="number">0</span>]+<span class="built_in">triangle</span>.<span class="built_in">get</span>(i).<span class="built_in">get</span>(<span class="number">0</span>);</div><div class="line">            f[i][i] = f[i<span class="number">-1</span>][i<span class="number">-1</span>]+<span class="built_in">triangle</span>.<span class="built_in">get</span>(i).<span class="built_in">get</span>(i);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="built_in">int</span> j=<span class="number">1</span>; j&lt;i; j++) &#123;</div><div class="line">                f[i][j] = Math.<span class="built_in">min</span>(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j<span class="number">-1</span>])+<span class="built_in">triangle</span>.<span class="built_in">get</span>(i).<span class="built_in">get</span>(j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</div><div class="line">            <span class="built_in">min</span> = Math.<span class="built_in">min</span>(<span class="built_in">min</span>,f[n<span class="number">-1</span>][j]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">min</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/triangle/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Triangle&lt;/a&gt;.&lt;/p&gt;
-&lt;h
     
     </summary>
     

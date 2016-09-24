@@ -84,7 +84,7 @@
     <link href="http://xinli90.com/2016/09/21/Day13-Tradeoff-of-Different-Language/"/>
     <id>http://xinli90.com/2016/09/21/Day13-Tradeoff-of-Different-Language/</id>
     <published>2016-09-22T01:37:49.000Z</published>
-    <updated>2016-09-22T03:03:47.000Z</updated>
+    <updated>2016-09-23T04:46:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>本篇是关于各种语言特性的区别以及技术栈的选择</p>
 <h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
@@ -93,14 +93,41 @@
 <li>比较其优缺点</li>
 </ul>
 <h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
-<li>JAVA</li>
-<li>C++</li>
-<li>PHP</li>
-<li>Ruby on Rails</li>
-<li>Python</li>
-<li>JavaScript</li>
+<li>JAVA: Strongly-typed language, have the garbage collection mechanism.</li>
+<li>C++: similar to JAVA, but no garbage collection mechanism.</li>
+<li>PHP: similar syntax, dynamic script programming</li>
+<li>Ruby on Rails: Ruby is a web framework. We write it using Rails language. It’s hard to learn.</li>
+<li>Python: Very easy to learn. It’s very convenient to handle data and crawl web page.</li>
+<li>JavaScript: We can use both frontend and backend, AngularJS for frontend and NodeJS for backend.</li>
 </ul>
-<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="JAVA中的-“-”-用法"><a href="#JAVA中的-“-”-用法" class="headerlink" title="JAVA中的 “@” 用法"></a>JAVA中的 “@” 用法</h3><h3 id="Strong-Type-Programming-and-Weak-Type-Programming"><a href="#Strong-Type-Programming-and-Weak-Type-Programming" class="headerlink" title="Strong Type Programming and Weak Type Programming"></a>Strong Type Programming and Weak Type Programming</h3><h3 id="Dynamic-Programming-and-Static-Programming"><a href="#Dynamic-Programming-and-Static-Programming" class="headerlink" title="Dynamic Programming and Static Programming"></a>Dynamic Programming and Static Programming</h3>]]></content>
+<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="JAVA中的-“-”-用法"><a href="#JAVA中的-“-”-用法" class="headerlink" title="JAVA中的 “@” 用法"></a>JAVA中的 “@” 用法</h3><h3 id="Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language"><a href="#Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language" class="headerlink" title="Strongly vs. Weakly and Dynamicly vs. Staticly type language"></a>Strongly vs. Weakly and Dynamicly vs. Staticly type language</h3><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Strongly</th>
+<th>Weakly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dynamically</td>
+<td>Ruby, Python, Groovy</td>
+<td>PHP, JavaScript, VBScript</td>
+</tr>
+<tr>
+<td>Statically</td>
+<td>JAVA, C#, Scala, Haskel</td>
+<td>C, C++</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Staticly typed: A language in which types are fixed at compile time. Most statically typed languages enforce this by requiring you to declare all variables with their datatypes before using them. 即编译的时候知道每个变量的类型，因为类型错误而不能做的事情是语法错误。</li>
+<li>Dynamicly typed: A language in which types are discovered at execution time. 即编译的时候不知道每一个变量的类型，因为类型错误而不能做的事情是运行时错误。</li>
+<li>Strongly typed: 一个变量不进行强制转换，它永远是这个数据类型，不允许隐式的类型转换。</li>
+<li>Weekly typed:与强类型语言定义相反，允许编译器进行隐式的类型转换</li>
+</ol>
+<h3 id="J2EE-vs-PHP-Framework"><a href="#J2EE-vs-PHP-Framework" class="headerlink" title="J2EE vs. PHP Framework"></a>J2EE vs. PHP Framework</h3>]]></content>
     
     <summary type="html">
     

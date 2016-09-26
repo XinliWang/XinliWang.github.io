@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title><![CDATA[Day14 Introduction to AWS]]></title>
+      <url>http://xinli90.com/2016/09/25/Day14-Introduction-to-AWS/</url>
+      <content type="html"><![CDATA[<p>本篇是关于各种语言特性的区别以及技术栈的选择</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>回忆各服务特性</li>
+<li>总结服务特性，并总结用法</li>
+</ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
+<li>EC2: Elastic Compute Cloud, 虚拟云服务器，为了程序运算。</li>
+<li>S3: Simple Storage Service, 存放静态数据。</li>
+<li>Elastic Beanstalk: 为了部署各种服务，提供监控。</li>
+<li>AWS RDS: AWS Rational Database Service,AWS MySql数据库。</li>
+<li>SQS: Simple Queue Service, 可以无限数量的接收和发送message。</li>
+<li>SNS: Simple Notification Service, 可以实现通知功能。</li>
+<li>ELB: Elastic Load Balancing,实现负载均衡。</li>
+</ul>
+<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="Compute"><a href="#Compute" class="headerlink" title="Compute"></a>Compute</h3><ol>
+<li><code>EC2</code>: Elastic Compute Cloud. It is a web service that provide resizable compute capacity in the cloud. It’s a vitual server in the AWS cloud.</li>
+<li><code>EC2 Container Service</code>: 可以放置整个Docker集群，对其进行管理。</li>
+<li><code>AWS Lambda</code>: 计算服务，采用事件响应机制,可以快速处理缩略图。As an event-driven compute service where AWS Lambda runs your code in response to events. We use for Real-time file processing, real-time stream processing</li>
+<li><code>Elastic Beanstalk</code>: It’s for deploying and scaling web applications and service(Run and manage other AWS services). Simply upload the code and Elastic Beanstalk will set up an “environment” to contain number of EC2 instances,database and automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring.</li>
+</ol>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><ol>
+<li><code>S3</code>: Simple Storage Service, it provides secure, durable and highly-scalable cloud storage. It is easy to use object storage and can store very large objects. It’s typically used for storing images, videos, logs and other types of files. It’s a file system.</li>
+</ol>
+<h3 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h3><ol>
+<li><code>RDS</code>: Relational Database Service. It’s used for managing the rational database.</li>
+<li><code>DynamoDB</code>: Manage the NoSQL Database.</li>
+</ol>
+<h3 id="Application-Service"><a href="#Application-Service" class="headerlink" title="Application Service"></a>Application Service</h3><ol>
+<li><code>SQS</code>: Simple Queue Service. It’s a distributed queuing system. It was designed to enbale an unlimited number of messaging services to read and write an unlimited number of messages at any time. 你必须要先获取message到queue,才能写出和处理。</li>
+</ol>
+<h3 id="Mobile-Services"><a href="#Mobile-Services" class="headerlink" title="Mobile Services"></a>Mobile Services</h3><ol>
+<li><code>SNS</code>:Simple Notification Service. It is a distributed publish-subscribe system. You can send individual messages or to bulk messages to large numbers of recipients. SNS supports several endpoints such as email, sms, http end point and SQS. 如果你不知道需要发给多少人信息，可以使用SNS.</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Longest Common Prefix]]></title>
       <url>http://xinli90.com/2016/09/22/Longest-Common-Prefix/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/longest-common-prefix/" target="_blank" rel="external">Leetcode-Longest Common Prefix</a>.</p>
@@ -52,7 +91,8 @@
 <li>Python: Very easy to learn. It’s very convenient to handle data and crawl web page.</li>
 <li>JavaScript: We can use both frontend and backend, AngularJS for frontend and NodeJS for backend.</li>
 </ul>
-<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="JAVA中的-“-”-用法"><a href="#JAVA中的-“-”-用法" class="headerlink" title="JAVA中的 “@” 用法"></a>JAVA中的 “@” 用法</h3><h3 id="Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language"><a href="#Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language" class="headerlink" title="Strongly vs. Weakly and Dynamicly vs. Staticly type language"></a>Strongly vs. Weakly and Dynamicly vs. Staticly type language</h3><table>
+<h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="JAVA中的-“-”-用法"><a href="#JAVA中的-“-”-用法" class="headerlink" title="JAVA中的 “@” 用法"></a>JAVA中的 “@” 用法</h3><p>Annotations are a form of metadata added to a JAVA source file. It’s primarily used by code that is inpecting other code. They are often used for modifying existing classes at run-time to change their behavior. Frameworks such as JUnit and Hibernate use annotation to minimize the amount of code you need to write youself to use the frameworks.</p>
+<h3 id="Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language"><a href="#Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language" class="headerlink" title="Strongly vs. Weakly and Dynamicly vs. Staticly type language"></a>Strongly vs. Weakly and Dynamicly vs. Staticly type language</h3><table>
 <thead>
 <tr>
 <th>Type</th>
@@ -79,7 +119,23 @@
 <li>Strongly typed: 一个变量不进行强制转换，它永远是这个数据类型，不允许隐式的类型转换。</li>
 <li>Weekly typed:与强类型语言定义相反，允许编译器进行隐式的类型转换</li>
 </ol>
-<h3 id="J2EE-vs-PHP-Framework"><a href="#J2EE-vs-PHP-Framework" class="headerlink" title="J2EE vs. PHP Framework"></a>J2EE vs. PHP Framework</h3>]]></content>
+<h3 id="J2EE-vs-PHP-Framework"><a href="#J2EE-vs-PHP-Framework" class="headerlink" title="J2EE vs. PHP Framework"></a>J2EE vs. PHP Framework</h3><ol>
+<li>J2EE: is a bunch of standards that can be used for a lot of stuff. Java has more functionality and security than PHP. J2EE is going to expensive, complex to set-up and maintain, and difficult to code. J2EE handles Transaction very well, easy, and simple configuration;2.It can handle multi thread;Many Hardware appliance (for example Cisco) have build-in Java API, rather than PHP API.</li>
+<li>PHP: is a scripting language. PHP is very easy to use with any framework like CodeIgniter or YII. If you need to quickly build website with more forms-validation-database interaction, PHP is the answer. </li>
+</ol>
+<h3 id="Python-vs-JAVA"><a href="#Python-vs-JAVA" class="headerlink" title="Python vs. JAVA"></a>Python vs. JAVA</h3><ol>
+<li>Java creates applications that work across various platforms(complie once, run everywhere), while Python does not.</li>
+<li>Java programs tend to run slower compared to Python pragrams.</li>
+<li>Java uses traditional braces to start and end blocks, while Python uses indentation.</li>
+<li>Java is statically typed and strongly typed language, while Python is dynamically and strongly typed language.</li>
+<li>Python is simpler and more compact compared to JAVA.</li>
+<li>Java runs faster than Python.</li>
+</ol>
+<h3 id="PHP-vs-Ruby-on-rails"><a href="#PHP-vs-Ruby-on-rails" class="headerlink" title="PHP vs. Ruby on rails"></a>PHP vs. Ruby on rails</h3><ol>
+<li>PHP: PHP is simple and relatively shallow learning curve. PHP is really focused entirely for the web. It’s not a general purpose programming language like Ruby,Python,JAVA. Many hosting services just use a LAMP enviroment(Linux,Apache,MySql,PHP), so as long as your files are in place they just run and that’s it.</li>
+<li>Ruby on Rails: Rebu on Rails is a web development framework based on the scripting language Ruby. It actually has a deep learning curve. It has Generators/Scaffolding features. The rails community provides a wealth of plygins as Ruby Gems that you simply add to the project Gemfile and install. THe active record ORM is simply the best. Rails has a testing framework that can be used. Unlike PHP, it really is Object Oriented from the ground up.</li>
+</ol>
+]]></content>
     </entry>
     
     <entry>

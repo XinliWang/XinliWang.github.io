@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-25T16:54:36.000Z</updated>
+  <updated>2016-09-26T04:13:19.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Recover Binary Search Tree</title>
+    <link href="http://xinli90.com/2016/09/25/Recover-Binary-Search-Tree/"/>
+    <id>http://xinli90.com/2016/09/25/Recover-Binary-Search-Tree/</id>
+    <published>2016-09-26T00:59:40.000Z</published>
+    <updated>2016-09-26T04:13:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/recover-binary-search-tree/" target="_blank" rel="external">Leetcode-Recover Binary Search Tree</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Two elements of a binary search tree (BST) are swapped by mistake.</p>
+<p>Recover the tree without changing its structure.   </p>
+<p>Note:<br>A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?    </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-Recursive-solution"><a href="#Solution1-Recursive-solution" class="headerlink" title="Solution1: Recursive solution."></a>Solution1: Recursive solution.</h4><p>Inorder Traversal, if left child node is greater than root or rihgt child node is less than root. They would be the mistake elements.  </p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	TreeNode firstNode = <span class="literal">null</span>;</div><div class="line">	TreeNode secondNode = <span class="literal">null</span>;</div><div class="line">	TreeNode preNode = new TreeNode(Integer.MIN_VALUE);</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> void recoverTree(TreeNode root) &#123;</div><div class="line">		traversal(root);</div><div class="line">		int temp = firstNode.<span class="keyword">val</span>;</div><div class="line">		firstNode.<span class="keyword">val</span> = secondNode.<span class="keyword">val</span>;</div><div class="line">		secondNode.<span class="keyword">val</span> = temp;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	purivate void traversal(TreeNode root)&#123;</div><div class="line">		<span class="keyword">if</span>(root==<span class="literal">null</span>) <span class="keyword">return</span>;</div><div class="line">		traversal(root.left);</div><div class="line">		<span class="keyword">if</span>(firstNode==<span class="literal">null</span> &amp;&amp; preNode.<span class="keyword">val</span>&gt;=root.<span class="keyword">val</span>) &#123;</div><div class="line">			firstNode = preNode;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(firstNode!=<span class="literal">null</span> &amp;&amp; preNode.<span class="keyword">val</span>&gt;=root.<span class="keyword">val</span>) &#123;</div><div class="line">			secondNode = root;</div><div class="line">		&#125;</div><div class="line">		preNode = root;</div><div class="line">		traversal(root.right);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/recover-binary-search-tree/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Re
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Day14 Introduction to AWS</title>
@@ -142,7 +169,7 @@
     <link href="http://xinli90.com/2016/09/21/Day13-Tradeoff-of-Different-Language/"/>
     <id>http://xinli90.com/2016/09/21/Day13-Tradeoff-of-Different-Language/</id>
     <published>2016-09-22T01:37:49.000Z</published>
-    <updated>2016-09-26T00:33:46.000Z</updated>
+    <updated>2016-09-26T00:39:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>本篇是关于各种语言特性的区别以及技术栈的选择</p>
 <h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
@@ -159,6 +186,7 @@
 <li>JavaScript: We can use both frontend and backend, AngularJS for frontend and NodeJS for backend.</li>
 </ul>
 <h2 id="学习后总结："><a href="#学习后总结：" class="headerlink" title="学习后总结："></a>学习后总结：</h2><h3 id="JAVA中的-“-”-用法"><a href="#JAVA中的-“-”-用法" class="headerlink" title="JAVA中的 “@” 用法"></a>JAVA中的 “@” 用法</h3><p>Annotations are a form of metadata added to a JAVA source file. It’s primarily used by code that is inpecting other code. They are often used for modifying existing classes at run-time to change their behavior. Frameworks such as JUnit and Hibernate use annotation to minimize the amount of code you need to write youself to use the frameworks.</p>
+<p>参考：<a href="http://www.importnew.com/10294.html" target="_blank" rel="external">http://www.importnew.com/10294.html</a></p>
 <h3 id="Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language"><a href="#Strongly-vs-Weakly-and-Dynamicly-vs-Staticly-type-language" class="headerlink" title="Strongly vs. Weakly and Dynamicly vs. Staticly type language"></a>Strongly vs. Weakly and Dynamicly vs. Staticly type language</h3><table>
 <thead>
 <tr>
@@ -709,35 +737,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/palindrome-partitioning-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Pa
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Palindrome Partitioning</title>
-    <link href="http://xinli90.com/2016/09/19/Palindrome-Partitioning/"/>
-    <id>http://xinli90.com/2016/09/19/Palindrome-Partitioning/</id>
-    <published>2016-09-19T14:08:01.000Z</published>
-    <updated>2016-09-19T15:09:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/palindrome-partitioning/" target="_blank" rel="external">Leetcode-Palindrome Partitioning</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return all possible palindrome partitioning of s.</p>
-<p>For example, given s = “aab”,     </p>
-<p>Return</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  [<span class="string">"aa"</span>,<span class="string">"b"</span>],</div><div class="line">  [<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="string">"b"</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Backtracking</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class Solution &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">List</span>&lt;<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;&gt; partition(<span class="built_in">String</span> s) &#123;</div><div class="line">		<span class="built_in">List</span>&lt;<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;&gt; lists = <span class="literal">new</span> ArrayList&lt;&gt;();</div><div class="line">		<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; <span class="built_in">list</span> = <span class="literal">new</span> ArrayList&lt;&gt;();</div><div class="line">		helper(s,<span class="number">0</span>,lists,<span class="built_in">list</span>);</div><div class="line">		<span class="keyword">return</span> lists;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="literal">void</span> helper(<span class="built_in">String</span> s, int start, <span class="built_in">List</span>&lt;<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;&gt; lists,<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; <span class="built_in">list</span>) &#123;</div><div class="line">		<span class="keyword">if</span>(index==s.length()) &#123;</div><div class="line">			lists.add(<span class="literal">new</span> ArrayList&lt;<span class="built_in">String</span>&gt;(<span class="built_in">list</span>));</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">		for(int i=start; i&lt;s.length(); i++) &#123;</div><div class="line">			<span class="keyword">if</span>(isPalindrome(s,start,i)) &#123;</div><div class="line">				<span class="built_in">list</span>.add(s.substring(start,i+<span class="number">1</span>));</div><div class="line">				helper(s,i+<span class="number">1</span>,lists,<span class="built_in">list</span>);</div><div class="line">				<span class="built_in">list</span>.remove(<span class="built_in">list</span>.size()<span class="number">-1</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">private</span> <span class="built_in">boolean</span> isPalindrome(<span class="built_in">String</span> p,int left,int right) &#123;</div><div class="line">        <span class="keyword">while</span>(left&lt;right) &#123;</div><div class="line">            <span class="keyword">if</span>(p.charAt(left++) != p.charAt(right--))&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/palindrome-partitioning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Palin
     
     </summary>
     

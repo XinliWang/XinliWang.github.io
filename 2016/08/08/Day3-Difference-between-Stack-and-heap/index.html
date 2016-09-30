@@ -11,7 +11,7 @@
 <h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><ul>
 <li>Where are the stack and heap stored : They both are stored in computer’s RAM(Random Access Memory). </li>
 <li>How do threads interact with them and how do them work in multithreading: Each thread has its own stack and multithreads shared with one heap. </li>
-<li>How long does memoery on the stack last versus memoery on the heap: In each thread, there are local variables in stack when the function is called and they are deleted automatically when the function end.  Since multithreads share with one heap, there are globle variables and objects storing in the heap. And if you want to delete some resource, you need deallocate it manully. For java, there is garbage collection mechanism to automatically delete memoery from the heap. If you don’t delete this object inside the function, it will end up with memory lead.</li>
+<li>How long does memoery on the stack last versus memoery on the heap: In each thread, there are local variables in stack when the function is called and they are deleted automatically when the function end.  Since multithreads share with one heap, there are globle variables and objects storing in the heap. And if you want to delete some resource, you need deallocate it manully. For java, there is garbage collection mechanism to automatically delete memoery from the heap. If you don’t delete this object inside the function, it will end up with memory leak.</li>
 <li>Can the stack and heap grow in size: Stack cannot grow in size. It is fixed when stack is created. If there are much more nested function or infinite recursive call, stack overflow will occur. Heap can grow in size based on the application requirement. When there are large number of data or you’re not sure how much data you need to store, you can store them into heap.</li>
 <li>Which is faster - the stack or the head: The stack is much faster than the heap. This is because of the way that memory is allocated in the stack. Allocating memory on the stack is as simple as moving the pointer up.</li>
 <li>What can go wrong with the stack and the heap: If stack runs out of memory, then this is called a stack overflow and could cause the program crash. The heap could have the problem of fragmentation, which occurs when the available memory on the heap is noncontiguous. But allocating new memory may be impossible because of the fact that even through there is enough memory for the desired allocation, there are not enough memoery in one big block for the desiged amount of memory. </li>
@@ -48,7 +48,7 @@
 <li>基本类型如int, long, double, long等，pass by value. 传递给其他形参之后如何修改都不会影响original value.     </li>
 <li>对象Object，是对象的引用pass by value，每次改变的是所指向的对象即一直指向不同的对象，除非直接修改该对象的内在成员变量的值，否则不会影响original object.     </li>
 <li>数组 跟 object 的情况类似，如果直接修改数组中的值，则会直接影响到。      </li>
-<li>That’s the reason why we should have a <code>private final in x;</code> when we don’t want the internal member variables are changed.</li>
+<li>That’s the reason why we should have a <code>private final int x;</code> when we don’t want the internal member variables are changed.</li>
 </ol>
 <p>参考：</p>
 <ol>
@@ -56,7 +56,7 @@
 <li><a href="http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value" target="_blank" rel="external">http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value</a>         </li>
 <li><a href="http://www.blogjava.net/heis/archive/2009/04/23/267256.html" target="_blank" rel="external">http://www.blogjava.net/heis/archive/2009/04/23/267256.html</a></li>
 </ol>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://xinli90.com/2016/08/08/Day3-Difference-between-Stack-and-heap/" data-id="citp0iam8001y55u06x031id0" class="article-share-link">Share</a><div class="tags"><a href="/tags/Seeking-Job/">Seeking Job</a></div><div class="post-nav"><a href="/2016/08/08/Day4-Difference-between-Comparator-and-Comparable/" class="pre">Day4 Difference between Comparator and Comparable</a><a href="/2016/08/07/Largest-Number/" class="next">Largest Number</a></div><div id="disqus_thread"><script>var disqus_shortname = 'xinli';
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://xinli90.com/2016/08/08/Day3-Difference-between-Stack-and-heap/" data-id="citp5cx0l001roju01gwh3wvp" class="article-share-link">Share</a><div class="tags"><a href="/tags/Seeking-Job/">Seeking Job</a></div><div class="post-nav"><a href="/2016/08/08/Day4-Difference-between-Comparator-and-Comparable/" class="pre">Day4 Difference between Comparator and Comparable</a><a href="/2016/08/07/Largest-Number/" class="next">Largest Number</a></div><div id="disqus_thread"><script>var disqus_shortname = 'xinli';
 var disqus_identifier = '2016/08/08/Day3-Difference-between-Stack-and-heap/';
 var disqus_title = 'Day3 Difference between Stack and heap';
 var disqus_url = 'http://xinli90.com/2016/08/08/Day3-Difference-between-Stack-and-heap/';

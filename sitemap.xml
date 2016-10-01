@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/08/22/Day9-Algorithm-about-Binary-Search-Tree/</loc>
+    
+    <lastmod>2016-10-01T03:25:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/08/08/Day3-Difference-between-Stack-and-heap/</loc>
     
     <lastmod>2016-09-30T02:24:32.000Z</lastmod>
@@ -509,13 +516,6 @@
     <loc>http://xinli90.com/2016/08/23/Flatten-Binary-Tree-to-Linked-List/</loc>
     
     <lastmod>2016-08-28T20:09:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/08/22/Day9-Algorithm-about-Binary-Search-Tree/</loc>
-    
-    <lastmod>2016-08-28T20:08:35.000Z</lastmod>
     
   </url>
   

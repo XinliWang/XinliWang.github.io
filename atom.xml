@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-09-26T04:13:19.000Z</updated>
+  <updated>2016-10-02T22:46:18.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Day15 HTTP</title>
+    <link href="http://xinli90.com/2016/10/02/Day15-HTTP/"/>
+    <id>http://xinli90.com/2016/10/02/Day15-HTTP/</id>
+    <published>2016-10-02T22:25:28.000Z</published>
+    <updated>2016-10-02T22:46:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇是关于HTTP协议原理和应用</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>回忆HTTP特性</li>
+<li>总结HTTP特性，并总结用法</li>
+</ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
+<li>在提交表单时有get和post方式，发出的http请求</li>
+<li>HTTP的状态码</li>
+<li>HTTP从发出请求到结束的全部过程</li>
+<li>HTTP和TCP/IP的区别</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇是关于HTTP协议原理和应用&lt;/p&gt;
+&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;回忆HTTP特性&lt;/li&gt;
+&lt;li&gt;总结HTTP特性，并总结用法
+    
+    </summary>
+    
+      <category term="AWS" scheme="http://xinli90.com/categories/AWS/"/>
+    
+    
+      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
+    
+  </entry>
   
   <entry>
     <title>Recover Binary Search Tree</title>
@@ -703,40 +739,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/valid-palindrome/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Valid Palind
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Palindrome Partitioning II</title>
-    <link href="http://xinli90.com/2016/09/19/Palindrome-Partitioning-II/"/>
-    <id>http://xinli90.com/2016/09/19/Palindrome-Partitioning-II/</id>
-    <published>2016-09-20T00:08:20.000Z</published>
-    <updated>2016-09-20T20:08:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/palindrome-partitioning-ii/" target="_blank" rel="external">Leetcode-Palindrome Partitioning II</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return the minimum cuts needed for a palindrome partitioning of s.</p>
-<p>For example, given s = “aab”,      </p>
-<p>Return 1 since the palindrome partitioning [“aa”,”b”] could be produced using 1 cut.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
-<li>State: f[i] represents the minimum cut in first i length of string</li>
-<li>Function: f[i] = MIN(f[j]+1) &amp;&amp; 拿到j的最小，第j+1到第i个能组成回文即为f[j]+1</li>
-<li>Initialize: f[i] = i-1,</li>
-<li>Answer: f[s.length()]</li>
-</ul>
-<p>We use a two dimentional array to record if each substring is palindrome</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> minCut(<span class="keyword">String</span> s) &#123;</div><div class="line">    	<span class="keyword">int</span> length = s.length();</div><div class="line">        <span class="keyword">int</span>[] f = <span class="keyword">new</span> <span class="keyword">int</span>[length];</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="keyword">boolean</span>[][] isPalindrome = getPalindrome(s);</div><div class="line">        <span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)&#123;</div><div class="line">        	f[i] = i<span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=length; i++) &#123;</div><div class="line">        	<span class="built_in">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; j++) &#123;</div><div class="line">        		<span class="built_in">if</span>(isPalindrome[j][i<span class="number">-1</span>]) &#123;</div><div class="line">        			f[i] = Math.<span class="built_in">min</span>(f[i],f[j]+<span class="number">1</span>);</div><div class="line">        		&#125;</div><div class="line">        	&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="built_in">return</span> f[length];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//row represents start, col represents end.</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[][] getPalindrome(<span class="keyword">String</span> s) &#123;</div><div class="line">    	<span class="keyword">int</span> length = s.length();</div><div class="line">    	<span class="keyword">boolean</span>[][] isPalindrome = <span class="keyword">new</span> <span class="keyword">boolean</span>[][];</div><div class="line">    	<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++) &#123;</div><div class="line">    		isPalindrome[i][i] = true;</div><div class="line">    	&#125;</div><div class="line">    	<span class="built_in">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length<span class="number">-1</span>; i++) &#123;</div><div class="line">    		isPalindrome[i][i+<span class="number">1</span>] = (s.charAt(i)==s.charAt(i+<span class="number">1</span>));</div><div class="line">    	&#125;</div><div class="line">    	<span class="comment">//record 1 length of substring,then 2... more and more to get the entire string.</span></div><div class="line">    	<span class="built_in">for</span>(<span class="keyword">int</span> <span class="built_in">size</span>=<span class="number">2</span>; <span class="built_in">size</span>&lt;length;<span class="built_in">size</span>++) &#123;</div><div class="line">    		<span class="built_in">for</span>(<span class="keyword">int</span> start=<span class="number">0</span>; start+<span class="built_in">size</span>&lt;length; start++) &#123;</div><div class="line">    			isPalindrome[start][start+<span class="built_in">size</span>] = isPalindrome[start+<span class="number">1</span>][start+<span class="built_in">size</span><span class="number">-1</span>]&amp;&amp;(s.charAt(start)==s.charAt(start+<span class="built_in">size</span>));</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    	<span class="built_in">return</span> isPalindrome;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/palindrome-partitioning-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Pa
     
     </summary>
     

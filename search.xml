@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[Day15 HTTP]]></title>
+      <url>http://xinli90.com/2016/10/02/Day15-HTTP/</url>
+      <content type="html"><![CDATA[<p>本篇是关于HTTP协议原理和应用</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>回忆HTTP特性</li>
+<li>总结HTTP特性，并总结用法</li>
+</ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
+<li>在提交表单时有get和post方式，发出的http请求</li>
+<li>HTTP的状态码</li>
+<li>HTTP从发出请求到结束的全部过程</li>
+<li>HTTP和TCP/IP的区别</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Recover Binary Search Tree]]></title>
       <url>http://xinli90.com/2016/09/25/Recover-Binary-Search-Tree/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/recover-binary-search-tree/" target="_blank" rel="external">Leetcode-Recover Binary Search Tree</a>.</p>

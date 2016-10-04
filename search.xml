@@ -17,7 +17,17 @@
 <li>HTTP从发出请求到结束的全部过程</li>
 <li>HTTP和TCP/IP的区别</li>
 </ul>
-<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3>]]></content>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3><p>在浏览器输入一个网址，然后回车，之后发生了什么：    </p>
+<ol>
+<li>首先查看浏览器自身、整个系统的DNS Caching中有没有访问过该网址，如果有，且没有过期则直接返回</li>
+<li>DNS域名解析（解析网址的IP地址）</li>
+<li>发起TCP/IP的3次握手</li>
+<li>建立TCP连接后发起HTTP请求</li>
+<li>服务器响应HTTP请求，浏览器得到HTML代码</li>
+<li>浏览器解析HTML代码，并请求HTML代码的资源（如js,css,图片等）</li>
+<li>浏览器对页面进行渲染呈现给用户</li>
+</ol>
+]]></content>
     </entry>
     
     <entry>

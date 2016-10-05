@@ -114,16 +114,51 @@
 <li>HTTP从发出请求到结束的全部过程</li>
 <li>HTTP和TCP/IP的区别</li>
 </ul>
-<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3><p>在浏览器输入一个网址，然后回车，之后发生了什么：    </p>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="一次完整的HTTP事务过程"><a href="#一次完整的HTTP事务过程" class="headerlink" title="一次完整的HTTP事务过程"></a>一次完整的HTTP事务过程</h3><p>Look at the steps below in a high level that occurs at the background when a user tried to access a website:<br>DNS Resulution -&gt; TCP HandShake -&gt; HTTP using the connection to exchange information between clint and server.</p>
+<p>在浏览器输入一个网址，然后回车，之后发生了什么：    </p>
 <ol>
 <li>首先查看浏览器自身、整个系统的DNS Caching中有没有访问过该网址，如果有，且没有过期则直接返回</li>
 <li>DNS域名解析（解析网址的IP地址）</li>
-<li>发起TCP/IP的3次握手</li>
-<li>建立TCP连接后发起HTTP请求</li>
-<li>服务器响应HTTP请求，浏览器得到HTML代码</li>
-<li>浏览器解析HTML代码，并请求HTML代码的资源（如js,css,图片等）</li>
+<li>浏览器以此IP地址向服务器发起TCP/IP的3次握手</li>
+<li>建立TCP连接后发起HTTP请求<ul>
+<li>这里HTTP请求可以使用GET(完整请求一个资源)，HEAD(仅请求响应首部),POST(提交表单),PUT(上传),DELETE(删除)</li>
+<li>URL: Uniform Resource Locator统一资源定位符； URI: Uniform Resource Identifier统一资源标识符</li>
+</ul>
+</li>
+<li>服务器响应HTTP请求，浏览器得到HTML代码<ul>
+<li>1xx : 信息性状态码 <ul>
+<li>100，101</li>
+</ul>
+</li>
+<li>2xx : 成功状态码 <ul>
+<li>200 : OK</li>
+</ul>
+</li>
+<li>3xx : 重定向状态码<ul>
+<li>301 : 永久重定向，location响应首部的值仍为当前URL</li>
+<li>302 : 临时重定向， 显示重定向，location响应首部的值为新的URL</li>
+<li>304 : Not Modified 未修改，缓存里有，直接使用本地资源即可</li>
+</ul>
+</li>
+<li>4xx : 客户端错误状态码<ul>
+<li>404 : Not Found 请求的URL资源不存在</li>
+</ul>
+</li>
+<li>5xx : 服务器错误状态码<ul>
+<li>500 : Internal Server Error 服务器内部错误</li>
+<li>502 : Bad Gateway 前面代理服务器联系不到后端的服务器时出现</li>
+<li>504 : Gateway Timeout 代理能联系到后端服务器，但后端服务器在规定时间内没有给代理服务器响应</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器解析HTML代码，并请求HTML代码的资源（如js,css,图片等),使用多线程向服务器端去请求下载，如果服务器返回304，则浏览器直接从本地读取该资源的缓存文件。 服务器端关闭连接。</li>
 <li>浏览器对页面进行渲染呈现给用户</li>
 </ol>
+<h3 id="Socket-TCP-IP-and-HTTP"><a href="#Socket-TCP-IP-and-HTTP" class="headerlink" title="Socket,TCP/IP and HTTP"></a>Socket,TCP/IP and HTTP</h3><p>TCP/IP是传输层协议Transport layer protocol，主要解决数据如何在网络中传输。</p>
+<p>Socket是对TCP/IP协议的封装，是长连接，一旦建立起来不会主动断掉，但也可能连接断开，比如 服务器或客户端主机down了，网络故障，两者之间长时间没有数据传输，防火墙断开该链接释放资源。</p>
+<p>HTTP是应用层协议Application layer protocol，主要解决如何包装数据。HTTP连接是短连接，客户端发送一次请求后，服务器端响应后即会断掉。</p>
+<p>Web 使用HTTP协议作应用层协议，以封装HTTP文本信息，然后使用TCP/IP做传输层协议将它发到网络上。Socket是对TCP/IP的封装，是一个API. HTTP works on top of TCP, TCP is in charge of setting up a reliable connection between two machines and HTTP uses this connection to transfer data between the server and client.  Without TCP, HTTP cannot function.</p>
 ]]></content>
     </entry>
     

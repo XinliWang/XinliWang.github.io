@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="google-site-verification" content="GY3xi-El9ePp4mSskpCuCNS4x4elE7wbFPe2eKCtS8Y"><title>Day16 Linux common operation | Xinli's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Day16 Linux common operation</h1><a id="logo" href="/.">Xinli's Blog</a><p class="description">Coding World</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Day16 Linux common operation</h1><div class="post-meta">Oct 4, 2016<span> | </span><span class="category"><a href="/categories/Linux/">Linux</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/10/04/Day16-Linux-common-operation/" href="/2016/10/04/Day16-Linux-common-operation/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#学习后总结"><span class="toc-number">1.</span> <span class="toc-text">学习后总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录操作命令"><span class="toc-number">1.1.</span> <span class="toc-text">文件目录操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息显示命令"><span class="toc-number">1.2.</span> <span class="toc-text">信息显示命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件压缩tar命令"><span class="toc-number">1.3.</span> <span class="toc-text">文件压缩tar命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VIM-的简单使用"><span class="toc-number">1.4.</span> <span class="toc-text">VIM 的简单使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件权限管理"><span class="toc-number">1.5.</span> <span class="toc-text">文件权限管理</span></a></li></ol></li></ol></div></div><div class="post-content"><p>本篇是关于Linux常用命令</p>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a>文件目录操作命令</h3><ul>
+<li>ls: 显示文件和目录列表<ul>
+<li>ls -l : 列出所有文件的详细信息</li>
+<li>ls -a : 列出当前目录的所有文件，包含隐藏文件</li>
+</ul>
+</li>
+<li>mkdir ** : 创建文件夹 (mkdir job)<ul>
+<li>mkdir -p <em>/*</em> :     创建多层文件夹</li>
+</ul>
+</li>
+<li>cd ** : 进入目录<ul>
+<li>cd - : 进入这个目录之前的那个目录 </li>
+</ul>
+</li>
+<li>touch **文件名 : 生成一个空文件 (touch s.text)</li>
+<li>echo ‘<em>内容’&gt; </em>文件名(带类型) : 生成一个带内容的文件 (echo ‘I love you’&gt;s.text)</li>
+<li>cat/tac **文件名 : 显示文本文件内容 (cat s.text)</li>
+<li>cp <em>文件名1(source file) </em>文件名2(target file): 复制文件或者目录，从一个文件到另一个文件(cp s.text d.text)<ul>
+<li>cp -r <strong>文件夹1 </strong>文件夹2 : 把一个文件夹及其里面所有文件复制到另一个文件夹，-r表示recursive (cp -r ss sa/)</li>
+</ul>
+</li>
+<li><p>rm **文件名 : 删除文件(rm s.text)</p>
+<ul>
+<li>rm -r **文件名 : 同时删除该目录下的所有文件</li>
+<li>rm -f **文件名 : 强制删除文件或目录 (rm -fr job)</li>
+</ul>
+</li>
+<li><p>mv 文件或文件夹1 文件夹2 : (mv aa bb)如果bb存在则把文件夹aa移动到bb文件夹下，如果bb不存在则把文件夹aa改名为bb</p>
+</li>
+<li>find 查找指定文件<ul>
+<li>find -name 文件名: 查找指定文件名的文件</li>
+<li>find -iname 文件名: 忽略大小写查找文件</li>
+</ul>
+</li>
+<li>wc 文件 : 统计文本文档的行数、字数、字符数（wc t.text）</li>
+<li>grep : 查找指定的文本文件中指定的字符串<ul>
+<li>grep -rsi 关键字 目录: (grep -rsni lvoe .)在当前目录下寻找关键字为lvoe的文件，显示行数，忽略大小写、错误拼写 </li>
+</ul>
+</li>
+<li>rmdir: 删除空目录 </li>
+<li>pwd: 显示当前工作目录</li>
+<li>more/less : 分页显示文本文件内容</li>
+<li>ln : 建立链接文件<ul>
+<li>ln -s 路径 代号: (ln -s cc/bb/aa/ ee) 保存cc/bb/aa/ 这个路径为ee，之后可以直接cd ee/进入</li>
+</ul>
+</li>
+</ul>
+<h3 id="信息显示命令"><a href="#信息显示命令" class="headerlink" title="信息显示命令"></a>信息显示命令</h3><ul>
+<li>stat 文件名 : 显示文件或者文件夹更详细的信息</li>
+<li>who : 显示在线登录用户</li>
+<li>whoami : 显示用户自己的身份</li>
+<li>hostname : 显示主机名称</li>
+<li>uname : 显示系统信息</li>
+<li>dmesg : 显示系统启动信息，通常权限不够需要使用sudo dmesg</li>
+<li>top : 显示当前系统中耗费资源最多的进程</li>
+<li>ps :  显示瞬间的进程状态</li>
+<li>du : 显示指定文件或目录已使用的磁盘空间总量<ul>
+<li>du -h : 显示具体占用多少MB</li>
+</ul>
+</li>
+<li>df : 显示文件系统磁盘空间的使用情况 </li>
+<li>ifconfig : 显示网络接口信息</li>
+<li>ping : 测试网络的连通性</li>
+<li>netstat : 显示网络状态信息</li>
+<li>man : 命令帮助信息查询</li>
+<li>clear : 清屏</li>
+</ul>
+<h3 id="文件压缩tar命令"><a href="#文件压缩tar命令" class="headerlink" title="文件压缩tar命令"></a>文件压缩tar命令</h3><p>tar -cxzjvf:  </p>
+<ol>
+<li>-c : 压缩文件</li>
+<li>-x : 解压文件</li>
+<li>-z : 是否需要gzip压缩</li>
+<li>-j : 是否需要bzip2压缩</li>
+<li>-v : 压缩过程中显示文件</li>
+<li>-f : 使用档名</li>
+<li>-tf : 查看归档文件里面的文件</li>
+</ol>
+<p>tar -zxvf aaa.tar.gz : 解压文件aaa.tar.gz到当前文件夹.<br>tar -czvf aaa.tar.gz aaa/ : 压缩文件夹aaa为aaa.tar.gz    </p>
+<h3 id="VIM-的简单使用"><a href="#VIM-的简单使用" class="headerlink" title="VIM 的简单使用"></a>VIM 的简单使用</h3><ul>
+<li>vi : 进入VIM界面模式 (vi aa.text) 表明如果没有的话则新建aa.text，然后在vim中打开</li>
+<li>i : 开始编写内容</li>
+<li>Esc : 结束编写内容</li>
+<li>q : 直接退出vi</li>
+<li>wq : 保存后退出vi</li>
+<li>q! : 强制退出</li>
+<li>set number:在编辑文件中显示行号</li>
+<li>set nonumber: 不显示行号</li>
+</ul>
+<h3 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h3><p>R 读权限 read 4<br>W 写权限 write 2<br>X 执行权限 execute 1        </p>
+<p>drwxr-xr-x : d表示是文件夹，rwx表示当前用户有读写执行的权限，r-x表示当前用户所在的组里的成员所具有读和执行的权限，r-x表示除此组之外其他人的权限<br>修改权限：chmod 777 file文件名 : 4+2+1所以把文件权限更改为rwxrwxrwx</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://xinli90.com/2016/10/04/Day16-Linux-common-operation/" data-id="citw7qjzi001m8fu0v9q22s74" class="article-share-link">Share</a><div class="tags"><a href="/tags/Seeking-Job/">Seeking Job</a></div><div class="post-nav"><a href="/2016/10/02/Day15-HTTP/" class="next">Day15 HTTP</a></div><div id="disqus_thread"><script>var disqus_shortname = 'xinli';
+var disqus_identifier = '2016/10/04/Day16-Linux-common-operation/';
+var disqus_title = 'Day16 Linux common operation';
+var disqus_url = 'http://xinli90.com/2016/10/04/Day16-Linux-common-operation/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//xinli.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Seeking-Job/" style="font-size: 15px;">Seeking Job</a> <a href="/tags/J2EE/" style="font-size: 15px;">J2EE</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Geek/">Geek</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">74</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Multithreading/">Multithreading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/class-design/">class design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/04/Day16-Linux-common-operation/">Day16 Linux common operation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/02/Day15-HTTP/">Day15 HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Recover-Binary-Search-Tree/">Recover Binary Search Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Day14-Introduction-to-AWS/">Day14 Introduction to AWS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/Longest-Common-Prefix/">Longest Common Prefix</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/Longest-Palindromic-Substring/">Longest Palindromic Substring</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/Day13-Tradeoff-of-Different-Language/">Day13 Tradeoff of Different Language</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/String-to-Integer-atoi/">String to Integer (atoi)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/Reverse-Integer/">Reverse Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/Majority-Element/">Majority Element</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//xinli.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="null" title="null" target="_blank"></a><ul></ul><a href="null" title="null" target="_blank"></a><ul></ul><a href="null" title="null" target="_blank"></a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Xinli's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create','UA-83440669-1','auto');ga('send','pageview');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

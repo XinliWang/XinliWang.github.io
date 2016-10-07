@@ -4,6 +4,21 @@
   
     
     <entry>
+      <title><![CDATA[Day17 JavaScript Introduction]]></title>
+      <url>http://xinli90.com/2016/10/05/Day17-JavaScript-Introduction/</url>
+      <content type="html"><![CDATA[<p>本篇是关于JavaScript高级特性和应用</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>回忆JavaScript特性</li>
+<li>总结JavaScript特性，并总结用法</li>
+</ul>
+<h2 id="自己回忆"><a href="#自己回忆" class="headerlink" title="自己回忆"></a>自己回忆</h2><ul>
+<li>prototype</li>
+<li>闭包</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="Arguments"><a href="#Arguments" class="headerlink" title="Arguments"></a>Arguments</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Max Points on a Line]]></title>
       <url>http://xinli90.com/2016/10/05/Max-Points-on-a-Line/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/max-points-on-a-line/" target="_blank" rel="external">Leetcode-Max Points on a Line</a>.</p>

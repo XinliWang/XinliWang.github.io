@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/10/09/Day18-Design-Pattern/</loc>
+    
+    <lastmod>2016-10-10T04:32:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/09/02/Day11-Multithreading/</loc>
+    
+    <lastmod>2016-10-10T03:54:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/10/05/Day17-JavaScript-Introduction/</loc>
     
     <lastmod>2016-10-05T16:55:43.000Z</lastmod>
@@ -313,13 +327,6 @@
     <loc>http://xinli90.com/2016/09/06/Day12-JAVA-Key-Words/</loc>
     
     <lastmod>2016-09-11T23:06:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/09/02/Day11-Multithreading/</loc>
-    
-    <lastmod>2016-09-11T20:52:40.000Z</lastmod>
     
   </url>
   

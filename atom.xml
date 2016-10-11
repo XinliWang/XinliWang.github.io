@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-10T19:48:50.000Z</updated>
+  <updated>2016-10-11T14:20:38.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Day19 DataBase</title>
+    <link href="http://xinli90.com/2016/10/11/Day19-DataBase/"/>
+    <id>http://xinli90.com/2016/10/11/Day19-DataBase/</id>
+    <published>2016-10-11T12:08:06.000Z</published>
+    <updated>2016-10-11T14:20:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇是关于Database的介绍和用途.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>总结归纳各种SQL特性</li>
+<li>总结用法和分析优化思路</li>
+</ul>
+<h2 id="Relational-DB-and-NoSql"><a href="#Relational-DB-and-NoSql" class="headerlink" title="Relational DB and NoSql"></a>Relational DB and NoSql</h2><ul>
+<li><p>NoSQL与Relational DB区别：SQL databases store data in form of tables, rows, columns and records. This data is stored in a pre-defined data model which is not very much flexible for today’s real-world highly growing applications. NoSql in contrast uses a flexible structure which can be easily modified and extended.</p>
+</li>
+<li><p>NoSql: A NoSql database provides a mechanism for storage and retrieval of data that is modeled. The types : Document Oriented, Key Value, Graph, Column Oriented.</p>
+</li>
+<li><p>MongoDB: It is a document oriented database. It stores data in the form of BSON structure based documents. These documents are stored in a collection. Advantage: Flexible data model in form of documents, Agile and highly scalable database, Faster than traditional databases, Expressive query language.</p>
+</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="UNION-and-UNION-ALL"><a href="#UNION-and-UNION-ALL" class="headerlink" title="UNION and UNION ALL"></a>UNION and UNION ALL</h3><ul>
+<li><p>UNION:Merge two structurally-compatible tables into a single table and omit the duplicate records.</p>
+</li>
+<li><p>UNION ALL: Merge contents of two tables into one table but include duplicate records. It is more efficient than UNION, because it doesn’t need omit duplicate records.</p>
+</li>
+</ul>
+<h3 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h3><ul>
+<li><p>INNER JOIN: The simple and default join.</p>
+</li>
+<li><p>LEFT JOIN: Returns all rows from the left table, and the matched rows from the right table. This means that if the ON clause doesn’t match any records in the right table, the JOIN will still return a row in the result for that record in the left table, but with NULL in each column from the right table.</p>
+</li>
+<li><p>RIGHT JOIN: Returns all rows from the right table, and the matched rows from the left table. </p>
+</li>
+<li><p>FULL JOIN: Combine LEFT JOIN and RIGHT JOIN, return all rows for which there is a match in either of the tables. Its result is similar with UNION. (with NULL for some columns)</p>
+</li>
+<li><p>CROSS JOIN: Returns all records where each row from the first table is combined with each row from the second table.</p>
+</li>
+</ul>
+<h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><p>customer id 不为123 的客户的数量：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">AS</span> cust_not_total </div><div class="line"><span class="keyword">from</span> orders</div><div class="line"><span class="keyword">where</span> customer_id &lt;&gt; <span class="string">'123'</span></div></pre></td></tr></table></figure>
+<p>注意： Any records with a customer_id of NULL will not be included in either count.</p>
+<h3 id="is"><a href="#is" class="headerlink" title="is"></a>is</h3><p>Use <code>is</code> instead of <code>=</code>, when we want to compare a value to null.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//expected result is YUP</div><div class="line"><span class="keyword">select</span> <span class="keyword">case</span></div><div class="line"><span class="keyword">when</span> <span class="literal">null</span> <span class="keyword">is</span> <span class="literal">null</span></div><div class="line"><span class="keyword">then</span> <span class="string">'YUP'</span> <span class="keyword">else</span> <span class="string">'Nope'</span></div><div class="line"><span class="keyword">end</span> <span class="keyword">as</span> <span class="keyword">Result</span></div></pre></td></tr></table></figure>
+<p>Anything compared to <code>NULL</code> evaluates to <code>UNKNOWN</code>, it includes NULL itself.</p>
+<p>So below sql cannot get the result which ReferreddBy == NULL.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Select</span> <span class="keyword">Name</span> <span class="keyword">From</span> Customers</div><div class="line"><span class="keyword">Where</span> ReferreddBy &lt;&gt; <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>We should use:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Select</span> <span class="keyword">Name</span> <span class="keyword">From</span> Customers</div><div class="line"><span class="keyword">Where</span> ReferreddBy <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> ReferreddBy &lt;&gt; <span class="number">2</span></div></pre></td></tr></table></figure>
+<h3 id="NOT-IN"><a href="#NOT-IN" class="headerlink" title="NOT IN"></a>NOT IN</h3><p>If the set being evaluated by the <code>NOT IN</code> contains any null values, the result will return an empty set.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Select</span> *</div><div class="line"><span class="keyword">from</span> runners</div><div class="line"><span class="keyword">where</span> runners.id <span class="keyword">NOT</span> <span class="keyword">IN</span></div><div class="line">(<span class="keyword">select</span> winner_id <span class="keyword">from</span> races <span class="keyword">where</span> winner_id <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">null</span>)</div></pre></td></tr></table></figure>
+<p>For MySql:</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">select</span> * <span class="keyword">from</span> A</div><div class="line"><span class="keyword">not</span> <span class="keyword">in</span> </div><div class="line"><span class="built_in">select</span> * <span class="keyword">from</span> B</div></pre></td></tr></table></figure>
+<p>For Sql Sergver, SQLite,PostgreSQL, we can also use:</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> A</div><div class="line"><span class="keyword">except</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> B</div></pre></td></tr></table></figure>
+<p>For Oracle, we can use <code>minus</code>.</p>
+<h3 id="Execution-order"><a href="#Execution-order" class="headerlink" title="Execution order"></a>Execution order</h3><p>The sql statement is not processed generally top-to-bottom or left-to-right. It’s in differenct order.<br>So this is wrong:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">Id</span>, <span class="keyword">YEAR</span>(BillingDate) <span class="keyword">AS</span> BillingYear</div><div class="line"><span class="keyword">FROM</span> Invoices</div><div class="line"><span class="keyword">WHERE</span> BillingYear &gt;= <span class="number">2010</span>;</div></pre></td></tr></table></figure>
+<p>It should be:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">Id</span>, <span class="keyword">YEAR</span>(BillingDate) <span class="keyword">AS</span> BillingYear</div><div class="line"><span class="keyword">FROM</span> Invoices</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(BillingDate) &gt;= <span class="number">2010</span>;</div></pre></td></tr></table></figure>
+<h3 id="WHERE-and-HAVING"><a href="#WHERE-and-HAVING" class="headerlink" title="WHERE and HAVING"></a>WHERE and HAVING</h3><p>When <code>GROUP BY</code> is not used, the <code>WHERE</code> and <code>HAVING</code> clauses are essentially equivalent.</p>
+<p>However, when <code>GROUP BY</code> is used:</p>
+<ul>
+<li>The <code>WHERE</code> clause is used to filter records from a result. The filtering occurs before any grouping are made.</li>
+<li>The <code>HAVING</code> clause is used to filter values from a group(to check conditions after aggregation into groups has been performed).</li>
+</ul>
+<h2 id="常见考题"><a href="#常见考题" class="headerlink" title="常见考题"></a>常见考题</h2><ol>
+<li>Write a SQL query to find the 10th highest employee salary from an Employee table. Explain your answer.</li>
+</ol>
+<p>For MySQL and PostreSQL, we can use <code>LIMIT</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> Salary <span class="keyword">from</span></div><div class="line">(</div><div class="line">	<span class="keyword">select</span> <span class="keyword">distinct</span> Salary <span class="keyword">from</span> Employee</div><div class="line">	<span class="keyword">Order</span> <span class="keyword">by</span> Salary <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">10</span></div><div class="line">) <span class="keyword">AS</span> Emp <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">LIMIT</span> <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>For other database, we can use <code>TOP</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> TOP(<span class="number">1</span>) Salary <span class="keyword">From</span></div><div class="line">(</div><div class="line">	<span class="keyword">select</span> <span class="keyword">distinct</span> TOP(<span class="number">10</span>) Salary</div><div class="line">	<span class="keyword">From</span> Employee</div><div class="line">	<span class="keyword">Order</span> <span class="keyword">by</span> Salary <span class="keyword">DESC</span></div><div class="line">) <span class="keyword">AS</span> Emp <span class="keyword">Order</span> <span class="keyword">by</span> Salary;</div></pre></td></tr></table></figure>
+<h3 id="参考-Reference-："><a href="#参考-Reference-：" class="headerlink" title="参考(Reference)："></a>参考(Reference)：</h3><p><a href="">https://www.toptal.com/sql/interview-questions</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇是关于Database的介绍和用途.&lt;/p&gt;
+&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;总结归纳各种SQL特性&lt;/li&gt;
+&lt;li&gt;总结用法和分析
+    
+    </summary>
+    
+      <category term="Database" scheme="http://xinli90.com/categories/Database/"/>
+    
+    
+      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
+    
+  </entry>
   
   <entry>
     <title>Day18 Design Pattern</title>
@@ -853,45 +944,6 @@
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/nim-game/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Nim Game&lt;/a&gt;.&lt;/p&gt;
 &lt;h
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Median of Two Sorted Arrays</title>
-    <link href="http://xinli90.com/2016/09/21/Median-of-Two-Sorted-Arrays/"/>
-    <id>http://xinli90.com/2016/09/21/Median-of-Two-Sorted-Arrays/</id>
-    <published>2016-09-21T15:08:42.000Z</published>
-    <updated>2016-09-22T14:45:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="external">Leetcode-Median of Two Sorted Arrays</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p>Example 1:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nums1 = [<span class="number">1</span>, <span class="number">3</span>]</div><div class="line">nums2 = [<span class="number">2</span>]</div><div class="line"></div><div class="line">The median is <span class="number">2.0</span></div></pre></td></tr></table></figure>
-<p>Example 2:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nums1 = [<span class="number">1</span>, <span class="number">2</span>]</div><div class="line">nums2 = [<span class="number">3</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line">The median is (<span class="number">2</span> + <span class="number">3</span>)/<span class="number">2</span> = <span class="number">2.5</span></div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Create a new Array with length of nums1 and nums2 and sort them all</li>
-<li>find the median from this array</li>
-<li>Time complexity is O(m+n), Space complexity is O(m+n)    </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Use Binary Search Tree to get Time complexity O(log(m+n))</li>
-<li>需要求得中位数m，即找第m小的数。不断地比较两个数组m/2位置的数(如果两个数组长度均大于m/2),否则一个取本身长度，一个取m的剩下值。所以要一直保证第一个数组长度小于第二个数组</li>
-<li>不断地递归调用，每次舍弃更小的一半数组，确保中位数一直位于另一半的数组中。在每次截取时，同时更新需要寻找的第k小的数。</li>
-</ol>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">    public <span class="keyword">double</span> findMedianSortedArrays(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">        <span class="keyword">int</span> length1 = nums1.length<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> <span class="keyword">length2</span> = nums2.length<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> medianIndex = (length1+<span class="keyword">length2</span>)/<span class="number">2</span><span class="comment">; </span></div><div class="line">        <span class="keyword">double</span> median=<span class="number">0</span><span class="comment">;</span></div><div class="line">        <span class="keyword">int</span>[] array = new <span class="keyword">int</span>[length1+<span class="keyword">length2</span>]<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,index=<span class="number">0</span><span class="comment">;</span></div><div class="line">        <span class="keyword">while</span>(index&lt;length1+<span class="keyword">length2</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(i&gt;=length1)&#123;</div><div class="line">                array[index++] = nums2[j++]<span class="comment">;</span></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&gt;=<span class="keyword">length2</span>)&#123;</div><div class="line">                array[index++] = nums1[i++]<span class="comment">;</span></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i&lt;length1&amp;&amp;j&lt;<span class="keyword">length2</span>)&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[i]&gt;nums2[j])&#123;</div><div class="line">                    array[index++] = nums2[j++]<span class="comment">;</span></div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    array[index++] = nums1[i++]<span class="comment">;</span></div><div class="line">                &#125;</div><div class="line">            &#125;   </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((length1+<span class="keyword">length2</span>)%<span class="number">2</span>==<span class="number">1</span>)&#123;</div><div class="line">            median = array[medianIndex]<span class="comment">;</span></div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            median = (<span class="keyword">double</span>)(array[medianIndex<span class="number">-1</span>]+array[medianIndex])/<span class="number">2</span><span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> median<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">	public <span class="keyword">double</span> findMedianSortedArrays(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">		<span class="keyword">int</span> length1 = nums1.length, <span class="keyword">length2</span> = nums2.length<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>((length1+<span class="keyword">length2</span>)%<span class="number">2</span>==<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> (<span class="keyword">double</span>)(findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>)+findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>+<span class="number">1</span>))/<span class="number">2</span><span class="comment">;</span></div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>+<span class="number">1</span>)<span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private <span class="keyword">int</span> findKth(<span class="keyword">int</span>[] nums1,<span class="keyword">int</span> start1,<span class="keyword">int</span> length1,<span class="keyword">int</span>[] nums2,<span class="keyword">int</span> start2,<span class="keyword">int</span> <span class="keyword">length2</span>, <span class="keyword">int</span> k)&#123;</div><div class="line">		<span class="comment">//mantain short array first</span></div><div class="line">		<span class="keyword">if</span>(length1&gt;<span class="keyword">length2</span>) <span class="keyword">return</span> findKth(nums2,start2,<span class="keyword">length2</span>,nums1,start1,length1,k)<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(length1==<span class="number">0</span>) <span class="keyword">return</span> nums2[k<span class="number">-1</span>]<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(k==<span class="number">1</span>) <span class="keyword">return</span> Math.min(nums1[start1],nums2[start2])<span class="comment">;</span></div><div class="line">		<span class="keyword">int</span> mid1 = Math.min(k/<span class="number">2</span>,length1)<span class="comment">;</span></div><div class="line">		<span class="keyword">int</span> mid2 = k-mid1<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(nums1[start1+mid1<span class="number">-1</span>]&gt;=nums2[start2+mid2<span class="number">-1</span>]) &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,start1,length1,nums2,start2+mid2,<span class="keyword">length2</span>-mid2,k-mid2)<span class="comment">;</span></div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,start1+mid1,length1-mid1,nums2,start2,<span class="keyword">length2</span>,k-mid1)<span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/median-of-two-sorted-arrays/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-M
     
     </summary>
     

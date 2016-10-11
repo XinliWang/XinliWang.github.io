@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/09/16/Number-of-Islands/</loc>
+    
+    <lastmod>2016-10-11T02:53:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/10/09/Day18-Design-Pattern/</loc>
     
-    <lastmod>2016-10-10T04:32:37.000Z</lastmod>
+    <lastmod>2016-10-10T19:48:50.000Z</lastmod>
     
   </url>
   
@@ -271,13 +278,6 @@
     <loc>http://xinli90.com/2016/09/18/Triangle/</loc>
     
     <lastmod>2016-09-18T22:23:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/09/16/Number-of-Islands/</loc>
-    
-    <lastmod>2016-09-17T03:46:22.000Z</lastmod>
     
   </url>
   

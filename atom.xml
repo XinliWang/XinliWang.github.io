@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-13T15:09:41.000Z</updated>
+  <updated>2016-10-13T15:53:40.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>House Robber</title>
+    <link href="http://xinli90.com/2016/10/13/House-Robber/"/>
+    <id>http://xinli90.com/2016/10/13/House-Robber/</id>
+    <published>2016-10-13T15:11:52.000Z</published>
+    <updated>2016-10-13T15:53:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">Leetcode-House Robber</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.    </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-For-DP"><a href="#Solution1-For-DP" class="headerlink" title="Solution1 For DP"></a>Solution1 For DP</h4><p>The time and space complexity is O(n)</p>
+<ul>
+<li>State: f[i] represents the maximum money the robber get rob until arriving the i-th house </li>
+<li>Function: f[i] = Max(f[i-1],f[i-2]+nums[i])</li>
+<li>Initialize: f[0] = nums[0], f[1] = nums[1]</li>
+<li>Answer: f[nums.length-1]</li>
+</ul>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Similar way with solution1, but reduce the space complexity to O(1)</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">    public <span class="type">int</span> rob(<span class="type">int</span>[] nums) &#123;</div><div class="line">    	<span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = nums.<span class="built_in">length</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">length</span>==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="type">int</span>[] f = new <span class="type">int</span>[nums.<span class="built_in">length</span>];</div><div class="line">        f[<span class="number">0</span>] = nums[<span class="number">0</span>];</div><div class="line">        f[<span class="number">1</span>] = Math.<span class="built_in">max</span>(nums[<span class="number">0</span>],nums[<span class="number">1</span>]);</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>; i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">        	f[i] = Math.<span class="built_in">max</span>(f[i<span class="number">-1</span>],f[i<span class="number">-2</span>]+nums[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> f[<span class="built_in">length</span><span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">    public <span class="type">int</span> rob(<span class="type">int</span>[] nums) &#123;</div><div class="line">    	<span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = nums.<span class="built_in">length</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">length</span>==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="type">int</span> last = <span class="number">0</span>, current = <span class="number">0</span>;</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">        	<span class="type">int</span> temp = last; <span class="comment">// the i-2 th element</span></div><div class="line">        	last = current; <span class="comment">// the i-1 th element</span></div><div class="line">        	current = Math.<span class="built_in">max</span>(current,nums[i]+temp); <span class="comment">//the i-th element</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> current;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/house-robber/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-House Robber&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Count and Say</title>
@@ -967,36 +1000,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/majority-element/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Majority Ele
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZigZag Conversion</title>
-    <link href="http://xinli90.com/2016/09/21/ZigZag-Conversion/"/>
-    <id>http://xinli90.com/2016/09/21/ZigZag-Conversion/</id>
-    <published>2016-09-21T21:52:51.000Z</published>
-    <updated>2016-09-21T22:38:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="external">Leetcode-ZigZag Conversion</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   <span class="keyword">N</span></div><div class="line">A P L S <span class="keyword">I</span> <span class="keyword">I</span> G</div><div class="line">Y   <span class="keyword">I</span>   R</div></pre></td></tr></table></figure>
-<p>And then read line by line: “PAHNAPLSIIGYIR”      </p>
-<p>Write the code that will take a string and make this conversion given a number of rows:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> text, <span class="keyword">int</span> nRows)</span></span>;</div></pre></td></tr></table></figure>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Create nRows StringBuffers, and keep collecting characters from original string to corresponding StringBuffer.  </p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String convert(String s, <span class="keyword">int</span> numRows) &#123;</div><div class="line">    	StringBuilder[] sb = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">    	<span class="keyword">int</span> <span class="keyword">index</span>=<span class="number">0</span>;</div><div class="line">    	<span class="keyword">char</span>[] arr = s.toCharArray();</div><div class="line">    	<span class="keyword">while</span>(<span class="keyword">index</span> &lt; s.length()) &#123;</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numRows &amp;&amp; <span class="keyword">index</span>&lt;s.length(); i++) &#123;</div><div class="line">    			sb[i].append(arr[<span class="keyword">index</span>++]);</div><div class="line">    		&#125;</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> j=numRows<span class="number">-2</span>; j&gt;=<span class="number">1</span> &amp;&amp; <span class="keyword">index</span>&lt;s.length(); j--) &#123;</div><div class="line">    			sb[j].append(arr[<span class="keyword">index</span>++]);</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;numRows; i++) &#123;</div><div class="line">    		sb[<span class="number">0</span>].append(sb[i]);</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> sb[<span class="number">0</span>].toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/zigzag-conversion/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-ZigZag Conv
     
     </summary>
     

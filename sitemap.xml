@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/10/13/Count-and-Say/</loc>
+    
+    <lastmod>2016-10-13T15:09:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xinli90.com/2016/08/17/Count-Primes/</loc>
+    
+    <lastmod>2016-10-13T15:02:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/10/12/Maximum-Subarray/</loc>
     
     <lastmod>2016-10-12T17:48:29.000Z</lastmod>
@@ -642,13 +656,6 @@
     <loc>http://xinli90.com/2016/08/16/Contains-Duplicate/</loc>
     
     <lastmod>2016-08-28T19:58:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/08/17/Count-Primes/</loc>
-    
-    <lastmod>2016-08-28T19:58:14.000Z</lastmod>
     
   </url>
   

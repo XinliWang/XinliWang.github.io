@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-20T03:26:02.000Z</updated>
+  <updated>2016-10-20T15:46:54.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rotate Array</title>
+    <link href="http://xinli90.com/2016/10/19/Rotate-Array/"/>
+    <id>http://xinli90.com/2016/10/19/Rotate-Array/</id>
+    <published>2016-10-20T03:31:27.000Z</published>
+    <updated>2016-10-20T15:46:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="external">Leetcode-Rotate Array</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Rotate an array of n elements to the right by k steps.</p>
+<p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>rotete one by one.</li>
+<li>Time complexity is O(k*n), Space complexity is O(1)     </li>
+<li>TIme Limit Exceeded      </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Use an array to store the last k elements first</li>
+<li>shift all remaining elements to the right</li>
+<li>put k elements to the left.</li>
+<li>Time complexity is O(n), Space complexity is O(k)</li>
+</ol>
+<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
+<li>Reverse first size - k elements</li>
+<li>Reverse last k elements</li>
+<li>Reverse all elements</li>
+<li>Time complexity is O(n), Space complexity is O(1)</li>
+</ol>
+<h4 id="Solution4"><a href="#Solution4" class="headerlink" title="Solution4"></a>Solution4</h4><ol>
+<li>create a new array to store all elements</li>
+<li>reasign the value into the original array</li>
+<li>Time complexity is O(n), Space complexity is O(n)</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">while</span>(k&gt;<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">int</span> target = nums[<span class="keyword">size</span>-<span class="number">1</span>];</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-<span class="number">1</span>; i&gt;<span class="number">0</span>; i++)&#123;</div><div class="line">				nums[i] = nums[i-<span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">			nums[<span class="number">0</span>] = target;</div><div class="line">			k--;</div><div class="line">		&#125; </div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span>[] tempArr = <span class="keyword">new</span> <span class="keyword">int</span>[k];</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-k; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			tempArr[i-(<span class="keyword">size</span>-k)] = nums[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-<span class="number">1</span>; i&gt;=k; i--) &#123;</div><div class="line">			nums[i] = nums[i-k];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;k; i++) &#123;</div><div class="line">			nums[i] = tempArr[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution3 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="number">0</span>,<span class="keyword">size</span>-k-<span class="number">1</span>);</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="keyword">size</span>-k,<span class="keyword">size</span>-<span class="number">1</span>);</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="number">0</span>,<span class="keyword">size</span>-<span class="number">1</span>);</div><div class="line">	&#125;	</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">reverse</span>(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> left,<span class="keyword">int</span> right) &#123;</div><div class="line">		<span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">			<span class="keyword">int</span> temp = nums[left];</div><div class="line">			nums[left] = nums[right];</div><div class="line">			nums[right] = temp;</div><div class="line">			left++;</div><div class="line">			right--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution4 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">int</span>[] copyArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="keyword">size</span>];</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			copyArray[i] = nums[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			nums[(i+k)%<span class="keyword">size</span>] = copyArray[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/rotate-array/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Rotate Array&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Remove Element</title>
@@ -789,120 +836,6 @@
     
     
       <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Day16 Linux common operation</title>
-    <link href="http://xinli90.com/2016/10/04/Day16-Linux-common-operation/"/>
-    <id>http://xinli90.com/2016/10/04/Day16-Linux-common-operation/</id>
-    <published>2016-10-04T16:56:29.000Z</published>
-    <updated>2016-10-05T01:04:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本篇是关于Linux常用命令</p>
-<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a>文件目录操作命令</h3><ul>
-<li>ls: 显示文件和目录列表<ul>
-<li>ls -l : 列出所有文件的详细信息</li>
-<li>ls -a : 列出当前目录的所有文件，包含隐藏文件</li>
-</ul>
-</li>
-<li>mkdir ** : 创建文件夹 (mkdir job)<ul>
-<li>mkdir -p <em>/*</em> :     创建多层文件夹</li>
-</ul>
-</li>
-<li>cd ** : 进入目录<ul>
-<li>cd - : 进入这个目录之前的那个目录 </li>
-</ul>
-</li>
-<li>touch **文件名 : 生成一个空文件 (touch s.text)</li>
-<li>echo ‘<em>内容’&gt; </em>文件名(带类型) : 生成一个带内容的文件 (echo ‘I love you’&gt;s.text)</li>
-<li>cat/tac **文件名 : 显示文本文件内容 (cat s.text)</li>
-<li>cp <em>文件名1(source file) </em>文件名2(target file): 复制文件或者目录，从一个文件到另一个文件(cp s.text d.text)<ul>
-<li>cp -r <strong>文件夹1 </strong>文件夹2 : 把一个文件夹及其里面所有文件复制到另一个文件夹，-r表示recursive (cp -r ss sa/)</li>
-</ul>
-</li>
-<li><p>rm **文件名 : 删除文件(rm s.text)</p>
-<ul>
-<li>rm -r **文件名 : 同时删除该目录下的所有文件</li>
-<li>rm -f **文件名 : 强制删除文件或目录 (rm -fr job)</li>
-</ul>
-</li>
-<li><p>mv 文件或文件夹1 文件夹2 : (mv aa bb)如果bb存在则把文件夹aa移动到bb文件夹下，如果bb不存在则把文件夹aa改名为bb</p>
-</li>
-<li>find 查找指定文件<ul>
-<li>find -name 文件名: 查找指定文件名的文件</li>
-<li>find -iname 文件名: 忽略大小写查找文件</li>
-</ul>
-</li>
-<li>wc 文件 : 统计文本文档的行数、字数、字符数（wc t.text）</li>
-<li>grep : 查找指定的文本文件中指定的字符串<ul>
-<li>grep -rsi 关键字 目录: (grep -rsni lvoe .)在当前目录下寻找关键字为lvoe的文件，显示行数，忽略大小写、错误拼写 </li>
-</ul>
-</li>
-<li>rmdir: 删除空目录 </li>
-<li>pwd: 显示当前工作目录</li>
-<li>more/less : 分页显示文本文件内容</li>
-<li>ln : 建立链接文件<ul>
-<li>ln -s 路径 代号: (ln -s cc/bb/aa/ ee) 保存cc/bb/aa/ 这个路径为ee，之后可以直接cd ee/进入</li>
-</ul>
-</li>
-</ul>
-<h3 id="信息显示命令"><a href="#信息显示命令" class="headerlink" title="信息显示命令"></a>信息显示命令</h3><ul>
-<li>stat 文件名 : 显示文件或者文件夹更详细的信息</li>
-<li>who : 显示在线登录用户</li>
-<li>whoami : 显示用户自己的身份</li>
-<li>hostname : 显示主机名称</li>
-<li>uname : 显示系统信息</li>
-<li>dmesg : 显示系统启动信息，通常权限不够需要使用sudo dmesg</li>
-<li>top : 显示当前系统中耗费资源最多的进程</li>
-<li>ps :  显示瞬间的进程状态</li>
-<li>du : 显示指定文件或目录已使用的磁盘空间总量<ul>
-<li>du -h : 显示具体占用多少MB</li>
-</ul>
-</li>
-<li>df : 显示文件系统磁盘空间的使用情况 </li>
-<li>ifconfig : 显示网络接口信息</li>
-<li>ping : 测试网络的连通性</li>
-<li>netstat : 显示网络状态信息</li>
-<li>man : 命令帮助信息查询</li>
-<li>clear : 清屏</li>
-</ul>
-<h3 id="文件压缩tar命令"><a href="#文件压缩tar命令" class="headerlink" title="文件压缩tar命令"></a>文件压缩tar命令</h3><p>tar -cxzjvf:  </p>
-<ol>
-<li>-c : 压缩文件</li>
-<li>-x : 解压文件</li>
-<li>-z : 是否需要gzip压缩</li>
-<li>-j : 是否需要bzip2压缩</li>
-<li>-v : 压缩过程中显示文件</li>
-<li>-f : 使用档名</li>
-<li>-tf : 查看归档文件里面的文件</li>
-</ol>
-<p>tar -zxvf aaa.tar.gz : 解压文件aaa.tar.gz到当前文件夹.<br>tar -czvf aaa.tar.gz aaa/ : 压缩文件夹aaa为aaa.tar.gz    </p>
-<h3 id="VIM-的简单使用"><a href="#VIM-的简单使用" class="headerlink" title="VIM 的简单使用"></a>VIM 的简单使用</h3><ul>
-<li>vi : 进入VIM界面模式 (vi aa.text) 表明如果没有的话则新建aa.text，然后在vim中打开</li>
-<li>i : 开始编写内容</li>
-<li>Esc : 结束编写内容</li>
-<li>q : 直接退出vi</li>
-<li>wq : 保存后退出vi</li>
-<li>q! : 强制退出</li>
-<li>set number:在编辑文件中显示行号</li>
-<li>set nonumber: 不显示行号</li>
-</ul>
-<h3 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h3><p>R 读权限 read 4<br>W 写权限 write 2<br>X 执行权限 execute 1        </p>
-<p>drwxr-xr-x : d表示是文件夹，rwx表示当前用户有读写执行的权限，r-x表示当前用户所在的组里的成员所具有读和执行的权限，r-x表示除此组之外其他人的权限<br>修改权限：chmod 777 file文件名 : 4+2+1所以把文件权限更改为rwxrwxrwx</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇是关于Linux常用命令&lt;/p&gt;
-&lt;h2 id=&quot;学习后总结&quot;&gt;&lt;a href=&quot;#学习后总结&quot; class=&quot;headerlink&quot; title=&quot;学习后总结&quot;&gt;&lt;/a&gt;学习后总结&lt;/h2&gt;&lt;h3 id=&quot;文件目录操作命令&quot;&gt;&lt;a href=&quot;#文件目录操作命令&quot; c
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://xinli90.com/categories/Linux/"/>
-    
-    
-      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
     
   </entry>
   

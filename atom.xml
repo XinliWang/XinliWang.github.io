@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-21T16:51:24.000Z</updated>
+  <updated>2016-10-24T00:29:21.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -16,16 +16,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Best Time to Buy and Sell Stock III</title>
+    <link href="http://xinli90.com/2016/10/23/Best-Time-to-Buy-and-Sell-Stock-III/"/>
+    <id>http://xinli90.com/2016/10/23/Best-Time-to-Buy-and-Sell-Stock-III/</id>
+    <published>2016-10-23T19:53:01.000Z</published>
+    <updated>2016-10-24T00:29:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock III</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p>
+<p>Note:<br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
+<li>firstBuy: means we have to borrow money from others, we need borrow as less as possible to get the maximum profit. But the value is negative(-price), so we should pick max one.</li>
+<li>firstSell: after buy stock, we need sell stock in a higher price. So profit = price - |firstBuy| = price + firstBuy.</li>
+<li>secondBuy: after first transaction, we get the profit 即 firstSell, then similar with firstBuy, we get firstSell-price.</li>
+<li>secondSell: similar with firstSell, we get the profit is price + secondBuy.</li>
+</ol>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">int</span> maxProfit(<span class="built_in">int</span>[] prices) &#123;</div><div class="line">		<span class="built_in">int</span> firstBuy = <span class="keyword">Integer</span>.MIN_VALUE, firstSell = <span class="number">0</span>;</div><div class="line">		<span class="built_in">int</span> secondBuy = <span class="keyword">Integer</span>.MIN_VALUE, secondSell = <span class="number">0</span>;</div><div class="line">		for(<span class="built_in">int</span> price : prices) &#123;</div><div class="line">			firstBuy = Math.<span class="built_in">max</span>(firstBuy, -price);</div><div class="line">			firstSell = Math.<span class="built_in">max</span>(firstSell, price + firstBuy);</div><div class="line">			secondBuy = Math.<span class="built_in">max</span>(secondBuy, firstSell - price);</div><div class="line">			secondSell = Math.<span class="built_in">max</span>(secondSell, price + secondBuy);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> secondSell;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Le
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Best Time to Buy and Sell Stock II</title>
     <link href="http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock-II/"/>
     <id>http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock-II/</id>
     <published>2016-10-21T16:51:24.000Z</published>
-    <updated>2016-10-21T16:51:24.000Z</updated>
+    <updated>2016-10-23T19:51:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock II</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ul>
+<li>State: f[i] represents the maximum profit.</li>
+<li>Function: f[i] = f[i-1] + (if(prices[i]&gt;prices[i-1])prices[i] - prices[i-1]), update stock to the current one.</li>
+<li>Initialize: f[0] = 0, stock = prices[0]</li>
+<li>Answer: f[nums.length-1]</li>
+</ul>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Just add all positive difference between two adjacent elements.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span>(<span class="params"><span class="keyword">int</span>[] prices</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span>(prices==<span class="literal">null</span> || prices.length&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span>[] profit = <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</div><div class="line">		profit[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> stock = prices[<span class="number">0</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; prices.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span>(prices[i]&gt;stock) &#123;</div><div class="line">				profit[i] = profit[i<span class="number">-1</span>] + (prices[i]-stock);</div><div class="line">			&#125;<span class="keyword">else</span> &#123;</div><div class="line">				profit[i] = profit[i<span class="number">-1</span>];</div><div class="line">			&#125;</div><div class="line">			stock = prices[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> profit[prices.length<span class="number">-1</span>];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution2</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span>(<span class="params"><span class="keyword">int</span>[] prices</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span>(prices==<span class="literal">null</span> || prices.length&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; prices.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span>(prices[i]&gt;prices[i<span class="number">-1</span>]) &#123;</div><div class="line">				profit += prices[i] - prices[i<span class="number">-1</span>];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> profit;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lee
+    
     </summary>
     
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
     
   </entry>
   
@@ -221,24 +271,15 @@
     <link href="http://xinli90.com/2016/10/19/Maximum-XOR-of-Two-Numbers-in-an-Array/"/>
     <id>http://xinli90.com/2016/10/19/Maximum-XOR-of-Two-Numbers-in-an-Array/</id>
     <published>2016-10-20T02:40:39.000Z</published>
-    <updated>2016-10-20T03:17:39.000Z</updated>
+    <updated>2016-10-23T19:18:16.000Z</updated>
     
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="external">Leetcode-Median of Two Sorted Arrays</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Create a new Array with length of nums1 and nums2 and sort them all</li>
-<li>find the median from this array</li>
-<li>Time complexity is O(m+n), Space complexity is O(m+n)    </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Use Binary Search Tree to get Time complexity O(log(m+n))</li>
-<li>需要求得中位数m，即找第m小的数。不断地比较两个数组m/2位置的数(如果两个数组长度均大于m/2),否则一个取本身长度，一个取m的剩下值。所以要一直保证第一个数组长度小于第二个数组</li>
-<li>不断地递归调用，每次舍弃更小的一半数组，确保中位数一直位于另一半的数组中。在每次截取时，同时更新需要寻找的第k小的数。</li>
-</ol>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">    public <span class="keyword">double</span> findMedianSortedArrays(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">        <span class="keyword">int</span> length1 = nums1.length<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> <span class="keyword">length2</span> = nums2.length<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> medianIndex = (length1+<span class="keyword">length2</span>)/<span class="number">2</span><span class="comment">; </span></div><div class="line">        <span class="keyword">double</span> median=<span class="number">0</span><span class="comment">;</span></div><div class="line">        <span class="keyword">int</span>[] array = new <span class="keyword">int</span>[length1+<span class="keyword">length2</span>]<span class="comment">;</span></div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,index=<span class="number">0</span><span class="comment">;</span></div><div class="line">        <span class="keyword">while</span>(index&lt;length1+<span class="keyword">length2</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(i&gt;=length1)&#123;</div><div class="line">                array[index++] = nums2[j++]<span class="comment">;</span></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j&gt;=<span class="keyword">length2</span>)&#123;</div><div class="line">                array[index++] = nums1[i++]<span class="comment">;</span></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i&lt;length1&amp;&amp;j&lt;<span class="keyword">length2</span>)&#123;</div><div class="line">                <span class="keyword">if</span>(nums1[i]&gt;nums2[j])&#123;</div><div class="line">                    array[index++] = nums2[j++]<span class="comment">;</span></div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    array[index++] = nums1[i++]<span class="comment">;</span></div><div class="line">                &#125;</div><div class="line">            &#125;   </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((length1+<span class="keyword">length2</span>)%<span class="number">2</span>==<span class="number">1</span>)&#123;</div><div class="line">            median = array[medianIndex]<span class="comment">;</span></div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            median = (<span class="keyword">double</span>)(array[medianIndex<span class="number">-1</span>]+array[medianIndex])/<span class="number">2</span><span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> median<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">	public <span class="keyword">double</span> findMedianSortedArrays(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">		<span class="keyword">int</span> length1 = nums1.length, <span class="keyword">length2</span> = nums2.length<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>((length1+<span class="keyword">length2</span>)%<span class="number">2</span>==<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> (<span class="keyword">double</span>)(findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>)+findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>+<span class="number">1</span>))/<span class="number">2</span><span class="comment">;</span></div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,<span class="number">0</span>,length1,nums2,<span class="number">0</span>,<span class="keyword">length2</span>,(length1+<span class="keyword">length2</span>)/<span class="number">2</span>+<span class="number">1</span>)<span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private <span class="keyword">int</span> findKth(<span class="keyword">int</span>[] nums1,<span class="keyword">int</span> start1,<span class="keyword">int</span> length1,<span class="keyword">int</span>[] nums2,<span class="keyword">int</span> start2,<span class="keyword">int</span> <span class="keyword">length2</span>, <span class="keyword">int</span> k)&#123;</div><div class="line">		<span class="comment">//mantain short array first</span></div><div class="line">		<span class="keyword">if</span>(length1&gt;<span class="keyword">length2</span>) <span class="keyword">return</span> findKth(nums2,start2,<span class="keyword">length2</span>,nums1,start1,length1,k)<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(length1==<span class="number">0</span>) <span class="keyword">return</span> nums2[k<span class="number">-1</span>]<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(k==<span class="number">1</span>) <span class="keyword">return</span> Math.min(nums1[start1],nums2[start2])<span class="comment">;</span></div><div class="line">		<span class="keyword">int</span> mid1 = Math.min(k/<span class="number">2</span>,length1)<span class="comment">;</span></div><div class="line">		<span class="keyword">int</span> mid2 = k-mid1<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span>(nums1[start1+mid1<span class="number">-1</span>]&gt;=nums2[start2+mid2<span class="number">-1</span>]) &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,start1,length1,nums2,start2+mid2,<span class="keyword">length2</span>-mid2,k-mid2)<span class="comment">;</span></div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> findKth(nums1,start1+mid1,length1-mid1,nums2,start2,<span class="keyword">length2</span>,k-mid1)<span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://" target="_blank" rel="external">Leetcode - Maximum XOR of Two Numbers in an Array</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/median-of-two-sorted-arrays/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-M
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Maximum XOR of Two Numbers in an Array&lt;/a&gt;.&lt;/p&gt;
+&lt;
     
     </summary>
     
@@ -640,41 +681,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/random-pick-index/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Random Pick
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linked List Random Node</title>
-    <link href="http://xinli90.com/2016/10/11/Linked-List-Random-Node/"/>
-    <id>http://xinli90.com/2016/10/11/Linked-List-Random-Node/</id>
-    <published>2016-10-11T22:15:52.000Z</published>
-    <updated>2016-10-11T22:21:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/linked-list-random-node/" target="_blank" rel="external">Leetcode-Linked List Random Node</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a singly linked list, return a random node’s value from the linked list. Each node must have the same probability of being chosen.</p>
-<p>Follow up:</p>
-<p>What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?</p>
-<p>Example:</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Init a singly linked list [1,2,3].</span></div><div class="line">ListNode head = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">head.<span class="keyword">next</span> = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</div><div class="line">head.<span class="keyword">next</span>.<span class="keyword">next</span> = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</div><div class="line">Solution solution = <span class="keyword">new</span> Solution(head);</div><div class="line"></div><div class="line"><span class="comment">// getRandom() should return either 1, 2, or 3 randomly. Each element should have equal probability of returning.</span></div><div class="line">solution.getRandom();</div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Iterate each node and get the length of Linked list</li>
-<li>randomly select one node</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>In order to get the same probabilities for each node, we should interate each node once and get the node</li>
-</ol>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * <span class="keyword">public</span> <span class="keyword">class</span> ListNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     ListNode <span class="keyword">next</span>;</div><div class="line"> *     ListNode(<span class="built_in">int</span> x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">private</span> ListNode node;</div><div class="line">    <span class="keyword">private</span> Random random;</div><div class="line">    </div><div class="line">    /** @param head The linked list<span class="comment">'s head.</span></div><div class="line">        Note that the head <span class="keyword">is</span> guaranteed <span class="keyword">to</span> be <span class="keyword">not</span> <span class="literal">null</span>, so it contains at least one node. */</div><div class="line">    <span class="keyword">public</span> Solution(ListNode head) &#123;</div><div class="line">        node = head;</div><div class="line">        random = <span class="keyword">new</span> Random();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    /** Returns a random node<span class="comment">'s value. */</span></div><div class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getRandom() &#123;</div><div class="line">        ListNode result = <span class="literal">null</span>;</div><div class="line">        ListNode current = node;</div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>;current!=<span class="literal">null</span>;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(random.nextInt(i)==<span class="number">0</span>)&#123;</div><div class="line">                result = current;</div><div class="line">            &#125;</div><div class="line">            current = current.<span class="keyword">next</span>;</div><div class="line">        &#125;</div><div class="line">        return result.val;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Your Solution object will be instantiated <span class="keyword">and</span> called as such:</div><div class="line"> * Solution obj = <span class="keyword">new</span> Solution(head);</div><div class="line"> * <span class="built_in">int</span> param_1 = obj.getRandom();</div><div class="line"> */</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/linked-list-random-node/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Linke
     
     </summary>
     

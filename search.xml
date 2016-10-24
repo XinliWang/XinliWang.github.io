@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[Maximum Product Subarray]]></title>
+      <url>http://xinli90.com/2016/10/24/Maximum-Product-Subarray/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="external">Leetcode-Maximum Subarray</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
+<p>For example, given the array [2,3,-2,4],<br>the contiguous subarray [2,3] has the largest product = 6. </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
+<li>Maintain Maximum product and Minimum product , each time get their value </li>
+<li>compare maximum one with result to store the maximum result until now.</li>
+</ol>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int <span class="keyword">max</span>Product(int[] nums) &#123;</div><div class="line">        int <span class="keyword">max</span>Pro = nums[<span class="number">0</span>],<span class="keyword">min</span>Pro = nums[<span class="number">0</span>];</div><div class="line">        int result = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>; i<span class="variable">&lt;nums.length; i++) &#123;</span></div><div class="line">            if(nums[i]&gt;=<span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">max</span>Pro = Math.<span class="keyword">max</span>(<span class="keyword">max</span>Pro*nums[i],nums[i]);</div><div class="line">                <span class="keyword">min</span>Pro = Math.<span class="keyword">min</span>(<span class="keyword">min</span>Pro*nums[i],nums[i]);</div><div class="line">            &#125;else &#123;</div><div class="line">                int temp = <span class="keyword">max</span>Pro;</div><div class="line">                <span class="keyword">max</span>Pro = Math.<span class="keyword">max</span>(<span class="keyword">min</span>Pro*nums[i],nums[i]);</div><div class="line">                <span class="keyword">min</span>Pro = Math.<span class="keyword">min</span>(temp*nums[i],nums[i]);</div><div class="line">            &#125;</div><div class="line">            result = Math.<span class="keyword">max</span>(result,<span class="keyword">max</span>Pro);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Evaluate Reverse Polish Notation]]></title>
       <url>http://xinli90.com/2016/10/24/Evaluate-Reverse-Polish-Notation/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="external">Leetcode - Evaluate Reverse Polish Notation</a>.</p>

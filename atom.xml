@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-24T19:59:53.000Z</updated>
+  <updated>2016-10-24T20:51:56.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maximum Product Subarray</title>
+    <link href="http://xinli90.com/2016/10/24/Maximum-Product-Subarray/"/>
+    <id>http://xinli90.com/2016/10/24/Maximum-Product-Subarray/</id>
+    <published>2016-10-24T20:47:50.000Z</published>
+    <updated>2016-10-24T20:51:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="external">Leetcode-Maximum Subarray</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
+<p>For example, given the array [2,3,-2,4],<br>the contiguous subarray [2,3] has the largest product = 6. </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
+<li>Maintain Maximum product and Minimum product , each time get their value </li>
+<li>compare maximum one with result to store the maximum result until now.</li>
+</ol>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int <span class="keyword">max</span>Product(int[] nums) &#123;</div><div class="line">        int <span class="keyword">max</span>Pro = nums[<span class="number">0</span>],<span class="keyword">min</span>Pro = nums[<span class="number">0</span>];</div><div class="line">        int result = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>; i<span class="variable">&lt;nums.length; i++) &#123;</span></div><div class="line">            if(nums[i]&gt;=<span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">max</span>Pro = Math.<span class="keyword">max</span>(<span class="keyword">max</span>Pro*nums[i],nums[i]);</div><div class="line">                <span class="keyword">min</span>Pro = Math.<span class="keyword">min</span>(<span class="keyword">min</span>Pro*nums[i],nums[i]);</div><div class="line">            &#125;else &#123;</div><div class="line">                int temp = <span class="keyword">max</span>Pro;</div><div class="line">                <span class="keyword">max</span>Pro = Math.<span class="keyword">max</span>(<span class="keyword">min</span>Pro*nums[i],nums[i]);</div><div class="line">                <span class="keyword">min</span>Pro = Math.<span class="keyword">min</span>(temp*nums[i],nums[i]);</div><div class="line">            &#125;</div><div class="line">            result = Math.<span class="keyword">max</span>(result,<span class="keyword">max</span>Pro);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/maximum-subarray/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Maximum Suba
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Evaluate Reverse Polish Notation</title>
@@ -650,37 +680,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/house-robber/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-House Robber&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Count and Say</title>
-    <link href="http://xinli90.com/2016/10/13/Count-and-Say/"/>
-    <id>http://xinli90.com/2016/10/13/Count-and-Say/</id>
-    <published>2016-10-13T15:02:04.000Z</published>
-    <updated>2016-10-13T15:09:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/count-and-say/" target="_blank" rel="external">Leetcode-Count and Say</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The count-and-say sequence is the sequence of integers beginning as follows:<br>1, 11, 21, 1211, 111221, …     </p>
-<p>1 is read off as “one 1” or 11.<br>11 is read off as “two 1s” or 21.<br>21 is read off as “one 2, then one 1” or 1211.   </p>
-<p>Given an integer n, generate the nth sequence.     </p>
-<p>Note: The sequence of integers will be represented as a string.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Notice: There is a misunderstanding place that we always start from “1”, not “n”. But we need calculate n times</p>
-<ol>
-<li>Maintain two pointers, Using first pointer iterate each element and the second pointer to find out if the adjacent element is the same.</li>
-</ol>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> countAndSay(<span class="built_in">int</span> n) &#123;</div><div class="line">        return count(<span class="string">"1"</span>,n<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="built_in">String</span> count(<span class="built_in">String</span> s, <span class="built_in">int</span> n) &#123;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) return s;</div><div class="line">        char[] arr = s.toCharArray();</div><div class="line">        <span class="built_in">int</span> <span class="built_in">left</span>=<span class="number">0</span>;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">left</span>&lt;arr.length) &#123;</div><div class="line">            <span class="built_in">int</span> <span class="built_in">right</span> = <span class="built_in">left</span>+<span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span>(<span class="built_in">right</span>&lt;arr.length &amp;&amp; arr[<span class="built_in">left</span>]==arr[<span class="built_in">right</span>])&#123;</div><div class="line">                <span class="built_in">right</span>++;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">int</span> num = <span class="built_in">right</span>-<span class="built_in">left</span>;</div><div class="line">            sb.append(num+<span class="string">""</span>+arr[<span class="built_in">left</span>]);</div><div class="line">            <span class="built_in">left</span> = <span class="built_in">right</span>;</div><div class="line">        &#125;</div><div class="line">        return count(sb.toString(),n<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/count-and-say/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Count and Say&lt;/
     
     </summary>
     

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-24T04:11:55.000Z</updated>
+  <updated>2016-10-24T15:37:05.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Best Time to Buy and Sell Stock with Cooldown</title>
+    <link href="http://xinli90.com/2016/10/24/Best-Time-to-Buy-and-Sell-Stock-with-Cooldown/"/>
+    <id>http://xinli90.com/2016/10/24/Best-Time-to-Buy-and-Sell-Stock-with-Cooldown/</id>
+    <published>2016-10-24T14:27:26.000Z</published>
+    <updated>2016-10-24T15:37:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock with Cooldown</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:     </p>
+<p>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).<br>After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</p>
+<p>Example:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">prices</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span>]</div><div class="line"><span class="attr">maxProfit</span> = <span class="number">3</span></div><div class="line"><span class="attr">transactions</span> = [buy, sell, cooldown, buy, sell]</div></pre></td></tr></table></figure>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-DP"><a href="#Solution-DP" class="headerlink" title="Solution:DP"></a>Solution:DP</h4><ul>
+<li>The natural states for this problem is the 3 possible transactions: <code>buy</code>,<code>sell</code>,<code>rest</code>. For each of them we make an array, <code>buy[n]</code>,<code>sell[n]</code> and <code>rest[n]</code>. And it means before day <code>i</code> the maxProfit for any sequence end with <code>buy</code> or <code>sell</code> or <code>rest</code>.</li>
+<li>Function:</li>
+</ul>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">buy<span class="string">[i]</span> = Max(buy<span class="string">[i-1]</span>, rest<span class="string">[i-1]</span>-price);</div><div class="line">sell<span class="string">[i]</span> = Max(sell<span class="string">[i-1]</span>, buy<span class="string">[i-1]</span> + price);</div><div class="line">rest<span class="string">[i]</span> = Max(rest<span class="string">[i-1]</span>, buy<span class="string">[i-1]</span>, sell<span class="string">[i-1]</span>);</div></pre></td></tr></table></figure>
+<p>Notice: </p>
+<p>the fact that <code>buy[i] &lt;= rest[i]</code> , so <code>rest[i] = Max(rest[i-1], sell[i-1])</code>.</p>
+<p>the fact that <code>rest[i] &lt;= sell[i]</code> , so  <code>rest[i] = sell[i-1]</code>.</p>
+<ul>
+<li>So we have 2 functions instead of 3:</li>
+</ul>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">buy<span class="string">[i]</span> = Max(buy<span class="string">[i-1]</span>, sell<span class="string">[i-2]</span>-price);</div><div class="line">sell<span class="string">[i]</span> = Max(sell<span class="string">[i-1]</span>, buy<span class="string">[i-1]</span> + price);</div></pre></td></tr></table></figure>
+<ul>
+<li>Since states of day <code>i</code> relies on <code>i-1</code> and <code>i-2</code>, we can reduce the O(n) space to O(1).</li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">int</span> maxProfit(<span class="built_in">int</span>[] prices) &#123;</div><div class="line">		<span class="built_in">int</span> sell = <span class="number">0</span>, preSell = <span class="number">0</span>;</div><div class="line">		<span class="built_in">int</span> buy = <span class="keyword">Integer</span>.MIN_VALUE, preBuy = <span class="keyword">Integer</span>.MIN_VALUE;</div><div class="line">		for(<span class="built_in">int</span> price : prices) &#123;</div><div class="line">			preBuy = buy;</div><div class="line">			buy = Math.<span class="built_in">max</span>(preBuy, preSell - prices[i]);</div><div class="line">			preSell = sell;</div><div class="line">			sell = Math.<span class="built_in">max</span>(preBuy + prices[i], preSell);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> sell;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/&quot; target=&quot;_blank&quot; rel=&quot;ex
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Best Time to Buy and Sell Stock IV</title>
@@ -117,7 +160,7 @@
     <link href="http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock/"/>
     <id>http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock/</id>
     <published>2016-10-21T13:21:12.000Z</published>
-    <updated>2016-10-21T14:23:19.000Z</updated>
+    <updated>2016-10-24T14:30:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock</a>.</p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
@@ -642,48 +685,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/maximum-subarray/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Maximum Suba
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Add Digits</title>
-    <link href="http://xinli90.com/2016/10/12/Add-Digits/"/>
-    <id>http://xinli90.com/2016/10/12/Add-Digits/</id>
-    <published>2016-10-12T14:11:45.000Z</published>
-    <updated>2016-10-12T14:55:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/add-digits/" target="_blank" rel="external">Leetcode-Add Digits</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
-<p>For example:</p>
-<p>Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.</p>
-<p>Follow up:<br>Could you do it without any loop/recursion in O(1) runtime?   </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Each time iterate the number and get sum of each digits. </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>First you should understand:</p>
-<p>10^k % 9 = 1<br>a*10^k % 9 = a % 9       </p>
-<p>Then let’s use an example to help explain.</p>
-<p>Say a number x = 23456</p>
-<p>x = 2<em> 10000 + 3 </em> 1000 + 4 <em> 100 + 5 </em> 10 + 6</p>
-<p>2 * 10000 % 9 = 2 % 9</p>
-<p>3 * 1000 % 9 = 3 % 9</p>
-<p>4 * 100 % 9 = 4 % 9</p>
-<p>5 * 10 % 9 = 5 % 9</p>
-<p>Then x % 9 = ( 2+ 3 + 4 + 5 + 6) % 9, note that x = 2<em> 10000 + 3 </em> 1000 + 4 <em> 100 + 5 </em> 10 + 6</p>
-<p>So we have 23456 % 9 = (2 + 3 + 4 + 5 + 6) % 9</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    public <span class="built_in">int</span> addDigits(<span class="built_in">int</span> <span class="built_in">num</span>) &#123;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">num</span>&gt;=<span class="number">10</span>) &#123;</div><div class="line">            <span class="built_in">int</span> digit=<span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span>(<span class="built_in">num</span>&gt;<span class="number">0</span>) &#123;</div><div class="line">                digit += <span class="built_in">num</span>%<span class="number">10</span>;</div><div class="line">                <span class="built_in">num</span> /= <span class="number">10</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">num</span> = digit;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">num</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">     public <span class="built_in">int</span> addDigits(<span class="built_in">int</span> <span class="built_in">num</span>) &#123;</div><div class="line">     	<span class="keyword">if</span>(<span class="built_in">num</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">     	<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">num</span> % <span class="number">9</span> == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">9</span>;</div><div class="line">     	<span class="keyword">return</span> <span class="built_in">num</span>%<span class="number">9</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/add-digits/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Add Digits&lt;/a&gt;.&lt;/p
     
     </summary>
     

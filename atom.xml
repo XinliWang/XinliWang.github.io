@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-24T20:51:56.000Z</updated>
+  <updated>2016-10-26T02:23:59.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Decode Ways</title>
+    <link href="http://xinli90.com/2016/10/25/Decode-Ways/"/>
+    <id>http://xinli90.com/2016/10/25/Decode-Ways/</id>
+    <published>2016-10-26T02:11:12.000Z</published>
+    <updated>2016-10-26T02:23:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/decode-ways/" target="_blank" rel="external">Leetcode - Decode Ways</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A message containing letters from A-Z is being encoded to numbers using the following mapping:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'A'</span> -&gt; <span class="number">1</span></div><div class="line"><span class="string">'B'</span> -&gt; <span class="number">2</span></div><div class="line">...</div><div class="line"><span class="string">'Z'</span> -&gt; <span class="number">26</span></div></pre></td></tr></table></figure>
+<p>Given an encoded message containing digits, determine the total number of ways to decode it.</p>
+<p>For example,<br>Given encoded message “12”, it could be decoded as “AB” (1 2) or “L” (12).</p>
+<p>The number of ways decoding “12” is 2.    </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis-For-DP"><a href="#Analysis-For-DP" class="headerlink" title="Analysis For DP"></a>Analysis For DP</h3><ul>
+<li>State: f[i] represents the number of ways to decode it.</li>
+<li>Function: f[i] = f[i] + if(前一位数字&gt;0) f[i-1] + if(10 &lt;= 前两位数字 &lt;= 26) f[i-2]</li>
+<li>Initialize: f[0] = 1 , f[1] = if(前一位数字 == 0) 0 ， else 1. </li>
+<li>Answer: f[s.length()]</li>
+</ul>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">int</span> numDecodings(<span class="keyword">String</span> s) &#123;</div><div class="line">       <span class="keyword">if</span>(s==<span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">       <span class="built_in">int</span> len = s.length();</div><div class="line">       <span class="comment">//initialize</span></div><div class="line">       <span class="built_in">int</span>[] f = <span class="keyword">new</span> <span class="built_in">int</span>[len+<span class="number">1</span>];</div><div class="line">       f[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">       f[<span class="number">1</span>] = s.charAt(<span class="number">0</span>) != <span class="string">'0'</span>? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">2</span>; i &lt;= len; i++) &#123;</div><div class="line">       		<span class="built_in">int</span> first = Integer.parseInt(s.substring(i<span class="number">-1</span>,i));</div><div class="line">       		<span class="built_in">int</span> <span class="built_in">second</span> = Integer.parseInt(s.substring(i<span class="number">-2</span>,i));</div><div class="line">       		<span class="keyword">if</span>(first&gt;<span class="number">0</span>) f[i] += f[i<span class="number">-1</span>];</div><div class="line">       		<span class="keyword">if</span>(<span class="built_in">second</span>&gt;=<span class="number">10</span> &amp;&amp; <span class="built_in">second</span>&lt;=<span class="number">26</span>) f[i] += f[i<span class="number">-2</span>];</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> f[len];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/decode-ways/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Decode Ways&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Maximum Product Subarray</title>
@@ -647,39 +681,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/remove-duplicates-from-sorted-array/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Le
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>House Robber</title>
-    <link href="http://xinli90.com/2016/10/13/House-Robber/"/>
-    <id>http://xinli90.com/2016/10/13/House-Robber/</id>
-    <published>2016-10-13T15:11:52.000Z</published>
-    <updated>2016-10-13T15:53:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">Leetcode-House Robber</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
-<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.    </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1-For-DP"><a href="#Solution1-For-DP" class="headerlink" title="Solution1 For DP"></a>Solution1 For DP</h4><p>The time and space complexity is O(n)</p>
-<ul>
-<li>State: f[i] represents the maximum money the robber get rob until arriving the i-th house </li>
-<li>Function: f[i] = Max(f[i-1],f[i-2]+nums[i])</li>
-<li>Initialize: f[0] = nums[0], f[1] = nums[1]</li>
-<li>Answer: f[nums.length-1]</li>
-</ul>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Similar way with solution1, but reduce the space complexity to O(1)</p>
-<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class Solution1 &#123;</div><div class="line">    public <span class="type">int</span> rob(<span class="type">int</span>[] nums) &#123;</div><div class="line">    	<span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = nums.<span class="built_in">length</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">length</span>==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="type">int</span>[] f = new <span class="type">int</span>[nums.<span class="built_in">length</span>];</div><div class="line">        f[<span class="number">0</span>] = nums[<span class="number">0</span>];</div><div class="line">        f[<span class="number">1</span>] = Math.<span class="built_in">max</span>(nums[<span class="number">0</span>],nums[<span class="number">1</span>]);</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>; i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">        	f[i] = Math.<span class="built_in">max</span>(f[i<span class="number">-1</span>],f[i<span class="number">-2</span>]+nums[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> f[<span class="built_in">length</span><span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">    public <span class="type">int</span> rob(<span class="type">int</span>[] nums) &#123;</div><div class="line">    	<span class="keyword">if</span>(nums==null || nums.<span class="built_in">length</span>==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="comment">//initialize</span></div><div class="line">        <span class="type">int</span> <span class="built_in">length</span> = nums.<span class="built_in">length</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">length</span>==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="type">int</span> last = <span class="number">0</span>, current = <span class="number">0</span>;</div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">length</span>; i++) &#123;</div><div class="line">        	<span class="type">int</span> temp = last; <span class="comment">// the i-2 th element</span></div><div class="line">        	last = current; <span class="comment">// the i-1 th element</span></div><div class="line">        	current = Math.<span class="built_in">max</span>(current,nums[i]+temp); <span class="comment">//the i-th element</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> current;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/house-robber/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-House Robber&lt;/a&gt;
     
     </summary>
     

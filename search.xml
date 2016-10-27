@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[Factorial Trailing Zeroes]]></title>
+      <url>http://xinli90.com/2016/10/27/Factorial-Trailing-Zeroes/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="external">Leetcode-First Bad Version</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer n, return the number of trailing zeroes in n!.</p>
+<p>Note: Your solution should be in logarithmic time complexity.      </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>n! = 2 <em> 3 </em> 4 <em> 5 … </em> (5 <em> 2) </em> … <em> (5^2 </em> 1) <em> … </em> (5^2 * 2) …</li>
+<li>Each time, we divide n by 5 and collect its quotient</li>
+<li>Time complexity is lg5N.</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes</span>(<span class="params"><span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">    	<span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</div><div class="line">    		result += n/<span class="number">5</span>;</div><div class="line">    		n /= <span class="number">5</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Decode Ways]]></title>
       <url>http://xinli90.com/2016/10/25/Decode-Ways/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/decode-ways/" target="_blank" rel="external">Leetcode - Decode Ways</a>.</p>

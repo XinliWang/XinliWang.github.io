@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-26T02:23:59.000Z</updated>
+  <updated>2016-10-27T15:50:59.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Factorial Trailing Zeroes</title>
+    <link href="http://xinli90.com/2016/10/27/Factorial-Trailing-Zeroes/"/>
+    <id>http://xinli90.com/2016/10/27/Factorial-Trailing-Zeroes/</id>
+    <published>2016-10-27T15:25:13.000Z</published>
+    <updated>2016-10-27T15:50:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="external">Leetcode-First Bad Version</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer n, return the number of trailing zeroes in n!.</p>
+<p>Note: Your solution should be in logarithmic time complexity.      </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>n! = 2 <em> 3 </em> 4 <em> 5 … </em> (5 <em> 2) </em> … <em> (5^2 </em> 1) <em> … </em> (5^2 * 2) …</li>
+<li>Each time, we divide n by 5 and collect its quotient</li>
+<li>Time complexity is lg5N.</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes</span>(<span class="params"><span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">    	<span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</div><div class="line">    		result += n/<span class="number">5</span>;</div><div class="line">    		n /= <span class="number">5</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/first-bad-version/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-First Bad V
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Decode Ways</title>
@@ -646,41 +676,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/permutations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Permutations&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Remove Duplicates from Sorted Array</title>
-    <link href="http://xinli90.com/2016/10/13/Remove-Duplicates-from-Sorted-Array/"/>
-    <id>http://xinli90.com/2016/10/13/Remove-Duplicates-from-Sorted-Array/</id>
-    <published>2016-10-13T16:08:51.000Z</published>
-    <updated>2016-10-13T16:33:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="external">Leetcode-Remove Duplicates from Sorted Array</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<p>For example,<br>Given input array nums = [1,1,2],</p>
-<p>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Maintain two pointers, left pointer and right pointer, they are adjacent at the beginning.</li>
-<li>If the the value of first pointer is same to second one’s, shift second pointer right one step.</li>
-<li>If they are not the same, then we will check the difference between two pointers first. If it’s greater than 1, it means we already have duplicate elements, we need change the value of index left+1 to the value of index right. If two pointer are still adjacent, do nothing. At last, shift two pointers right one step.</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Just maintain one pointer, Using for each to iterate array, assign the value to the pointer’s location if the previous one and the current one are different.</li>
-</ol>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">   <span class="keyword">public</span> <span class="built_in">int</span> removeDuplicates(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">       <span class="keyword">if</span>(nums.length&lt;<span class="number">2</span>) return nums.length;</div><div class="line">       <span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>, <span class="built_in">right</span> = <span class="number">1</span>;</div><div class="line">       <span class="keyword">while</span>(<span class="built_in">right</span>&lt;nums.length) &#123;</div><div class="line">           <span class="keyword">if</span>(nums[<span class="built_in">left</span>]!=nums[<span class="built_in">right</span>])&#123;</div><div class="line">               <span class="keyword">if</span>(<span class="built_in">left</span>+<span class="number">1</span>&lt;<span class="built_in">right</span>)&#123;</div><div class="line">                   nums[<span class="built_in">left</span>+<span class="number">1</span>] = nums[<span class="built_in">right</span>];</div><div class="line">               &#125;</div><div class="line">               <span class="built_in">left</span>++;</div><div class="line">               <span class="built_in">right</span>++;</div><div class="line">           &#125;<span class="keyword">else</span>&#123;</div><div class="line">               <span class="built_in">right</span>++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       return <span class="built_in">left</span>+<span class="number">1</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">   <span class="keyword">public</span> <span class="built_in">int</span> removeDuplicates(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">   	<span class="built_in">int</span> i = <span class="number">0</span>;</div><div class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> num : nums) &#123;</div><div class="line">       	<span class="keyword">if</span>(i==<span class="number">0</span> || nums[i<span class="number">-1</span>] &lt; num) &#123;</div><div class="line">       		nums[i++] = num;</div><div class="line">       	&#125;</div><div class="line">       &#125;</div><div class="line">       return i;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/remove-duplicates-from-sorted-array/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Le
     
     </summary>
     

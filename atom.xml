@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-27T19:29:20.000Z</updated>
+  <updated>2016-10-28T15:22:00.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sum of Two Integers</title>
+    <link href="http://xinli90.com/2016/10/28/Sum-of-Two-Integers/"/>
+    <id>http://xinli90.com/2016/10/28/Sum-of-Two-Integers/</id>
+    <published>2016-10-28T15:09:15.000Z</published>
+    <updated>2016-10-28T15:22:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/sum-of-two-integers/" target="_blank" rel="external">Leetcode - Sum of Two Integers</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.</p>
+<p>Example:<br>Given a = 1 and b = 2, return 3.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>First recall addition in primary school. e.g. 26 + 147 = 173. You start by 6 + 7 = 13, so you put the 3 in the sum, and carry the one, and so forth…</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">carry: <span class="number">1</span></div><div class="line"><span class="selector-tag">a</span>:     <span class="number">26</span></div><div class="line"><span class="selector-tag">b</span>:    <span class="number">147</span></div><div class="line">sum   <span class="number">173</span></div></pre></td></tr></table></figure>
+<ol>
+<li>First find the carry: <code>int carry = (a &amp; b)</code></li>
+<li>Then store the first digit position, and store it in <code>a = (a ^ b)</code></li>
+<li>Shift the carry to the next digit position: <code>carry &lt;&lt; 1</code></li>
+<li>The while loop continues as long as there are carries that has bot been included in the sum.</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSum</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>) </span>&#123;</div><div class="line">    	<span class="keyword">while</span>(b != <span class="number">0</span>) &#123;</div><div class="line">    		<span class="keyword">int</span> carry = (a &amp; b);</div><div class="line">    		a = (a ^ b);</div><div class="line">    		b = carry &lt;&lt; <span class="number">1</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> a;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/sum-of-two-integers/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Sum of 
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Unique Paths II</title>
@@ -653,38 +688,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/permutations-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Permutations 
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Next Permutation</title>
-    <link href="http://xinli90.com/2016/10/16/Next-Permutation/"/>
-    <id>http://xinli90.com/2016/10/16/Next-Permutation/</id>
-    <published>2016-10-16T18:37:12.000Z</published>
-    <updated>2016-10-17T13:31:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/permutations/" target="_blank" rel="external">Leetcode-Permutations</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
-<p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p>
-<p>The replacement must be in-place, do not allocate extra memory.</p>
-<p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. </p>
-<p>1, 2, 3 → 1, 3, 2<br>3, 2, 1 → 1, 2, 3<br>1, 1, 5 → 1, 5, 1      </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
-<li>首先从右往左找到一个点i, 使得nums[i]&lt;nums[i+1], 如果没有这样的点，说明该数组已经是Descending，直接reverse结束.</li>
-<li>再从右往左找到大于i的点j，使得刚好nums[j]&gt;nums[i], 调换i 和 j 的值，找出下一个最大值，然后reverse后面的数组，使其数组变为最小值.</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> void nextPermutation(int[] nums) &#123;</div><div class="line">        int <span class="keyword">right</span> = nums.length-<span class="number">2</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">right</span>&gt;=<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(nums[<span class="keyword">right</span>]&lt;nums[<span class="keyword">right</span>+<span class="number">1</span>])&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">right</span>--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">right</span>&lt;<span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">reverse</span>(nums,<span class="keyword">right</span>+<span class="number">1</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        int <span class="keyword">left</span> = nums.length-<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">right</span>&lt;<span class="keyword">left</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(nums[<span class="keyword">left</span>]&gt;nums[<span class="keyword">right</span>])&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">left</span>--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">swap</span>(nums,<span class="keyword">right</span>,<span class="keyword">left</span>);</div><div class="line">        <span class="built_in">reverse</span>(nums,<span class="keyword">right</span>+<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> void <span class="built_in">swap</span>(int[] nums, int i,int j) &#123;</div><div class="line">        int temp = nums[i];</div><div class="line">        nums[i] = nums[j];</div><div class="line">        nums[j] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> void <span class="built_in">reverse</span>(int[] nums,int <span class="keyword">left</span>) &#123;</div><div class="line">        int <span class="keyword">right</span> = nums.length-<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">left</span>&lt;<span class="keyword">right</span>) &#123;</div><div class="line">            <span class="built_in">swap</span>(nums,<span class="keyword">left</span>,<span class="keyword">right</span>);</div><div class="line">            <span class="keyword">left</span>++;</div><div class="line">            <span class="keyword">right</span>--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/permutations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Permutations&lt;/a&gt;
     
     </summary>
     

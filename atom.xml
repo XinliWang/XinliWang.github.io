@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-10-29T18:24:16.000Z</updated>
+  <updated>2016-10-30T20:12:43.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Product of Array Except Self</title>
+    <link href="http://xinli90.com/2016/10/30/Product-of-Array-Except-Self/"/>
+    <id>http://xinli90.com/2016/10/30/Product-of-Array-Except-Self/</id>
+    <published>2016-10-30T19:48:21.000Z</published>
+    <updated>2016-10-30T20:12:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank" rel="external">Leetcode - Product of Array Except Self</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of n integers where n &gt; 1, nums, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</p>
+<p>Solve it without division and in O(n).</p>
+<p>For example, given [1,2,3,4], return [24,12,8,6].</p>
+<p>Follow up:<br>Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><p>Let’s take an example:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Array:  1        2       3      4       5</div><div class="line">Left:            1      1<span class="emphasis">*2   1*</span>2<span class="emphasis">*3   1*</span>2<span class="emphasis">*3*</span>4</div><div class="line">Right: 2<span class="emphasis">*3*</span>4<span class="emphasis">*5  3*</span>4<span class="emphasis">*5   4*</span>5     5</div></pre></td></tr></table></figure>
+<p>Given array[1, 2, 3, 4, 5], regarding the third number 3, the product of array except 3 is 1 <em> 2 and right is 4 </em> 5. The product is left * right.</p>
+<p>So time complexity is O(n+n), the extra space is O(1).</p>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Similar with Solution1, instead of variable temp, we use result[0] to store right product.</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class <span class="type">Solution1</span> &#123;</div><div class="line">    public <span class="built_in">int</span>[] productExceptSelf(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">    	<span class="built_in">int</span>[] <span class="literal">result</span> = new <span class="built_in">int</span>[nums.length];</div><div class="line">    	<span class="literal">result</span>[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</div><div class="line">    		<span class="literal">result</span>[i] = <span class="literal">result</span>[i-<span class="number">1</span>] * nums[i-<span class="number">1</span>];</div><div class="line">    	&#125;</div><div class="line">    	<span class="built_in">int</span> temp = <span class="number">1</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="built_in">int</span> i=nums.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) &#123;</div><div class="line">    		<span class="literal">result</span>[i] *= temp;</div><div class="line">    		temp *= nums[i];</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> <span class="literal">result</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class <span class="type">Solution2</span> &#123;</div><div class="line">    public <span class="built_in">int</span>[] productExceptSelf(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">    	<span class="built_in">int</span>[] <span class="literal">result</span> = new <span class="built_in">int</span>[nums.length];</div><div class="line">    	<span class="literal">result</span>[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</div><div class="line">    		<span class="literal">result</span>[i] = <span class="literal">result</span>[i-<span class="number">1</span>] * nums[i-<span class="number">1</span>];</div><div class="line">    	&#125;</div><div class="line">    	</div><div class="line">    	<span class="keyword">for</span>(<span class="built_in">int</span> i=nums.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) &#123;</div><div class="line">    		<span class="literal">result</span>[i] *= <span class="literal">result</span>[<span class="number">0</span>];</div><div class="line">    		<span class="literal">result</span>[<span class="number">0</span>] *= nums[i];</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> <span class="literal">result</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/product-of-array-except-self/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode 
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Odd Even Linked List</title>
@@ -652,43 +685,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/reverse-words-in-a-string-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode 
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Permutation Sequence</title>
-    <link href="http://xinli90.com/2016/10/17/Permutation-Sequence/"/>
-    <id>http://xinli90.com/2016/10/17/Permutation-Sequence/</id>
-    <published>2016-10-17T18:32:00.000Z</published>
-    <updated>2016-10-17T23:19:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/permutation-sequence/" target="_blank" rel="external">Leetcode - Permutation Sequence</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The set [1,2,3,…,n] contains a total of n! unique permutations.</p>
-<p>By listing and labeling all of the permutations in order,<br>We get the following sequence (ie, for n = 3):   </p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">"123"</span></div><div class="line"><span class="string">"132"</span></div><div class="line"><span class="string">"213"</span></div><div class="line"><span class="string">"231"</span></div><div class="line"><span class="string">"312"</span></div><div class="line"><span class="string">"321"</span></div></pre></td></tr></table></figure>
-<p>Given n and k, return the kth permutation sequence.    </p>
-<p>Note: Given n will be between 1 and 9 inclusive.   </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>Backtracking to get all string, and get the kth string.</li>
-<li>For this solution it will get Time Limit Exceeded.</li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>If we don’t get Time Limit Exceeded, we shold use the formula to calculate each digit.</li>
-<li>Notice that for n groups there are (n-1)! permutations in each group.(n-2)! permutations for n-1 groups…</li>
-<li>So use k/(n-1)! to get first place, then k will be k%(n-1)!, it means we need iterate k%(n-1)! times for remaining numbers until the last place.</li>
-</ol>
-<figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String getPermutation(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</div><div class="line">        <span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; lists = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">List</span>&lt;Integer&gt; <span class="keyword">list</span> = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        helper(lists,<span class="keyword">list</span>,n);</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i : lists.get(k<span class="number">-1</span>)) &#123;</div><div class="line">            sb.append(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> void helper(<span class="keyword">List</span>&lt;<span class="keyword">List</span>&lt;Integer&gt;&gt; lists,<span class="keyword">List</span>&lt;Integer&gt; <span class="keyword">list</span>,<span class="keyword">int</span> n)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">list</span>.size() == n) &#123;</div><div class="line">            lists.add(<span class="keyword">new</span> ArrayList&lt;&gt;(<span class="keyword">list</span>));</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</div><div class="line">                <span class="keyword">if</span>(<span class="keyword">list</span>.contains(i)) <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">list</span>.add(i);</div><div class="line">                helper(lists,<span class="keyword">list</span>,n);</div><div class="line">                <span class="keyword">list</span>.remove(<span class="keyword">list</span>.size()<span class="number">-1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String getPermutation(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</div><div class="line">    	<span class="keyword">List</span>&lt;Integer&gt; <span class="keyword">list</span> = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</div><div class="line">    		<span class="keyword">list</span>.add(i);</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">int</span>[] fact = <span class="keyword">new</span> fact[n];</div><div class="line">    	fact[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</div><div class="line">    		fact[i] = i*fact[i<span class="number">-1</span>];</div><div class="line">    	&#125;</div><div class="line">    	k = k<span class="number">-1</span>;</div><div class="line">    	StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=n; i&gt;<span class="number">0</span>; i--)&#123;</div><div class="line">    		<span class="keyword">int</span> index = k/fact[i<span class="number">-1</span>];</div><div class="line">    		sb.append(<span class="keyword">list</span>.get(index));</div><div class="line">    		k = k%fact[i<span class="number">-1</span>];</div><div class="line">    		<span class="keyword">list</span>.remove(index);</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/permutation-sequence/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Permut
     
     </summary>
     

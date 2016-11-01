@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title><![CDATA[Move Zeroes]]></title>
+      <url>http://xinli90.com/2016/11/01/Move-Zeroes/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/move-zeroes/" target="_blank" rel="external">Leetcode - Move Zeroes</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].   </p>
+<p>Note:<br>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.    </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><p>Maintain two pointers, one points to <code>0</code>, one interate the whole array to find non zero digit to swap.</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> void moveZeroes(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">        <span class="keyword">if</span>(nums==<span class="literal">null</span> || nums.length&lt;<span class="number">2</span>) return;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>,<span class="built_in">right</span> = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">right</span> &lt; nums.length) &#123;</div><div class="line">        	<span class="keyword">if</span>(nums[<span class="built_in">right</span>]==<span class="number">0</span>) &#123;</div><div class="line">        		<span class="keyword">if</span>(nums[<span class="built_in">left</span>]!=<span class="number">0</span>) &#123;</div><div class="line">        			<span class="built_in">left</span> = <span class="built_in">right</span>;</div><div class="line">        		&#125;</div><div class="line">        	&#125;<span class="keyword">else</span> &#123;</div><div class="line">        		<span class="keyword">if</span>(nums[<span class="built_in">left</span>] == <span class="number">0</span>) &#123;</div><div class="line">        			swap(nums,<span class="built_in">left</span>,<span class="built_in">right</span>);</div><div class="line">        			<span class="built_in">left</span>++;</div><div class="line">        		&#125;</div><div class="line">        	&#125;</div><div class="line">        	<span class="built_in">right</span>++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> void swap(<span class="built_in">int</span>[] nums, <span class="built_in">int</span> a, <span class="built_in">int</span> b) &#123;</div><div class="line">    	<span class="built_in">int</span> temp = nums[a];</div><div class="line">    	nums[a] = nums[b];</div><div class="line">    	nums[b] = temp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>Iterate the array, find the location of first <code>0</code>, maintain its index and assign the next non-zero digit to their original location one by one.</li>
+<li>assign <code>0</code> to the remaining locations.</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Day20 iOS Design Pattern]]></title>
+      <url>http://xinli90.com/2016/11/01/Day20-iOS-Design-Pattern/</url>
+      <content type="html"><![CDATA[<p>本篇是关于iOS Design Pattern的介绍和用途.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>总结归纳各种Design Pattern特性</li>
+<li>总结Design Pattern用法和常见情景</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="Prototype-Pattern"><a href="#Prototype-Pattern" class="headerlink" title="Prototype Pattern"></a>Prototype Pattern</h3><p>用clone的方式来创建<code>重复</code>对象，避免一直创建对象所带来的资源耗损。并且能够简化复杂对象的创建过程。<br>Prototype pattern refers to creating duplicate object while keeping performance in mind. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.</p>
+<p>例如发送广告信息给500万用户，如果一条一条发的话可能需要好几天时间，相当于获取一个个创建的model object中信息并输出。如果创建多线程同时发送，并且避免创建500W个object带来的资源耗损，可以使用一个通用的object，然后每次copy得到新的实例而不是使用构造函数得到新实例，再修改里面一部分variable并且不会影响原Object来实现。</p>
+<p>这就要求： 首先Object class 继承 Cloneable接口.     </p>
+<p>注意： 这里的clone只能是shallow copy, 所以只能拷贝primitive type的值和对象、数组的reference，我们需要对 对象、数组进行deep copy.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">Class</span> <span class="title">Message</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> String content;</div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; ars; </div><div class="line">	<span class="keyword">public</span> Message()&#123;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	<span class="keyword">public</span> Message <span class="keyword">clone</span>() &#123;	</div><div class="line">		Message message = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			message = (Message)super.<span class="keyword">clone</span>();</div><div class="line">			message.ars = (ArrayList&lt;String&gt;) this.ars.<span class="keyword">clone</span>();</div><div class="line">		&#125; <span class="keyword">catch</span>(CloneNotSupportedException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> message;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用的时候则可以只创建一个新的object，之后不断clone来创建新的object.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Message</span> <span class="keyword">message</span> = new <span class="keyword">Message</span>();</div><div class="line">int i = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(i&lt;<span class="number">10</span>) &#123;</div><div class="line">	<span class="keyword">Message</span> cloneMes = <span class="keyword">message</span>.clone();</div><div class="line">	....</div><div class="line">	sendMessage(cloneMes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>缺点：</p>
+<ol>
+<li>在实现clone时可能需要实现复杂的代码，多重嵌套引用的deep copy很麻烦；     </li>
+<li>每一个类都需要配置clone方法，当对已有类进行改造是，需要修改源代码，违背“开闭原则”.      </li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Product of Array Except Self]]></title>
       <url>http://xinli90.com/2016/10/30/Product-of-Array-Except-Self/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank" rel="external">Leetcode - Product of Array Except Self</a>.</p>

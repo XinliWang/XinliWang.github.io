@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-11-02T16:15:16.000Z</updated>
+  <updated>2016-11-03T17:52:00.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maximum Size Subarray Sum Equals k</title>
+    <link href="http://xinli90.com/2016/11/03/Maximum-Size-Subarray-Sum-Equals-k/"/>
+    <id>http://xinli90.com/2016/11/03/Maximum-Size-Subarray-Sum-Equals-k/</id>
+    <published>2016-11-03T16:47:49.000Z</published>
+    <updated>2016-11-03T17:52:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="external">Leetcode-Maximum Subarray</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.   </p>
+<p>Note:<br>The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.  </p>
+<p>Example 1:<br>Given nums = [1, -1, 5, -2, 3], k = 3,<br>return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)  </p>
+<p>Example 2:<br>Given nums = [-2, -1, 2, 1], k = 1,<br>return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
+<p>Follow Up:<br>Can you do it in O(n) time?   </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li>Try all possible combinations and get the maximum one.   </li>
+<li>Time complexity is O(n^2)    </li>
+</ol>
+<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
+<li>The main point is we store the sum of 0 - i elements for each location in array. Then we only need to check if sum[j] - sum[i] == k, it represents the sum of i+1 to j.</li>
+<li>We use HashMap to get the constant time for the check stuff.</li>
+<li>Time complexity is O(n+n+n)</li>
+</ol>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> maxSubArrayLen(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">        <span class="keyword">int</span> maxLen = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span> <span class="keyword">sum</span> = nums[i];</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">sum</span>==k) maxLen = Math.max(maxLen,<span class="number">1</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;nums.length; j++) &#123;</div><div class="line">                <span class="keyword">sum</span> += nums[j];</div><div class="line">                <span class="keyword">if</span>(<span class="keyword">sum</span> == k) &#123;</div><div class="line">                    maxLen = Math.max(maxLen,j-i+<span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxLen;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> maxSubArrayLen(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> maxLen = <span class="number">0</span>;</div><div class="line">		<span class="comment">//in order to preprocess the data easier,assign 0 to sum[0]</span></div><div class="line">		<span class="keyword">int</span>[] <span class="keyword">sum</span> = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>];</div><div class="line">		<span class="keyword">sum</span>[<span class="number">0</span>] = <span class="number">0</span>;	</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="keyword">sum</span>.length; i++) &#123;</div><div class="line">			<span class="keyword">sum</span>[i] = <span class="keyword">sum</span>[i<span class="number">-1</span>] + nums[i<span class="number">-1</span>];</div><div class="line">		&#125;</div><div class="line">		Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">sum</span>.length; i++) &#123;</div><div class="line">			map.put(<span class="keyword">sum</span>[i],i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">sum</span>.length; i++) &#123;</div><div class="line">			Integer val = map.get(<span class="keyword">sum</span>[i]+k);</div><div class="line">			<span class="keyword">if</span>(val!=<span class="keyword">null</span> &amp;&amp; val.intValue()-i&gt;maxLen) &#123;</div><div class="line">				maxLen = val.intValue()-i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> maxLen;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/maximum-subarray/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Maximum Suba
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Binary Tree Vertical Order Traversal</title>
@@ -695,53 +733,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/first-bad-version/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-First Bad V
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Rotate Array</title>
-    <link href="http://xinli90.com/2016/10/19/Rotate-Array/"/>
-    <id>http://xinli90.com/2016/10/19/Rotate-Array/</id>
-    <published>2016-10-20T03:31:27.000Z</published>
-    <updated>2016-10-20T15:46:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="external">Leetcode-Rotate Array</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Rotate an array of n elements to the right by k steps.</p>
-<p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>rotete one by one.</li>
-<li>Time complexity is O(k*n), Space complexity is O(1)     </li>
-<li>TIme Limit Exceeded      </li>
-</ol>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Use an array to store the last k elements first</li>
-<li>shift all remaining elements to the right</li>
-<li>put k elements to the left.</li>
-<li>Time complexity is O(n), Space complexity is O(k)</li>
-</ol>
-<h4 id="Solution3"><a href="#Solution3" class="headerlink" title="Solution3"></a>Solution3</h4><ol>
-<li>Reverse first size - k elements</li>
-<li>Reverse last k elements</li>
-<li>Reverse all elements</li>
-<li>Time complexity is O(n), Space complexity is O(1)</li>
-</ol>
-<h4 id="Solution4"><a href="#Solution4" class="headerlink" title="Solution4"></a>Solution4</h4><ol>
-<li>create a new array to store all elements</li>
-<li>reasign the value into the original array</li>
-<li>Time complexity is O(n), Space complexity is O(n)</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">while</span>(k&gt;<span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">int</span> target = nums[<span class="keyword">size</span>-<span class="number">1</span>];</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-<span class="number">1</span>; i&gt;<span class="number">0</span>; i++)&#123;</div><div class="line">				nums[i] = nums[i-<span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">			nums[<span class="number">0</span>] = target;</div><div class="line">			k--;</div><div class="line">		&#125; </div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution2 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span>[] tempArr = <span class="keyword">new</span> <span class="keyword">int</span>[k];</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-k; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			tempArr[i-(<span class="keyword">size</span>-k)] = nums[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="keyword">size</span>-<span class="number">1</span>; i&gt;=k; i--) &#123;</div><div class="line">			nums[i] = nums[i-k];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;k; i++) &#123;</div><div class="line">			nums[i] = tempArr[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution3 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="number">0</span>,<span class="keyword">size</span>-k-<span class="number">1</span>);</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="keyword">size</span>-k,<span class="keyword">size</span>-<span class="number">1</span>);</div><div class="line">		<span class="keyword">reverse</span>(nums,<span class="number">0</span>,<span class="keyword">size</span>-<span class="number">1</span>);</div><div class="line">	&#125;	</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">reverse</span>(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> left,<span class="keyword">int</span> right) &#123;</div><div class="line">		<span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">			<span class="keyword">int</span> temp = nums[left];</div><div class="line">			nums[left] = nums[right];</div><div class="line">			nums[right] = temp;</div><div class="line">			left++;</div><div class="line">			right--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution4 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> rotate(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">size</span> = nums.length;</div><div class="line">		<span class="keyword">int</span>[] copyArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="keyword">size</span>];</div><div class="line">		<span class="keyword">if</span>(k&gt;<span class="keyword">size</span>) k =k%<span class="keyword">size</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			copyArray[i] = nums[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">size</span>; i++) &#123;</div><div class="line">			nums[(i+k)%<span class="keyword">size</span>] = copyArray[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/rotate-array/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode-Rotate Array&lt;/a&gt;
     
     </summary>
     

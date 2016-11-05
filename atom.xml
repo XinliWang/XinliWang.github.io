@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-11-05T18:40:06.000Z</updated>
+  <updated>2016-11-05T20:46:25.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>One Edit Distance</title>
+    <link href="http://xinli90.com/2016/11/05/One-Edit-Distance/"/>
+    <id>http://xinli90.com/2016/11/05/One-Edit-Distance/</id>
+    <published>2016-11-05T20:27:18.000Z</published>
+    <updated>2016-11-05T20:46:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/one-edit-distance/" target="_blank" rel="external">Leetcode - One Edit Distance</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings S and T, determine if they are both one edit distance apart.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
+<li>In order to compare easily, be sure the longer string first.</li>
+<li>When find out the different character, compare their remaining string.</li>
+</ol>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Solution &#123;</div><div class="line">	public boolean isOneEditDistance(String s, String t) &#123;</div><div class="line">		<span class="keyword">if</span>(s.<span class="built_in">length</span>() &lt; t.<span class="built_in">length</span>()) &#123;</div><div class="line">			<span class="built_in">return</span> isOneEditDistance(t,s);</div><div class="line">		&#125;	</div><div class="line">		int i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(i &lt; t.<span class="built_in">length</span>()) &#123;</div><div class="line">			<span class="keyword">if</span>(s.charAt(i) != t.charAt(i)) &#123;</div><div class="line">				<span class="keyword">if</span>(s.<span class="built_in">length</span>() == t.<span class="built_in">length</span>()) &#123;</div><div class="line">					<span class="built_in">return</span> s.<span class="built_in">substring</span>(i+<span class="number">1</span>).equals(t.<span class="built_in">substring</span>(i+<span class="number">1</span>));</div><div class="line">				&#125;<span class="keyword">else</span> &#123;</div><div class="line">					<span class="built_in">return</span> s.<span class="built_in">substring</span>(i+<span class="number">1</span>).equals(t.<span class="built_in">substring</span>(i));</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		//prevent s <span class="built_in">is</span> longer than t by <span class="number">1</span> character</div><div class="line">		<span class="built_in">return</span> i==(s.<span class="built_in">length</span>()-<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/one-edit-distance/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - One Edit 
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Read N Characters Given Read4</title>
@@ -693,39 +721,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetco
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Search in Rotated Sorted Array</title>
-    <link href="http://xinli90.com/2016/10/20/Search-in-Rotated-Sorted-Array/"/>
-    <id>http://xinli90.com/2016/10/20/Search-in-Rotated-Sorted-Array/</id>
-    <published>2016-10-20T19:58:56.000Z</published>
-    <updated>2016-10-20T20:25:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="external">Leetcode - Search in Rotated Sorted Array</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
-<p>(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</p>
-<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
-<p>You may assume no duplicate exists in the array.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><p>Iterate through the array to find the target.</p>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><ol>
-<li>Find Min index</li>
-<li>compare target with the last element to ensure left and right index.</li>
-<li>Use Binary Search to find the target.</li>
-</ol>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public <span class="built_in">int</span> <span class="built_in">search</span>(<span class="built_in">int</span>[] nums, <span class="built_in">int</span> target) &#123;</div><div class="line">         for(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</div><div class="line">             <span class="built_in">if</span>(nums[i]==target) &#123;</div><div class="line">                 return i;</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">         return -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Solution2 &#123;</div><div class="line">	public <span class="built_in">int</span> <span class="built_in">search</span>(<span class="built_in">int</span>[] nums, <span class="built_in">int</span> target) &#123;</div><div class="line">		<span class="built_in">int</span> minIndex = findMinIndex(nums);</div><div class="line">		<span class="built_in">if</span>(nums[minIndex] == target) return minIndex;</div><div class="line">		<span class="built_in">int</span> sie = nums.length;</div><div class="line">		<span class="built_in">int</span> <span class="built_in">left</span> = nums[size-<span class="number">1</span>]&gt;=target? minIndex+<span class="number">1</span> <span class="symbol">:</span> <span class="number">0</span>;</div><div class="line">		<span class="built_in">int</span> <span class="built_in">right</span> = nums[size-<span class="number">1</span>]&gt;=target ? size-<span class="number">1</span> <span class="symbol">:</span> minIndex-<span class="number">1</span>;</div><div class="line">		//<span class="built_in">left</span>和<span class="built_in">right</span>边界都在变化，所以需要验证<span class="built_in">left</span>==<span class="built_in">right</span>的情况，防止数组size为<span class="number">2</span>的情况</div><div class="line">		while(<span class="built_in">left</span> &lt;= <span class="built_in">right</span>) &#123;</div><div class="line">			<span class="built_in">int</span> <span class="built_in">mid</span> = <span class="built_in">left</span> + (<span class="built_in">right</span>-<span class="built_in">left</span>)/<span class="number">2</span>;</div><div class="line">			<span class="built_in">if</span>(nums[<span class="built_in">mid</span>] == target) return <span class="built_in">mid</span>;</div><div class="line">			else <span class="built_in">if</span>(nums[<span class="built_in">mid</span>] &gt; target) <span class="built_in">right</span> = <span class="built_in">mid</span>-<span class="number">1</span>;</div><div class="line">			else <span class="built_in">left</span> = <span class="built_in">mid</span>+<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		return -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public <span class="built_in">int</span> findMinIndex(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">		<span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>, <span class="built_in">right</span> = nums.length-<span class="number">1</span>;</div><div class="line">		//<span class="built_in">left</span> = <span class="built_in">mid</span>+<span class="number">1</span>,<span class="built_in">right</span>=<span class="built_in">mid</span> 为了保证只有<span class="built_in">left</span>边界变化，确保最后返回<span class="built_in">left</span>得到正确结果</div><div class="line">		while(<span class="built_in">left</span> &lt; <span class="built_in">right</span>) &#123;</div><div class="line">			<span class="built_in">int</span> <span class="built_in">mid</span> = <span class="built_in">left</span> + (<span class="built_in">right</span>-<span class="built_in">left</span>)/<span class="number">2</span>;</div><div class="line">			<span class="built_in">if</span>(nums[<span class="built_in">mid</span>]&gt;nums[<span class="built_in">right</span>]) &#123;</div><div class="line">				<span class="built_in">left</span> = <span class="built_in">mid</span>+<span class="number">1</span>;</div><div class="line">			&#125;else &#123;</div><div class="line">				<span class="built_in">right</span> = <span class="built_in">mid</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return <span class="built_in">left</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/search-in-rotated-sorted-array/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcod
     
     </summary>
     

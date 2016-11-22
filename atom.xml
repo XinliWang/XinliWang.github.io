@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2016-11-21T04:35:28.000Z</updated>
+  <updated>2016-11-22T04:50:23.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Meeting Rooms</title>
+    <link href="http://xinli90.com/2016/11/21/Meeting-Rooms/"/>
+    <id>http://xinli90.com/2016/11/21/Meeting-Rooms/</id>
+    <published>2016-11-22T04:48:21.000Z</published>
+    <updated>2016-11-22T04:50:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/meeting-rooms/" target="_blank" rel="external">Leetcode - Meeting Rooms</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &lt; ei), determine if a person could attend all meetings.   </p>
+<p>For example,<br>Given [[0, 30],[5, 10],[15, 20]],<br>return false.   </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li></li>
+</ol>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> an interval.</div><div class="line"> * <span class="keyword">public</span> <span class="keyword">class</span> Interval &#123;</div><div class="line"> *     <span class="built_in">int</span> start;</div><div class="line"> *     <span class="built_in">int</span> <span class="keyword">end</span>;</div><div class="line"> *     Interval() &#123; start = <span class="number">0</span>; <span class="keyword">end</span> = <span class="number">0</span>; &#125;</div><div class="line"> *     Interval(<span class="built_in">int</span> s, <span class="built_in">int</span> e) &#123; start = s; <span class="keyword">end</span> = e; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> boolean canAttendMeetings(Interval[] intervals) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/meeting-rooms/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Meeting Rooms
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>N Queens</title>
+    <link href="http://xinli90.com/2016/11/21/N-Queens/"/>
+    <id>http://xinli90.com/2016/11/21/N-Queens/</id>
+    <published>2016-11-22T04:10:28.000Z</published>
+    <updated>2016-11-22T04:18:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/n-queens/" target="_blank" rel="external">Leetcode - N Queens</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
+<p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
+<p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively.</p>
+<p>For example,<br>There exist two distinct solutions to the 4-queens puzzle: </p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"> [<span class="string">".Q.."</span>,  <span class="comment">// Solution 1</span></div><div class="line">  <span class="string">"...Q"</span>,</div><div class="line">  <span class="string">"Q..."</span>,</div><div class="line">  <span class="string">"..Q."</span>],</div><div class="line"></div><div class="line"> [<span class="string">"..Q."</span>,  <span class="comment">// Solution 2</span></div><div class="line">  <span class="string">"Q..."</span>,</div><div class="line">  <span class="string">"...Q"</span>,</div><div class="line">  <span class="string">".Q.."</span>]</div><div class="line">]</div><div class="line"></div><div class="line">```  </div><div class="line"></div><div class="line"><span class="meta">## Solution</span></div><div class="line">      </div><div class="line"><span class="meta">### Analysis</span></div><div class="line"></div><div class="line"><span class="meta">#### Solution</span></div></pre></td></tr></table></figure>
+<p>public class Solution {<br>    public List<list<string>&gt; solveNQueens(int n) {<br>        List<list<string>&gt; result = new ArrayList&lt;&gt;();</list<string></list<string></p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/n-queens/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - N Queens&lt;/a&gt;.&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Flatten Nested List Iterator</title>
@@ -649,70 +710,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lee
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Best Time to Buy and Sell Stock III</title>
-    <link href="http://xinli90.com/2016/10/23/Best-Time-to-Buy-and-Sell-Stock-III/"/>
-    <id>http://xinli90.com/2016/10/23/Best-Time-to-Buy-and-Sell-Stock-III/</id>
-    <published>2016-10-23T19:53:01.000Z</published>
-    <updated>2016-10-24T00:29:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock III</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p>
-<p>Note:<br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><ol>
-<li>firstBuy: means we have to borrow money from others, we need borrow as less as possible to get the maximum profit. But the value is negative(-price), so we should pick max one.</li>
-<li>firstSell: after buy stock, we need sell stock in a higher price. So profit = price - |firstBuy| = price + firstBuy.</li>
-<li>secondBuy: after first transaction, we get the profit 即 firstSell, then similar with firstBuy, we get firstSell-price.</li>
-<li>secondSell: similar with firstSell, we get the profit is price + secondBuy.</li>
-</ol>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution1 &#123;</div><div class="line">	<span class="keyword">public</span> <span class="built_in">int</span> maxProfit(<span class="built_in">int</span>[] prices) &#123;</div><div class="line">		<span class="built_in">int</span> firstBuy = <span class="keyword">Integer</span>.MIN_VALUE, firstSell = <span class="number">0</span>;</div><div class="line">		<span class="built_in">int</span> secondBuy = <span class="keyword">Integer</span>.MIN_VALUE, secondSell = <span class="number">0</span>;</div><div class="line">		for(<span class="built_in">int</span> price : prices) &#123;</div><div class="line">			firstBuy = Math.<span class="built_in">max</span>(firstBuy, -price);</div><div class="line">			firstSell = Math.<span class="built_in">max</span>(firstSell, price + firstBuy);</div><div class="line">			secondBuy = Math.<span class="built_in">max</span>(secondBuy, firstSell - price);</div><div class="line">			secondSell = Math.<span class="built_in">max</span>(secondSell, price + secondBuy);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> secondSell;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Le
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Best Time to Buy and Sell Stock II</title>
-    <link href="http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock-II/"/>
-    <id>http://xinli90.com/2016/10/21/Best-Time-to-Buy-and-Sell-Stock-II/</id>
-    <published>2016-10-21T16:51:24.000Z</published>
-    <updated>2016-10-23T19:51:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="external">Leetcode - Best Time to Buy and Sell Stock II</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ul>
-<li>State: f[i] represents the maximum profit.</li>
-<li>Function: f[i] = f[i-1] + (if(prices[i]&gt;prices[i-1])prices[i] - prices[i-1]), update stock to the current one.</li>
-<li>Initialize: f[0] = 0, stock = prices[0]</li>
-<li>Answer: f[nums.length-1]</li>
-</ul>
-<h4 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h4><p>Just add all positive difference between two adjacent elements.</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span>(<span class="params"><span class="keyword">int</span>[] prices</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span>(prices==<span class="literal">null</span> || prices.length&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span>[] profit = <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</div><div class="line">		profit[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> stock = prices[<span class="number">0</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; prices.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span>(prices[i]&gt;stock) &#123;</div><div class="line">				profit[i] = profit[i<span class="number">-1</span>] + (prices[i]-stock);</div><div class="line">			&#125;<span class="keyword">else</span> &#123;</div><div class="line">				profit[i] = profit[i<span class="number">-1</span>];</div><div class="line">			&#125;</div><div class="line">			stock = prices[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> profit[prices.length<span class="number">-1</span>];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution2</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span>(<span class="params"><span class="keyword">int</span>[] prices</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span>(prices==<span class="literal">null</span> || prices.length&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> profit = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; prices.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span>(prices[i]&gt;prices[i<span class="number">-1</span>]) &#123;</div><div class="line">				profit += prices[i] - prices[i<span class="number">-1</span>];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> profit;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lee
     
     </summary>
     

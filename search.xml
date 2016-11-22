@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[Meeting Rooms]]></title>
+      <url>http://xinli90.com/2016/11/21/Meeting-Rooms/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/meeting-rooms/" target="_blank" rel="external">Leetcode - Meeting Rooms</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &lt; ei), determine if a person could attend all meetings.   </p>
+<p>For example,<br>Given [[0, 30],[5, 10],[15, 20]],<br>return false.   </p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
+<li></li>
+</ol>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> an interval.</div><div class="line"> * <span class="keyword">public</span> <span class="keyword">class</span> Interval &#123;</div><div class="line"> *     <span class="built_in">int</span> start;</div><div class="line"> *     <span class="built_in">int</span> <span class="keyword">end</span>;</div><div class="line"> *     Interval() &#123; start = <span class="number">0</span>; <span class="keyword">end</span> = <span class="number">0</span>; &#125;</div><div class="line"> *     Interval(<span class="built_in">int</span> s, <span class="built_in">int</span> e) &#123; start = s; <span class="keyword">end</span> = e; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> boolean canAttendMeetings(Interval[] intervals) &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[N Queens]]></title>
+      <url>http://xinli90.com/2016/11/21/N-Queens/</url>
+      <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/n-queens/" target="_blank" rel="external">Leetcode - N Queens</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
+<p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
+<p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively.</p>
+<p>For example,<br>There exist two distinct solutions to the 4-queens puzzle: </p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"> [<span class="string">".Q.."</span>,  <span class="comment">// Solution 1</span></div><div class="line">  <span class="string">"...Q"</span>,</div><div class="line">  <span class="string">"Q..."</span>,</div><div class="line">  <span class="string">"..Q."</span>],</div><div class="line"></div><div class="line"> [<span class="string">"..Q."</span>,  <span class="comment">// Solution 2</span></div><div class="line">  <span class="string">"Q..."</span>,</div><div class="line">  <span class="string">"...Q"</span>,</div><div class="line">  <span class="string">".Q.."</span>]</div><div class="line">]</div><div class="line"></div><div class="line">```  </div><div class="line"></div><div class="line"><span class="meta">## Solution</span></div><div class="line">      </div><div class="line"><span class="meta">### Analysis</span></div><div class="line"></div><div class="line"><span class="meta">#### Solution</span></div></pre></td></tr></table></figure>
+<p>public class Solution {<br>    public List<list<string>&gt; solveNQueens(int n) {<br>        List<list<string>&gt; result = new ArrayList&lt;&gt;();</list<string></list<string></p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>```</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Flatten Nested List Iterator]]></title>
       <url>http://xinli90.com/2016/11/20/Flatten-Nested-List-Iterator/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/flatten-nested-list-iterator/" target="_blank" rel="external">Leetcode - Flatten Nested List Iterator</a>.</p>

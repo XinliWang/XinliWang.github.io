@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2016/08/08/Day4-Difference-between-Comparator-and-Comparable/</loc>
+    
+    <lastmod>2017-02-18T17:56:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2016/11/21/Meeting-Rooms/</loc>
     
     <lastmod>2016-11-22T05:06:48.000Z</lastmod>
@@ -880,13 +887,6 @@
     <loc>http://xinli90.com/2016/08/10/Day5-Class-Design/</loc>
     
     <lastmod>2016-08-28T20:05:31.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/08/08/Day4-Difference-between-Comparator-and-Comparable/</loc>
-    
-    <lastmod>2016-08-28T20:04:37.000Z</lastmod>
     
   </url>
   

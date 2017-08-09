@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2017-08-09T02:20:31.000Z</updated>
+  <updated>2017-08-09T16:32:28.000Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -16,16 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2017 Learning02 HTTP Security</title>
-    <link href="http://xinli90.com/2017/08/08/2017-Learning02-HTTP-Security/"/>
-    <id>http://xinli90.com/2017/08/08/2017-Learning02-HTTP-Security/</id>
+    <title>Day21 HTTP Security</title>
+    <link href="http://xinli90.com/2017/08/08/Day21-HTTP-Security/"/>
+    <id>http://xinli90.com/2017/08/08/Day21-HTTP-Security/</id>
     <published>2017-08-09T02:20:31.000Z</published>
-    <updated>2017-08-09T02:20:31.000Z</updated>
+    <updated>2017-08-09T16:32:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇是关于HTTP Security的介绍和用途.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>总结归纳常见加密方法和使用</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><p>一般我们是通过<strong>TLS</strong>或者<strong>SSL</strong>来进行加密连接。    </p>
+<p>最简单的方式为：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   A端		Secret Key                       Secret Key       B端</div><div class="line"><span class="string">"String"</span>  ============<span class="function">=&gt;</span>  <span class="string">"dfafdalf4311"</span>  =============<span class="function">=&gt;</span>  <span class="string">"String"</span></div><div class="line">		  加密 Encrypt 					   解密 Decrypt</div></pre></td></tr></table></figure>
+<p>弊端：Secret Key can be stolen.  因为密钥是public的，任何人拥有key都可以解密知晓内容，安全性得不到保证。</p>
+<p>因此，出现以下方法：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">               B端</div><div class="line">		/   \</div><div class="line">	   /     \</div><div class="line"><span class="keyword">public</span> <span class="built_in">key</span>       <span class="keyword">private</span> <span class="built_in">key</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   A端	   <span class="string">B's public key                  B'</span>s <span class="keyword">private</span> key       B端</div><div class="line"><span class="string">"String"</span>  =============&gt;  <span class="string">"dfafdalf4311"</span>  ===============&gt;    <span class="string">"String"</span></div><div class="line">		  加密 Encrypt 					   解密 Decrypt</div></pre></td></tr></table></figure>
+<p>好处：所有人都可以拥有public key来进行加密，但是只有拥有private key的人才可以解密，从而达到安全目的。</p>
+<p>所谓的 <strong>数字签名</strong>：<br>引用上面的例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   B端	   <span class="string">B's private key                     B'</span>s <span class="keyword">public</span> key         A端</div><div class="line"><span class="string">"String"</span>  ===============&gt;  <span class="string">"dfafdalf4311"</span>  ===================&gt;    <span class="string">"String"</span></div><div class="line">		  Sign <span class="keyword">and</span> Encrypt 					   Verify <span class="keyword">and</span> Decrypt</div></pre></td></tr></table></figure>
+<p>使用B的private key 给自己的信息加密贴上标签，只要是拥有B的public key的人都可以使用公开的public key来试一下解密，如果可以解开则表明这条信息一定是来自于B端发出，以此达到数字签名的目的。</p>
+]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;本篇是关于HTTP Security的介绍和用途.&lt;/p&gt;
+&lt;h2 id=&quot;攻略模板&quot;&gt;&lt;a href=&quot;#攻略模板&quot; class=&quot;headerlink&quot; title=&quot;攻略模板&quot;&gt;&lt;/a&gt;攻略模板&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;总结归纳常见加密方法和使用&lt;/li&gt;
+&lt;/ul
+    
     </summary>
     
+      <category term="HTTP" scheme="http://xinli90.com/categories/HTTP/"/>
+    
+    
+      <category term="Seeking Job" scheme="http://xinli90.com/tags/Seeking-Job/"/>
+    
+      <category term="Security" scheme="http://xinli90.com/tags/Security/"/>
     
   </entry>
   

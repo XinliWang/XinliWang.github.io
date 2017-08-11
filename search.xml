@@ -6,13 +6,24 @@
     <entry>
       <title><![CDATA[Day22 REST API]]></title>
       <url>http://xinli90.com/2017/08/10/Day22-REST-API/</url>
-      <content type="html"><![CDATA[<p>本篇是关于Design Pattern的介绍和用途.</p>
+      <content type="html"><![CDATA[<p>本篇是关于REST API的介绍和用途.</p>
 <h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
 <li>总结归纳REST API特性</li>
 <li>总结REST API设计规则、用法和常见情景</li>
 </ul>
-<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="为什么-RESTFul-API-会火"><a href="#为什么-RESTFul-API-会火" class="headerlink" title="为什么 RESTFul API 会火"></a>为什么 RESTFul API 会火</h3><p>云计算和Docker技术越来越热，技术也越来越成熟，这些都使得 microservice 架构得到了很好的支持，而每个microservice 之间主要使用 HTTP, REST, JSON来进行通信和连接。</p>
-<h3 id="如何更好的设计你的-REST-API"><a href="#如何更好的设计你的-REST-API" class="headerlink" title="如何更好的设计你的 REST API"></a>如何更好的设计你的 REST API</h3>]]></content>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="为什么-RESTFul-API-会火"><a href="#为什么-RESTFul-API-会火" class="headerlink" title="为什么 RESTFul API 会火"></a>为什么 RESTFul API 会火</h3><p>随着云计算技术也越来越成熟，Docker技术越来越热，这些都使得 microservice 架构得到了很好的支持，而每个microservice 之间主要使用 HTTP, REST, JSON来进行通信和连接，REST API进而被应用的更为广泛。</p>
+<h3 id="如何更好的设计你的-REST-API"><a href="#如何更好的设计你的-REST-API" class="headerlink" title="如何更好的设计你的 REST API"></a>如何更好的设计你的 REST API</h3><h4 id="REST的定义：REpresentational-State-Transfer"><a href="#REST的定义：REpresentational-State-Transfer" class="headerlink" title="REST的定义：REpresentational State Transfer"></a>REST的定义：REpresentational State Transfer</h4><p>通俗来说就是当用户访问网站的时候，是一个客户端与服务器交互的过程，势必会引起数据和状态的变化。如果客户端想要操作服务器，则必须通过某种手段，让服务器发生”状态变化”(State transfer)，而这种变化是建立在表现层(representation)之上，即REST.</p>
+<p>所以客户端主要通过四个HTTP动词，对服务器进行操作，实现变现层状态转化。</p>
+<h5 id="HTTP四个动词"><a href="#HTTP四个动词" class="headerlink" title="HTTP四个动词"></a>HTTP四个动词</h5><ol>
+<li>POST : Create new object</li>
+<li>GET : Retrieve one or more information</li>
+<li>PUT : Update some information</li>
+<li>DELETE : Remove some particular resource</li>
+</ol>
+<h4 id="REST-API设计规范"><a href="#REST-API设计规范" class="headerlink" title="REST API设计规范"></a>REST API设计规范</h4><p>#####规范一：使用名词而非动词</p>
+<p>#####规范二：添加版本号</p>
+<p>#####规范三：设计长度和复杂度</p>
+]]></content>
     </entry>
     
     <entry>

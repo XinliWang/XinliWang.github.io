@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[Day22 REST API]]></title>
+      <url>http://xinli90.com/2017/08/10/Day22-REST-API/</url>
+      <content type="html"><![CDATA[<p>本篇是关于Design Pattern的介绍和用途.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>总结归纳REST API特性</li>
+<li>总结REST API设计规则、用法和常见情景</li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="为什么-RESTFul-API-会火"><a href="#为什么-RESTFul-API-会火" class="headerlink" title="为什么 RESTFul API 会火"></a>为什么 RESTFul API 会火</h3><p>云计算和Docker技术越来越热，技术也越来越成熟，这些都使得 microservice 架构得到了很好的支持，而每个microservice 之间主要使用 HTTP, REST, JSON来进行通信和连接。</p>
+<h3 id="如何更好的设计你的-REST-API"><a href="#如何更好的设计你的-REST-API" class="headerlink" title="如何更好的设计你的 REST API"></a>如何更好的设计你的 REST API</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Day21 HTTP Security]]></title>
       <url>http://xinli90.com/2017/08/08/Day21-HTTP-Security/</url>
       <content type="html"><![CDATA[<p>本篇是关于HTTP Security的介绍和用途.</p>

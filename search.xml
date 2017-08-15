@@ -21,7 +21,8 @@
 <li>DELETE : Remove some particular resource</li>
 </ol>
 <h4 id="REST-API设计规范"><a href="#REST-API设计规范" class="headerlink" title="REST API设计规范"></a>REST API设计规范</h4><p>#####规范一：使用名词而非动词</p>
-<p>#####规范二：添加版本号</p>
+<p>#####规范二：添加版本号<br>将API的版本号放入URL, 使得没有跟新系统和功能的老客户能够继续使用旧的API,方便维护和管理。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">https:</span><span class="comment">//api.example.com/v1/</span></div></pre></td></tr></table></figure>
 <p>#####规范三：设计长度和复杂度</p>
 ]]></content>
     </entry>

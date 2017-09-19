@@ -4,6 +4,73 @@
   
     
     <entry>
+      <title><![CDATA[Day23-Design-TinyURL]]></title>
+      <url>http://xinli90.com/2017/09/18/Day23-Design-TinyURL/</url>
+      <content type="html"><![CDATA[<p>本篇是关于System Design - Tiny URL的设计思路和方法.</p>
+<h2 id="攻略模板"><a href="#攻略模板" class="headerlink" title="攻略模板"></a>攻略模板</h2><ul>
+<li>具体实现代码可以参考 <a href="/2017/09/18/Encode-and-Decode-TinyURL/" title="Encode and Decode TinyURL">Encode and Decode TinyURL</a></li>
+</ul>
+<h2 id="学习后总结"><a href="#学习后总结" class="headerlink" title="学习后总结"></a>学习后总结</h2><h3 id="Questions-1：-How-many-unique-identifiers-possible-Will-you-run-out-of-unique-URLs"><a href="#Questions-1：-How-many-unique-identifiers-possible-Will-you-run-out-of-unique-URLs" class="headerlink" title="Questions 1： How many unique identifiers possible? Will you run out of unique URLs?"></a>Questions 1： How many unique identifiers possible? Will you run out of unique URLs?</h3><p>62^6 = 57 billion.</p>
+<h3 id="Questions-2：Should-the-identifier-be-increment-or-not-Which-is-easier-to-design-Pros-and-cons"><a href="#Questions-2：Should-the-identifier-be-increment-or-not-Which-is-easier-to-design-Pros-and-cons" class="headerlink" title="Questions 2：Should the identifier be increment or not? Which is easier to design? Pros and cons?"></a>Questions 2：Should the identifier be increment or not? Which is easier to design? Pros and cons?</h3><p>No.  It is easier to design auto increment id. But if we need one more MySQL machine, it will be the issue.</p>
+<p>Issues:<br>running out of cache<br>More and more write requests<br>More and more cache misses     </p>
+<p>SOLUTIONS:</p>
+<p>Database Partitioning</p>
+<p>1.Vertical sharding 2. Horizontal sharding.      </p>
+<p>The best way is horizontal sharding.</p>
+<p>Currently table structure is (id, long_url). So, which column should be sharding key?</p>
+<p>An easy way is id modulo sharding.</p>
+<p>Here comes another question: How could multiple machines share a global auto_increment_id?</p>
+<p>Two ways: 1. use one more machine to maintain the id. 2. use zookeeper. Both suck.</p>
+<p>So, we do not use global auto_increment_id.</p>
+<p>Solution1: put the sharding key as the first byte of the short_url.</p>
+<p>Solution2: Use consistent hashing to break the cycle into 62 pieces. It doesn’t matter how many pieces because there probably would not be over 62 machines (it could be 360 or whatever). Each machine is responsible for the service in the part of the cycle.</p>
+<p>Write: longURL -&gt; hash(longURL)%62 -&gt; put longURL to the corresponding machine according to hash value -&gt; generate shortURL based on this value -&gt; return shortURL</p>
+<p>Read: shortURL -&gt; get the sharding key(first byte of shortURL) -&gt; search the corresponding machine -&gt; return longURL.</p>
+<p>Each time we add a new machine, put half of the range of the most used machine to the new machine.</p>
+<h3 id="Questions-3：Mapping-an-identifier-to-an-URL-and-its-reversal-Does-this-problem-ring-a-bell-to-you"><a href="#Questions-3：Mapping-an-identifier-to-an-URL-and-its-reversal-Does-this-problem-ring-a-bell-to-you" class="headerlink" title="Questions 3：Mapping an identifier to an URL and its reversal - Does this problem ring a bell to you?"></a>Questions 3：Mapping an identifier to an URL and its reversal - Does this problem ring a bell to you?</h3><p>Optimization:</p>
+<ul>
+<li><p>Use geographical information as the sharding key. e.g. 0 for US, 1 for China.  Put American DB is US, England DB in Europe.</p>
+</li>
+<li><p>Different locations use different web server and cache server. All the areas share one DB used to match the users to the closest web server(through DNS) when they have a miss on the cache.</p>
+</li>
+</ul>
+<h3 id="Questions-4：-How-do-you-store-the-URLs-Does-a-simple-flat-file-database-work"><a href="#Questions-4：-How-do-you-store-the-URLs-Does-a-simple-flat-file-database-work" class="headerlink" title="Questions 4： How do you store the URLs? Does a simple flat file database work?"></a>Questions 4： How do you store the URLs? Does a simple flat file database work?</h3><p>QPS is not high. We can use SQL.</p>
+<h3 id="Questions-5：-What-is-the-bottleneck-of-the-system-Is-it-read-heavy-or-write-heavy"><a href="#Questions-5：-What-is-the-bottleneck-of-the-system-Is-it-read-heavy-or-write-heavy" class="headerlink" title="Questions 5： What is the bottleneck of the system? Is it read-heavy or write-heavy?"></a>Questions 5： What is the bottleneck of the system? Is it read-heavy or write-heavy?</h3><p>Read heavy. We can use in-memory database as a cache layer to improve response speed.<br>参考Question2 and Question3.</p>
+<h3 id="Questions-6：-Estimate-the-maximum-number-of-URLs-a-single-machine-can-store"><a href="#Questions-6：-Estimate-the-maximum-number-of-URLs-a-single-machine-can-store" class="headerlink" title="Questions 6： Estimate the maximum number of URLs a single machine can store."></a>Questions 6： Estimate the maximum number of URLs a single machine can store.</h3><p>Let’s assume that a single machine has 100GB of storage.<br>Average size of longURL = 100B<br>Average size of shortURL identifier = 6B （6 letters(char)）<br>an ID (int) = 4B<br>So each URL row = 110B, the number of URLs = 100 million.</p>
+<h3 id="Questions-7：-Estimate-the-maximum-number-of-queries-per-second-QPS-for-decoding-a-shortened-URL-in-a-single-machine"><a href="#Questions-7：-Estimate-the-maximum-number-of-queries-per-second-QPS-for-decoding-a-shortened-URL-in-a-single-machine" class="headerlink" title="Questions 7： Estimate the maximum number of queries per second (QPS) for decoding a shortened URL in a single machine."></a>Questions 7： Estimate the maximum number of queries per second (QPS) for decoding a shortened URL in a single machine.</h3><p>Let’s assume that:    </p>
+<ul>
+<li>Daily User: 1,000,000     </li>
+<li>Daily usage per person: (Write)encode: 0.1, (Read)decode:1.</li>
+<li>Daily request: Write 0.1M, Read 1M</li>
+<li>QPS: Write 100,000 / 24*60*60s = 1.2, Read 1M / 24*60*60s = 12</li>
+<li>Peak QPS: Write: 1.2 <em> 5 = 6, Read: 12 </em> 5 = 60.</li>
+</ul>
+<h3 id="Questions-8：-How-would-you-scale-the-service-For-example-a-viral-link-which-is-shared-in-social-media-could-result-in-a-peak-QPS-at-a-moment’s-notice"><a href="#Questions-8：-How-would-you-scale-the-service-For-example-a-viral-link-which-is-shared-in-social-media-could-result-in-a-peak-QPS-at-a-moment’s-notice" class="headerlink" title="Questions 8： How would you scale the service? For example, a viral link which is shared in social media could result in a peak QPS at a moment’s notice."></a>Questions 8： How would you scale the service? For example, a viral link which is shared in social media could result in a peak QPS at a moment’s notice.</h3><p>参考Question5.</p>
+<h3 id="Questions-9：-How-could-you-handle-redundancy-i-e-if-a-server-is-down-how-could-you-ensure-the-service-is-still-operational"><a href="#Questions-9：-How-could-you-handle-redundancy-i-e-if-a-server-is-down-how-could-you-ensure-the-service-is-still-operational" class="headerlink" title="Questions 9： How could you handle redundancy? i,e, if a server is down, how could you ensure the service is still operational?"></a>Questions 9： How could you handle redundancy? i,e, if a server is down, how could you ensure the service is still operational?</h3><h3 id="Questions-10：-Keep-URLs-forever-or-prune-pros-cons-How-we-do-pruning"><a href="#Questions-10：-Keep-URLs-forever-or-prune-pros-cons-How-we-do-pruning" class="headerlink" title="Questions 10： Keep URLs forever or prune, pros/cons? How we do pruning?"></a>Questions 10： Keep URLs forever or prune, pros/cons? How we do pruning?</h3><p>Daily new url: 0.1M. So it takes 100M/0.1M = 1000 days to fill up the storage. Obviously keeping URLs forever is preferable and storage should be cheap.  If we run out of storage, we can delete the inactive URLs.     </p>
+<p>Solution1: Define URLs that last accessed timestamp &gt; 300 days).  Querying this in a database with 100 million rows should be quick. </p>
+<p>Solution2: Using an in-memory database such as Redis or Memcached to store URLs.  URLs will be pruned automatically using LRU Cache mechanism. But this is unrealistic in real world because memory is so much expensive than disk storage.</p>
+<h3 id="Questions-11：-What-API-would-you-provide-to-a-third-party-developer"><a href="#Questions-11：-What-API-would-you-provide-to-a-third-party-developer" class="headerlink" title="Questions 11： What API would you provide to a third-party developer?"></a>Questions 11： What API would you provide to a third-party developer?</h3><p>API for URL Service, get URL status like total hits, referrals, last accessed time.</p>
+<h3 id="Questions-12：-If-you-can-enable-caching-what-would-you-cache-and-what’s-the-expiry-time"><a href="#Questions-12：-If-you-can-enable-caching-what-would-you-cache-and-what’s-the-expiry-time" class="headerlink" title="Questions 12： If you can enable caching, what would you cache and what’s the expiry time?"></a>Questions 12： If you can enable caching, what would you cache and what’s the expiry time?</h3><p>We can use in-memory database as a cache layer, such as Redis or Memcached.  Using the 80/20 rule, roughly 80% of the total hits comes from 20% of the URLs. The expiry time could be short(10 min). It depends on QPS.</p>
+<h3 id="思考1：-什么时候使用No-SQL-和-什么时候使用-SQL"><a href="#思考1：-什么时候使用No-SQL-和-什么时候使用-SQL" class="headerlink" title="思考1： 什么时候使用No SQL 和 什么时候使用 SQL"></a>思考1： 什么时候使用No SQL 和 什么时候使用 SQL</h3><ul>
+<li>是否需要支持transactions，是的话使用SQL.   </li>
+<li>是否需要复杂查询，需要的话使用SQL.   </li>
+<li>是否需要使用AUTO_INCREMENT ID,是的话使用SQL. 因为NoSQL只能含有global unique Object id.   </li>
+<li>是否对QPS有很高要求，是的话用NoSQL, Redis’ QPS could reach million level, MondoDB does 10K level, MySQL only supports K level.   </li>
+<li>是否需要系统有高延展性，是的话NoSQL天生具有，而MySql需要写code to scale.   </li>
+</ul>
+<h3 id="思考2：Redis-or-Memcached的流行和应用"><a href="#思考2：Redis-or-Memcached的流行和应用" class="headerlink" title="思考2：Redis or Memcached的流行和应用"></a>思考2：Redis or Memcached的流行和应用</h3><p>Redis 和 Memcached 都是nosql数据库中的杰出代表，都属于内存型(in-memory database) 键值数据存储。之所以时下非常流行是因为MySql的开源属性导致大公司的去IOE化流行（节约成本），但是MySql对于负载量级几乎是QPS千级达到极限，在高并发场景下，突然的峰值等情况通过分布式缓存服务能够很好解决，单个实例下的Redis or Memcached都能达到QPS 10万级别及以上。       </p>
+<p>区别：Redis 是 加强版的Memcached, 如果结构简单，在小于1M的字符串存储场景下，Memcached效率会稍好一些。其余情况优先考虑Redis.</p>
+<p>主要因为：   </p>
+<ol>
+<li>Memcached的key限制在250B， value的限制为1MB. Redis 的key和value都支持512MB.  </li>
+<li>Memcached只支持字符串存储，应用场景主要为读数据。 Redis支出字符串、哈希、列表、集合等各种类型和操作。</li>
+<li>Memcached为无数据持久型方案，只要重启，数据皆无。Redis能够提供主从复制功能replication，保证了就算某服务器崩溃也能不间断地提供服务。</li>
+<li>Memcached数据回收机制使用的是LRU算法，Redis采用数据回收机制更为复杂，允许6种不同的策略来细粒度的控制过期缓存。</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Encode and Decode TinyURL]]></title>
       <url>http://xinli90.com/2017/09/18/Encode-and-Decode-TinyURL/</url>
       <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/encode-and-decode-tinyurl/description/" target="_blank" rel="external">Leetcode-Encode and Decode TinyURL</a>.</p>

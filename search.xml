@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[Day24 Automation Test]]></title>
+      <url>http://xinli90.com/2018/03/18/Day24-Automation-Test/</url>
+      <content type="html"><![CDATA[<p>本篇是关于工作中使用到的automation test的总结。</p>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h2 id="关于CI-CD的延伸和思考"><a href="#关于CI-CD的延伸和思考" class="headerlink" title="关于CI/CD的延伸和思考"></a>关于CI/CD的延伸和思考</h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Day23-Design-TinyURL]]></title>
       <url>http://xinli90.com/2017/09/18/Day23-Design-TinyURL/</url>
       <content type="html"><![CDATA[<p>本篇是关于System Design - Tiny URL的设计思路和方法.</p>

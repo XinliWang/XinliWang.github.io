@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xinli90.com/"/>
-  <updated>2018-08-23T17:23:10.027Z</updated>
+  <updated>2018-08-23T18:26:36.150Z</updated>
   <id>http://xinli90.com/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Wildcard Matching</title>
+    <link href="http://xinli90.com/2018/08/23/Wildcard-Matching/"/>
+    <id>http://xinli90.com/2018/08/23/Wildcard-Matching/</id>
+    <published>2018-08-23T17:26:20.000Z</published>
+    <updated>2018-08-23T18:26:36.150Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/wildcard-matching" target="_blank" rel="external">Leetcode - 44.Wildcard Matching</a>.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for ‘?’ and ‘*’.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'?'</span> Matches <span class="keyword">any</span> single <span class="keyword">character</span>.</div><div class="line"><span class="string">'*'</span> Matches <span class="keyword">any</span> sequence <span class="keyword">of</span> <span class="keyword">characters</span> (including <span class="keyword">the</span> <span class="literal">empty</span> sequence).</div></pre></td></tr></table></figure>
+<p>The matching should cover the entire input string (not partial).</p>
+<p>Note:</p>
+<p>s could be empty and contains only lowercase letters a-z.<br>p could be empty and contains only lowercase letters a-z, and characters like ? or *.</p>
+<p>Example 1:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s = <span class="string">"aa"</span></div><div class="line">p = <span class="string">"a"</span></div><div class="line">Output: <span class="literal">false</span></div><div class="line">Explanation: <span class="string">"a"</span> <span class="keyword">does</span> <span class="keyword">not</span> match <span class="keyword">the</span> entire <span class="built_in">string</span> <span class="string">"aa"</span>.</div></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span></div><div class="line">s = <span class="string">"aa"</span></div><div class="line">p = <span class="string">"*"</span></div><div class="line"><span class="string">Output:</span> <span class="literal">true</span></div><div class="line"><span class="string">Explanation:</span> <span class="string">'*'</span> matches any sequence.</div></pre></td></tr></table></figure>
+<p>Example 3:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span></div><div class="line">s = <span class="string">"cb"</span></div><div class="line">p = <span class="string">"?a"</span></div><div class="line"><span class="string">Output:</span> <span class="literal">false</span></div><div class="line"><span class="string">Explanation:</span> <span class="string">'?'</span> matches <span class="string">'c'</span>, but the second letter is <span class="string">'a'</span>, which does not match <span class="string">'b'</span>.</div></pre></td></tr></table></figure>
+<p>Example 4:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">s = <span class="string">"adceb"</span></div><div class="line">p = <span class="string">"*a*b"</span></div><div class="line">Output: <span class="literal">true</span></div><div class="line">Explanation: The <span class="keyword">first</span> <span class="string">'*'</span> matches <span class="keyword">the</span> <span class="literal">empty</span> sequence, <span class="keyword">while</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="string">'*'</span> matches <span class="keyword">the</span> substring <span class="string">"dce"</span>.</div></pre></td></tr></table></figure>
+<p>Example 5:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span></div><div class="line">s = <span class="string">"acdcb"</span></div><div class="line">p = <span class="string">"a*c?b"</span></div><div class="line"><span class="string">Output:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><ol>
+<li>Recursion: This solution is Time Limit Exceeded</li>
+<li>Each time we compare with the first letter of s and p. And recursively compare with the rest of s and p.</li>
+<li>if ‘*’ is present, it has three situations: </li>
+<li>star represents multiple letters -&gt; compare s.substring(1) and p; </li>
+<li>star represents one letter -&gt; compare s.substring(1) and p.substring(1); </li>
+<li>star represents none letter -&gt; compare s and p.substring(1); </li>
+</ol>
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><ol>
+<li>DP solution.</li>
+<li>Record first i and first j letters of s and p are matched or not into array. From (0,0) to (s.length(), p.length()) to get the result of s and p.</li>
+<li>Similar thinking of recursive solution.  if ‘*’ is present, it has three situations: </li>
+<li>‘*’ represents multiple letters -&gt; j should match i-1 as well -&gt; dp[i+1][j+1] = dp[i][j+1]</li>
+<li>‘*’ represents one letter -&gt; i-1 and j-1 are matched -&gt; dp[i+1][j+1] = dp[i][j]</li>
+<li>‘*’ represents none letter -&gt; i and j-1 are matched -&gt; dp[i+1][j+1] = dp[i+1][j]</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">    	 <span class="comment">//check the termination</span></div><div class="line">        <span class="keyword">if</span>(p.length() == <span class="number">0</span>) <span class="keyword">return</span> s.length() == <span class="number">0</span>;</div><div class="line">        <span class="comment">//corner case: "" "***"</span></div><div class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> p.charAt(<span class="number">0</span>)==<span class="string">'*'</span> &amp;&amp; isMatch(s, p.substring(<span class="number">1</span>)); </div><div class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>)==p.charAt(<span class="number">0</span>) || p.charAt(<span class="number">0</span>)==<span class="string">'?'</span>) &#123;</div><div class="line">            <span class="keyword">return</span> isMatch(s.substring(<span class="number">1</span>), p.substring(<span class="number">1</span>));</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(p.charAt(<span class="number">0</span>) == <span class="string">'*'</span>) &#123;</div><div class="line">            <span class="keyword">return</span> isMatch(s.substring(<span class="number">1</span>), p) || isMatch(s.substring(<span class="number">1</span>), p.substring(<span class="number">1</span>)) || isMatch(s,p.substring(<span class="number">1</span>));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">        <span class="comment">//state: matches[i][j] represents first i characters of s and first j characters of p are matched or not</span></div><div class="line">        <span class="keyword">boolean</span>[][] matches = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>][p.length()+<span class="number">1</span>];</div><div class="line">        <span class="comment">//init:first 0 characters of s and first 0 characters of p must be matched</span></div><div class="line">        matches[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">        <span class="comment">//init matches[0][j]</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p.length(); j++) &#123;</div><div class="line">            <span class="keyword">if</span>(p.charAt(j) == <span class="string">'*'</span> &amp;&amp; matches[<span class="number">0</span>][j]) matches[<span class="number">0</span>][j+<span class="number">1</span>] = <span class="keyword">true</span>; </div><div class="line">        &#125;</div><div class="line">        <span class="comment">//init matches[i][0], always false</span></div><div class="line">        <span class="comment">//function</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p.length(); j++) &#123;</div><div class="line">                <span class="keyword">if</span>(s.charAt(i)==p.charAt(j) || p.charAt(j)==<span class="string">'?'</span>) &#123;</div><div class="line">                    matches[i+<span class="number">1</span>][j+<span class="number">1</span>] = matches[i][j];</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (p.charAt(j) == <span class="string">'*'</span>) &#123;</div><div class="line">                    <span class="comment">//* represents none -&gt; i and j-1 are matched</span></div><div class="line">                    <span class="comment">//* represents one character -&gt; i-1 and j-1 are matched</span></div><div class="line">                    <span class="comment">//* represents multiple characters -&gt; i-1 and j are matched</span></div><div class="line">                    matches[i+<span class="number">1</span>][j+<span class="number">1</span>] = matches[i+<span class="number">1</span>][j] || matches[i][j] || matches[i][j+<span class="number">1</span>];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//answer</span></div><div class="line">        <span class="keyword">return</span> matches[s.length()][p.length()];</div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/wildcard-matching&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - 44.Wildcar
+    
+    </summary>
+    
+      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Regular Expression Matching</title>
@@ -732,41 +786,6 @@
     <summary type="html">
     
       &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/odd-even-linked-list/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Odd Ev
-    
-    </summary>
-    
-      <category term="Leetcode" scheme="http://xinli90.com/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="http://xinli90.com/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sum of Two Integers</title>
-    <link href="http://xinli90.com/2016/10/28/Sum-of-Two-Integers/"/>
-    <id>http://xinli90.com/2016/10/28/Sum-of-Two-Integers/</id>
-    <published>2016-10-28T15:09:15.000Z</published>
-    <updated>2016-10-28T15:22:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>This is the solution about <a href="https://leetcode.com/problems/sum-of-two-integers/" target="_blank" rel="external">Leetcode - Sum of Two Integers</a>.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.</p>
-<p>Example:<br>Given a = 1 and b = 2, return 3.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h4><ol>
-<li>First recall addition in primary school. e.g. 26 + 147 = 173. You start by 6 + 7 = 13, so you put the 3 in the sum, and carry the one, and so forth…</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">carry: <span class="number">1</span></div><div class="line"><span class="selector-tag">a</span>:     <span class="number">26</span></div><div class="line"><span class="selector-tag">b</span>:    <span class="number">147</span></div><div class="line">sum   <span class="number">173</span></div></pre></td></tr></table></figure>
-<ol>
-<li>First find the carry: <code>int carry = (a &amp; b)</code></li>
-<li>Then store the first digit position, and store it in <code>a = (a ^ b)</code></li>
-<li>Shift the carry to the next digit position: <code>carry &lt;&lt; 1</code></li>
-<li>The while loop continues as long as there are carries that has bot been included in the sum.</li>
-</ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution1</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSum</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>) </span>&#123;</div><div class="line">    	<span class="keyword">while</span>(b != <span class="number">0</span>) &#123;</div><div class="line">    		<span class="keyword">int</span> carry = (a &amp; b);</div><div class="line">    		a = (a ^ b);</div><div class="line">    		b = carry &lt;&lt; <span class="number">1</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> a;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is the solution about &lt;a href=&quot;https://leetcode.com/problems/sum-of-two-integers/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Leetcode - Sum of 
     
     </summary>
     

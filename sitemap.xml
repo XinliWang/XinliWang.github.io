@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xinli90.com/2018/08/23/Regular-Expression-Matching/</loc>
+    
+    <lastmod>2018-08-23T17:23:10.027Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xinli90.com/2018/03/18/Day24-Automation-Test/</loc>
     
     <lastmod>2018-03-19T02:53:27.000Z</lastmod>
@@ -719,13 +726,6 @@
     <loc>http://xinli90.com/2016/09/06/Word-Search/</loc>
     
     <lastmod>2016-09-06T18:43:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xinli90.com/2016/09/06/Regular-Expression-Matching/</loc>
-    
-    <lastmod>2016-09-06T14:48:13.000Z</lastmod>
     
   </url>
   
